@@ -1,7 +1,6 @@
-TxinbometroBundle:
-    resource: "@TxinbometroBundle/Controller/"
-    #type:     annotation
-    prefix:   /
+txinbometro_moto:
+    resource: "@TxinbometroBundle/Resources/config/routing/moto.yml"
+    prefix:   /moto
 
 # Internal routing configuration to handle ESI
 #_internal:

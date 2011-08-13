@@ -1,0 +1,4 @@
+TxinbometroBundle_moto:
+    resource: "@TxinbometroBundle/Resources/config/routing/moto.yml"
+    prefix:   /moto
+

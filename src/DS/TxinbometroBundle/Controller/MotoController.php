@@ -3,24 +3,19 @@
 namespace DS\TxinbometroBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+
 use DS\TxinbometroBundle\Entity\Moto;
 use DS\TxinbometroBundle\Form\MotoType;
 
 /**
  * Moto controller.
  *
- * @Route("/moto")
  */
 class MotoController extends Controller
 {
     /**
      * Lists all Moto entities.
      *
-     * @Route("/", name="moto")
-     * @Template()
      */
     public function indexAction()
     {
@@ -28,14 +23,14 @@ class MotoController extends Controller
 
         $entities = $em->getRepository('TxinbometroBundle:Moto')->findAll();
 
-        return array('entities' => $entities);
+        return $this->render('TxinbometroBundle:Moto:index.html.twig', array(
+            'entities' => $entities
+        ));
     }
 
     /**
      * Finds and displays a Moto entity.
      *
-     * @Route("/{id}/show", name="moto_show")
-     * @Template()
      */
     public function showAction($id)
     {
@@ -49,34 +44,30 @@ class MotoController extends Controller
 
         $deleteForm = $this->createDeleteForm($id);
 
-        return array(
+        return $this->render('TxinbometroBundle:Moto:show.html.twig', array(
             'entity'      => $entity,
-            'delete_form' => $deleteForm->createView(),        );
+            'delete_form' => $deleteForm->createView(),
+        ));
     }
 
     /**
      * Displays a form to create a new Moto entity.
      *
-     * @Route("/new", name="moto_new")
-     * @Template()
      */
     public function newAction()
     {
         $entity = new Moto();
         $form   = $this->createForm(new MotoType(), $entity);
 
-        return array(
+        return $this->render('TxinbometroBundle:Moto:new.html.twig', array(
             'entity' => $entity,
             'form'   => $form->createView()
-        );
+        ));
     }
 
     /**
      * Creates a new Moto entity.
      *
-     * @Route("/create", name="moto_create")
-     * @Method("post")
-     * @Template("TxinbometroBundle:Moto:new.html.twig")
      */
     public function createAction()
     {
@@ -94,17 +85,15 @@ class MotoController extends Controller
             
         }
 
-        return array(
+        return $this->render('TxinbometroBundle:Moto:new.html.twig', array(
             'entity' => $entity,
             'form'   => $form->createView()
-        );
+        ));
     }
 
     /**
      * Displays a form to edit an existing Moto entity.
      *
-     * @Route("/{id}/edit", name="moto_edit")
-     * @Template()
      */
     public function editAction($id)
     {
@@ -119,19 +108,16 @@ class MotoController extends Controller
         $editForm = $this->createForm(new MotoType(), $entity);
         $deleteForm = $this->createDeleteForm($id);
 
-        return array(
+        return $this->render('TxinbometroBundle:Moto:edit.html.twig', array(
             'entity'      => $entity,
             'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
-        );
+        ));
     }
 
     /**
      * Edits an existing Moto entity.
      *
-     * @Route("/{id}/update", name="moto_update")
-     * @Method("post")
-     * @Template("TxinbometroBundle:Moto:edit.html.twig")
      */
     public function updateAction($id)
     {
@@ -157,18 +143,16 @@ class MotoController extends Controller
             return $this->redirect($this->generateUrl('moto_edit', array('id' => $id)));
         }
 
-        return array(
+        return $this->render('TxinbometroBundle:Moto:edit.html.twig', array(
             'entity'      => $entity,
             'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
-        );
+        ));
     }
 
     /**
      * Deletes a Moto entity.
      *
-     * @Route("/{id}/delete", name="moto_delete")
-     * @Method("post")
      */
     public function deleteAction($id)
     {

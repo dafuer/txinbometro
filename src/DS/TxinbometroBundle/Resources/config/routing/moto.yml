@@ -1,0 +1,30 @@
+moto:
+    pattern:  /
+    defaults: { _controller: "TxinbometroBundle:Moto:index" }
+
+moto_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "TxinbometroBundle:Moto:show" }
+
+moto_new:
+    pattern:  /new
+    defaults: { _controller: "TxinbometroBundle:Moto:new" }
+
+moto_create:
+    pattern:  /create
+    defaults: { _controller: "TxinbometroBundle:Moto:create" }
+    requirements: { _method: post }
+
+moto_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "TxinbometroBundle:Moto:edit" }
+
+moto_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "TxinbometroBundle:Moto:update" }
+    requirements: { _method: post }
+
+moto_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "TxinbometroBundle:Moto:delete" }
+    requirements: { _method: post }
