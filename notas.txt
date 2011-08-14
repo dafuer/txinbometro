@@ -1,1 +1,2 @@
 - Cambiar en las entity que en cascade no remove y sean noaction
+- Que solo se permitan dos tipos de vehiculos, motos y coches

@@ -1,7 +1,14 @@
+index:
+    pattern:  /
+    defaults: { _controller: TxinbometroBundle:Default:index }
+
 txinbometro_moto:
     resource: "@TxinbometroBundle/Resources/config/routing/moto.yml"
     prefix:   /moto
 
+txinbometro_vehiculo:
+    resource: "@TxinbometroBundle/Resources/config/routing/vehiculo.yml"
+    prefix:   /vehiculo
 # Internal routing configuration to handle ESI
 #_internal:
 #   resource: "@FrameworkBundle/Resources/config/routing/internal.xml"

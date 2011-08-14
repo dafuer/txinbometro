@@ -6,9 +6,9 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity(repositoryClass="Txinbometro\TxinbometroBundle\Repository\MotoRepository")
- * @ORM\Table(name="moto")
+ * @ORM\Table(name="vehiculo")
  */
-Class Moto {
+Class Vehiculo {
 
     /**
      * @ORM\Id
@@ -23,6 +23,12 @@ Class Moto {
      * Usuario que vota
      */
     protected $user;
+    
+    /**
+     * @ORM\Column(type="string")
+     */
+    protected $tipo;    
+    
     /**
      * @ORM\Column(type="string")
      */
@@ -183,4 +189,24 @@ Class Moto {
         return $this->user;
     }
 
+
+    /**
+     * Set tipo
+     *
+     * @param string $tipo
+     */
+    public function setTipo($tipo)
+    {
+        $this->tipo = $tipo;
+    }
+
+    /**
+     * Get tipo
+     *
+     * @return string 
+     */
+    public function getTipo()
+    {
+        return $this->tipo;
+    }
 }

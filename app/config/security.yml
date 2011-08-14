@@ -18,7 +18,8 @@ security:
         - { path: ^/admin/, role: ROLE_ADMIN }
         #- { path: ^/moto/.*, role: [IS_AUTHENTICATED_FULLY] } # This is the route secured with fos_facebook
         #- { path: ^/.*, role: [IS_AUTHENTICATED_ANONYMOUSLY] }0
-        - { path: ^/moto/.*, role: [IS_AUTHENTICATED_FULLY] } # This is the route secured with fos_facebook
+        - { path: ^/moto/.*, role: [IS_AUTHENTICATED_FULLY] }
+        - { path: ^/vehiculo/.*, role: [IS_AUTHENTICATED_FULLY] }
         
         
     role_hierarchy:
