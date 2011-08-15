@@ -1,0 +1,30 @@
+gasto:
+    pattern:  /
+    defaults: { _controller: "TxinbometroBundle:Gasto:index" }
+
+gasto_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "TxinbometroBundle:Gasto:show" }
+
+gasto_new:
+    pattern:  /new
+    defaults: { _controller: "TxinbometroBundle:Gasto:new" }
+
+gasto_create:
+    pattern:  /create
+    defaults: { _controller: "TxinbometroBundle:Gasto:create" }
+    requirements: { _method: post }
+
+gasto_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "TxinbometroBundle:Gasto:edit" }
+
+gasto_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "TxinbometroBundle:Gasto:update" }
+    requirements: { _method: post }
+
+gasto_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "TxinbometroBundle:Gasto:delete" }
+    requirements: { _method: post }

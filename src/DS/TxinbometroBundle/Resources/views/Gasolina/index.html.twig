@@ -1,0 +1,49 @@
+<h1>Gasolina list</h1>
+
+<table class="records_list">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Km</th>
+            <th>Fecha</th>
+            <th>Litros</th>
+            <th>Coste</th>
+            <th>Tipo</th>
+            <th>Gasolinera</th>
+            <th>Comentario</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for entity in entities %}
+        <tr>
+            <td><a href="{{ path('gasolina_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+            <td>{{ entity.km }}</td>
+            <td>{{ entity.fecha|date('Y-m-d H:i:s') }}</td>
+            <td>{{ entity.litros }}</td>
+            <td>{{ entity.coste }}</td>
+            <td>{{ entity.tipo }}</td>
+            <td>{{ entity.gasolinera }}</td>
+            <td>{{ entity.comentario }}</td>
+            <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('gasolina_show', { 'id': entity.id }) }}">show</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('gasolina_edit', { 'id': entity.id }) }}">edit</a>
+                    </li>
+                </ul>
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+<ul>
+    <li>
+        <a href="{{ path('gasolina_new') }}">
+            Create a new entry
+        </a>
+    </li>
+</ul>

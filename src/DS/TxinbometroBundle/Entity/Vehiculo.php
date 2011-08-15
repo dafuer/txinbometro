@@ -5,8 +5,8 @@ namespace DS\TxinbometroBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass="Txinbometro\TxinbometroBundle\Repository\MotoRepository")
- * @ORM\Table(name="vehiculo")
+ * @ORM\Entity(repositoryClass="Txinbometro\TxinbometroBundle\Repository\VehiculoRepository")
+ * @ORM\Table(name="txinbometro_vehiculo")
  */
 Class Vehiculo {
 
@@ -17,12 +17,12 @@ Class Vehiculo {
      */
     protected $id;
     /**
-     * @ORM\ManyToOne(targetEntity="User", inversedBy="motos", cascade={"remove"}) 
-     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+     * @ORM\ManyToOne(targetEntity="Usuario", inversedBy="vehiculos", cascade={"remove"}) 
+     * @ORM\JoinColumn(name="usuario_id", referencedColumnName="id")
      * 
-     * Usuario que vota
+     * Usuario al que pertenece el vehiculo
      */
-    protected $user;
+    protected $usuario;
     
     /**
      * @ORM\Column(type="string")
@@ -54,141 +54,17 @@ Class Vehiculo {
      */
     protected $capacidad;
 
+    
+
     /**
      * Get id
      *
      * @return integer 
      */
-    public function getId() {
+    public function getId()
+    {
         return $this->id;
     }
-
-    /**
-     * Set marca
-     *
-     * @param string $marca
-     */
-    public function setMarca($marca) {
-        $this->marca = $marca;
-    }
-
-    /**
-     * Get marca
-     *
-     * @return string 
-     */
-    public function getMarca() {
-        return $this->marca;
-    }
-
-    /**
-     * Set modelo
-     *
-     * @param string $modelo
-     */
-    public function setModelo($modelo) {
-        $this->modelo = $modelo;
-    }
-
-    /**
-     * Get modelo
-     *
-     * @return string 
-     */
-    public function getModelo() {
-        return $this->modelo;
-    }
-
-    /**
-     * Set compra
-     *
-     * @param datetime $compra
-     */
-    public function setCompra($compra) {
-        $this->compra = $compra;
-    }
-
-    /**
-     * Get compra
-     *
-     * @return datetime 
-     */
-    public function getCompra() {
-        return $this->compra;
-    }
-
-    /**
-     * Set coste
-     *
-     * @param float $coste
-     */
-    public function setCoste($coste) {
-        $this->coste = $coste;
-    }
-
-    /**
-     * Get coste
-     *
-     * @return float 
-     */
-    public function getCoste() {
-        return $this->coste;
-    }
-
-    /**
-     * Set km_iniciales
-     *
-     * @param integer $kmIniciales
-     */
-    public function setKmIniciales($kmIniciales) {
-        $this->km_iniciales = $kmIniciales;
-    }
-
-    /**
-     * Get km_iniciales
-     *
-     * @return integer 
-     */
-    public function getKmIniciales() {
-        return $this->km_iniciales;
-    }
-
-    /**
-     * Set capacidad
-     *
-     * @param float $capacidad
-     */
-    public function setCapacidad($capacidad) {
-        $this->capacidad = $capacidad;
-    }
-
-    /**
-     * Get capacidad
-     *
-     * @return float 
-     */
-    public function getCapacidad() {
-        return $this->capacidad;
-    }
-
-    /**
-     * Set user
-     *
-     * @param DS\TxinbometroBundle\Entity\User $user
-     */
-    public function setUser(\DS\TxinbometroBundle\Entity\User $user) {
-        $this->user = $user;
-    }
-
-    /**
-     * Get user
-     *
-     * @return DS\TxinbometroBundle\Entity\User 
-     */
-    public function getUser() {
-        return $this->user;
-    }
-
 
     /**
      * Set tipo
@@ -208,5 +84,145 @@ Class Vehiculo {
     public function getTipo()
     {
         return $this->tipo;
+    }
+
+    /**
+     * Set marca
+     *
+     * @param string $marca
+     */
+    public function setMarca($marca)
+    {
+        $this->marca = $marca;
+    }
+
+    /**
+     * Get marca
+     *
+     * @return string 
+     */
+    public function getMarca()
+    {
+        return $this->marca;
+    }
+
+    /**
+     * Set modelo
+     *
+     * @param string $modelo
+     */
+    public function setModelo($modelo)
+    {
+        $this->modelo = $modelo;
+    }
+
+    /**
+     * Get modelo
+     *
+     * @return string 
+     */
+    public function getModelo()
+    {
+        return $this->modelo;
+    }
+
+    /**
+     * Set compra
+     *
+     * @param datetime $compra
+     */
+    public function setCompra($compra)
+    {
+        $this->compra = $compra;
+    }
+
+    /**
+     * Get compra
+     *
+     * @return datetime 
+     */
+    public function getCompra()
+    {
+        return $this->compra;
+    }
+
+    /**
+     * Set coste
+     *
+     * @param float $coste
+     */
+    public function setCoste($coste)
+    {
+        $this->coste = $coste;
+    }
+
+    /**
+     * Get coste
+     *
+     * @return float 
+     */
+    public function getCoste()
+    {
+        return $this->coste;
+    }
+
+    /**
+     * Set km_iniciales
+     *
+     * @param integer $kmIniciales
+     */
+    public function setKmIniciales($kmIniciales)
+    {
+        $this->km_iniciales = $kmIniciales;
+    }
+
+    /**
+     * Get km_iniciales
+     *
+     * @return integer 
+     */
+    public function getKmIniciales()
+    {
+        return $this->km_iniciales;
+    }
+
+    /**
+     * Set capacidad
+     *
+     * @param float $capacidad
+     */
+    public function setCapacidad($capacidad)
+    {
+        $this->capacidad = $capacidad;
+    }
+
+    /**
+     * Get capacidad
+     *
+     * @return float 
+     */
+    public function getCapacidad()
+    {
+        return $this->capacidad;
+    }
+
+    /**
+     * Set usuario
+     *
+     * @param DS\TxinbometroBundle\Entity\Usuario $usuario
+     */
+    public function setUsuario(\DS\TxinbometroBundle\Entity\Usuario $usuario)
+    {
+        $this->usuario = $usuario;
+    }
+
+    /**
+     * Get usuario
+     *
+     * @return DS\TxinbometroBundle\Entity\Usuario 
+     */
+    public function getUsuario()
+    {
+        return $this->usuario;
     }
 }

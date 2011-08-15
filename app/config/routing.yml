@@ -2,17 +2,17 @@ index:
     pattern:  /
     defaults: { _controller: TxinbometroBundle:Default:index }
 
-txinbometro_moto:
-    resource: "@TxinbometroBundle/Resources/config/routing/moto.yml"
-    prefix:   /moto
-
 txinbometro_vehiculo:
     resource: "@TxinbometroBundle/Resources/config/routing/vehiculo.yml"
     prefix:   /vehiculo
-# Internal routing configuration to handle ESI
-#_internal:
-#   resource: "@FrameworkBundle/Resources/config/routing/internal.xml"
-#   prefix:   /_internal
+
+txinbometro_gasolina:
+    resource: "@TxinbometroBundle/Resources/config/routing/gasolina.yml"
+    prefix:   /gasolina
+    
+txinbometro_gasto:
+    resource: "@TxinbometroBundle/Resources/config/routing/gasto.yml"
+    prefix:   /gasto
 
 fos_user_security:
     resource: "@FOSUserBundle/Resources/config/routing/security.xml"
@@ -32,3 +32,11 @@ fos_user_resetting:
 fos_user_change_password:
     resource: "@FOSUserBundle/Resources/config/routing/change_password.xml"
     prefix: /change-password
+    
+        
+    
+    
+# Internal routing configuration to handle ESI
+#_internal:
+#   resource: "@FrameworkBundle/Resources/config/routing/internal.xml"
+#   prefix:   /_internal

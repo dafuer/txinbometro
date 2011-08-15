@@ -1,6 +1,6 @@
 <?php
 
-namespace DS\TxinbometroBundle\Entity;
+namespace DS\TxinbometroBundle\Repository;
 
 use Doctrine\ORM\EntityRepository;
 
