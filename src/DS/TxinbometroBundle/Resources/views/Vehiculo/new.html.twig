@@ -1,3 +1,7 @@
+{# src/DS/TxinbometroBundle/Resources/views/Vehiculo/new.html.twig #}
+{% extends "TxinbometroBundle::layout.html.twig" %}
+
+{% block body %}
 <h1>Vehiculo creation</h1>
 
 <form action="{{ path('vehiculo_create') }}" method="post" {{ form_enctype(form) }}>
@@ -14,3 +18,4 @@
         </a>
     </li>
 </ul>
+{% endblock %}

@@ -1,3 +1,7 @@
+{# src/DS/TxinbometroBundle/Resources/views/Gasto/edit.html.twig #}
+{% extends "TxinbometroBundle::layout.html.twig" %}
+
+{% block body %}
 <h1>Gasto edit</h1>
 
 <form action="{{ path('gasto_update', { 'id': entity.id }) }}" method="post" {{ form_enctype(edit_form) }}>
@@ -20,3 +24,4 @@
         </form>
     </li>
 </ul>
+{% endblock %}
