@@ -1,4 +1,15 @@
-TxinbometroBundle_moto:
-    resource: "@TxinbometroBundle/Resources/config/routing/moto.yml"
-    prefix:   /moto
+txinbometro_vehiculo:
+    resource: "@TxinbometroBundle/Resources/config/routing/vehiculo.yml"
+    prefix:   /vehiculo
 
+txinbometro_gasolina:
+    resource: "@TxinbometroBundle/Resources/config/routing/gasolina.yml"
+    prefix:   /gasolina
+    
+txinbometro_gasto:
+    resource: "@TxinbometroBundle/Resources/config/routing/gasto.yml"
+    prefix:   /gasto
+    
+#acceder:
+#    pattern:  /acceder
+#    defaults: { _controller: TxinbometroBundle:Default:acceder }

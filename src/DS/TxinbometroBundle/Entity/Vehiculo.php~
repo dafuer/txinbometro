@@ -5,7 +5,9 @@ namespace DS\TxinbometroBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass="Txinbometro\TxinbometroBundle\Repository\VehiculoRepository")
+ * DS\TxinbometroBundle\Entity\Vehiculo
+ * 
+ * @ORM\Entity(repositoryClass="DS\TxinbometroBundle\Repository\GasolinaRepository")
  * @ORM\Table(name="txinbometro_vehiculo")
  */
 Class Vehiculo {
@@ -18,7 +20,7 @@ Class Vehiculo {
     protected $id;
     /**
      * @ORM\ManyToOne(targetEntity="Usuario", inversedBy="vehiculos", cascade={"remove"}) 
-     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="usuario_id", referencedColumnName="id")
      * 
      * Usuario al que pertenece el vehiculo
      */

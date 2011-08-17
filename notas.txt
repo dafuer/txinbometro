@@ -1,4 +1,12 @@
-- He creado mal los CRUD de gasto y gasolina porque se relacionan con un usuario en vez de moto y ademas en el código interno de la entity no está la asociación onetomany, en vez de esto está puesto sólo como string.
-
 - Cambiar en las entity que en cascade no remove y sean noaction
 - Que solo se permitan dos tipos de vehiculos, motos y coches
+
+
+
+
+
+- pagina 240 comienza con symfony, antes doctrine
+- en la pagina 300 se habla de como cambiar las rutas para ponerlas bonitas /blog/primer-post en vez de /blog/5
+- en la pagina 406 hablan de la gestion de ACL
+- en la pagina 407 hablan de la gestion del usuario
+- 422 traduccion

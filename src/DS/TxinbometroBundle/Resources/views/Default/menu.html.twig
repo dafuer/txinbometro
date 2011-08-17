@@ -1,15 +1,23 @@
 {# src/DS/TxinbometroBundle/Resources/views/Default/menu.html.twig #}
 
+<div id="menu1">
 {% block menu1 %}
     
-    {% if  option  == 'Principal' %}<b>{% endif %}
-    Principal
-    {% if  option  == 'Principal' %}</b>{% endif %}
-    | Vehiculo | Estad&iacute;sticas | Gasolina | Gasto
-    
-    
+<span style="{% if  opcion  == 'Principal' %}font-weight: bold{% endif %}">Principal</span>
+|
+<span style="{% if  opcion  == 'Vehiculo' %}font-weight: bold{% endif %}">Vehiculo</span>
+|
+<span style="{% if  opcion  == 'Estadisticas' %}font-weight: bold{% endif %}">Estad&iacute;sticas</span>
+|
+<span style="{% if  opcion  == 'Gasolina' %}font-weight: bold{% endif %}">Gasolina</span>
+|
+<span style="{% if  opcion  == 'Gasto' %}font-weight: bold{% endif %}">Gasto</span>
+
+{% endblock %}
+</div>
+
+<div id="menu2">
     {% block menu2 %}
         
     {% endblock %}
-
-{% endblock %}
+</div>

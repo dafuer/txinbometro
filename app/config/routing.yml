@@ -3,16 +3,7 @@ index:
     defaults: { _controller: TxinbometroBundle:Default:index }
 
 txinbometro_vehiculo:
-    resource: "@TxinbometroBundle/Resources/config/routing/vehiculo.yml"
-    prefix:   /vehiculo
-
-txinbometro_gasolina:
-    resource: "@TxinbometroBundle/Resources/config/routing/gasolina.yml"
-    prefix:   /gasolina
-    
-txinbometro_gasto:
-    resource: "@TxinbometroBundle/Resources/config/routing/gasto.yml"
-    prefix:   /gasto
+    resource: "@TxinbometroBundle/Resources/config/routing.yml"
 
 fos_user_security:
     resource: "@FOSUserBundle/Resources/config/routing/security.xml"

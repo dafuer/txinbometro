@@ -5,7 +5,9 @@ namespace DS\TxinbometroBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass="Txinbometro\TxinbometroBundle\Repository\VehiculoRepository")
+ * DS\TxinbometroBundle\Entity\Vehiculo
+ * 
+ * @ORM\Entity(repositoryClass="DS\TxinbometroBundle\Repository\GasolinaRepository")
  * @ORM\Table(name="txinbometro_vehiculo")
  */
 Class Vehiculo {

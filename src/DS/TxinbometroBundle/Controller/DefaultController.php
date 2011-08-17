@@ -20,7 +20,9 @@ class DefaultController extends Controller
     /**
      * @Template()
      */
-    public function menuAction($option, $suboption){
-        return array('option'=>$option, 'suboption'=>$suboption);
+    public function menuAction($opcion, $subopcion){
+        return array('opcion'=>$opcion, 'subopcion'=>$subopcion);
     }
+    
+    
 }
