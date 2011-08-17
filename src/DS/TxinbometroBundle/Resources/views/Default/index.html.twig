@@ -1,6 +1,10 @@
 {# src/DS/TxinbometroBundle/Resources/views/Default/index.html.twig #}
 {% extends "TxinbometroBundle::layout.html.twig" %}
 
+{% block menu %}
+{% render "TxinbometroBundle:Default:menu" with { 'option': 'Principal', 'suboption': 'index' } %}
+{% endblock %}
+
 {% block body %}
 Bienvenido a la p&aacute;gina web Txinbometro donde podr&aacute;s mantener un seguimiento del uso y consumo de t&uacute; veh&iacute;culo.
 

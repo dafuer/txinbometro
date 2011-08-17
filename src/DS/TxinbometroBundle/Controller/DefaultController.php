@@ -16,4 +16,11 @@ class DefaultController extends Controller
     {
         return array();
     }
+    
+    /**
+     * @Template()
+     */
+    public function menuAction($option, $suboption){
+        return array('option'=>$option, 'suboption'=>$suboption);
+    }
 }

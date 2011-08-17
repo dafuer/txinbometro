@@ -16,6 +16,9 @@ root {
 }
 
 body{
-    background-color: gray;
+    background-color: beige;
 }
 
+h1{
+    text-align: center;
+}
