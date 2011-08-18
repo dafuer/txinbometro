@@ -81,7 +81,7 @@ class GasolinaController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('gasolina_show', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('txinbometro_gasolina_show', array('id' => $entity->getId())));
             
         }
 
@@ -140,7 +140,7 @@ class GasolinaController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('gasolina_edit', array('id' => $id)));
+            return $this->redirect($this->generateUrl('txinbometro_gasolina_edit', array('id' => $id)));
         }
 
         return $this->render('TxinbometroBundle:Gasolina:edit.html.twig', array(
@@ -173,7 +173,7 @@ class GasolinaController extends Controller
             $em->flush();
         }
 
-        return $this->redirect($this->generateUrl('gasolina'));
+        return $this->redirect($this->generateUrl('txinbometro_gasolina'));
     }
 
     private function createDeleteForm($id)

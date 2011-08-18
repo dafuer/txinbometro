@@ -81,7 +81,7 @@ class GastoController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('gasto_show', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('txinbometro_gasto_show', array('id' => $entity->getId())));
             
         }
 
@@ -140,7 +140,7 @@ class GastoController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('gasto_edit', array('id' => $id)));
+            return $this->redirect($this->generateUrl('txinbometro_gasto_edit', array('id' => $id)));
         }
 
         return $this->render('TxinbometroBundle:Gasto:edit.html.twig', array(
@@ -173,7 +173,7 @@ class GastoController extends Controller
             $em->flush();
         }
 
-        return $this->redirect($this->generateUrl('gasto'));
+        return $this->redirect($this->generateUrl('txinbometro_gasto'));
     }
 
     private function createDeleteForm($id)

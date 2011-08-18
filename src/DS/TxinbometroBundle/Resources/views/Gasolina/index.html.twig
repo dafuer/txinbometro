@@ -21,7 +21,7 @@
     <tbody>
     {% for entity in entities %}
         <tr>
-            <td><a href="{{ path('gasolina_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+            <td><a href="{{ path('txinbometro_gasolina_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
             <td>{{ entity.km }}</td>
             <td>{{ entity.fecha|date('Y-m-d H:i:s') }}</td>
             <td>{{ entity.litros }}</td>
@@ -32,10 +32,10 @@
             <td>
                 <ul>
                     <li>
-                        <a href="{{ path('gasolina_show', { 'id': entity.id }) }}">show</a>
+                        <a href="{{ path('txinbometro_gasolina_show', { 'id': entity.id }) }}">show</a>
                     </li>
                     <li>
-                        <a href="{{ path('gasolina_edit', { 'id': entity.id }) }}">edit</a>
+                        <a href="{{ path('txinbometro_gasolina_edit', { 'id': entity.id }) }}">edit</a>
                     </li>
                 </ul>
             </td>

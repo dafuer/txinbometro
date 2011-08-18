@@ -9,17 +9,17 @@
 (<a name="menu_link" href="{{ path('fos_user_security_logout') }}">{{ app.user.username }}</a>)
 {% endif %}
 |
-<span style="{% if  opcion  == 'Vehiculo' %}font-weight: bold{% endif %}"><a name="menu_link" href="{{ path('vehiculo') }}">Vehiculo</a></span>
+<span style="{% if  opcion  == 'Vehiculo' %}font-weight: bold{% endif %}"><a name="menu_link" href="{{ path('txinbometro_vehiculo') }}">Vehiculo</a></span>
 
 {% if app.user %}
     {% if app.user.vehiculo %}
-        (<a name="menu_link" href="{{ path('vehiculo') }}">{{ app.user.vehiculo.marca~' '~app.user.vehiculo.modelo }}</a>)
+        (<a name="menu_link" href="{{ path('txinbometro_vehiculo') }}">{{ app.user.vehiculo.marca~' '~app.user.vehiculo.modelo }}</a>)
     {% else %}
-        (<a name="menu_link" href="{{ path('vehiculo') }}">seleccionar</a>)
+        (<a name="menu_link" href="{{ path('txinbometro_vehiculo') }}">seleccionar</a>)
     {% endif %}
 {% endif %}
 |
-<span style="{% if  opcion  == 'Estadisticas' %}font-weight: bold{% endif %}"><a name="menu_link" href="{{ path('estadisticas_general') }}">Estad&iacute;sticas</a></span>
+<span style="{% if  opcion  == 'Estadisticas' %}font-weight: bold{% endif %}"><a name="menu_link" href="{{ path('txinbometro_estadisticas_general') }}">Estad&iacute;sticas</a></span>
 
 |
 <span style="{% if  opcion  == 'Gasolina' %}font-weight: bold{% endif %}">Gasolina</span>

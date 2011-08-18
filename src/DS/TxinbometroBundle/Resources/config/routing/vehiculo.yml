@@ -1,35 +1,35 @@
-vehiculo:
+txinbometro_vehiculo:
     pattern:  /
     defaults: { _controller: "TxinbometroBundle:Vehiculo:index" }
 
-vehiculo_show:
+txinbometro_vehiculo_show:
     pattern:  /{id}/show
     defaults: { _controller: "TxinbometroBundle:Vehiculo:show" }
 
-vehiculo_new:
+txinbometro_vehiculo_new:
     pattern:  /new
     defaults: { _controller: "TxinbometroBundle:Vehiculo:new" }
 
-vehiculo_create:
+txinbometro_vehiculo_create:
     pattern:  /create
     defaults: { _controller: "TxinbometroBundle:Vehiculo:create" }
     requirements: { _method: post }
 
-vehiculo_edit:
+txinbometro_vehiculo_edit:
     pattern:  /{id}/edit
     defaults: { _controller: "TxinbometroBundle:Vehiculo:edit" }
 
-vehiculo_update:
+txinbometro_vehiculo_update:
     pattern:  /{id}/update
     defaults: { _controller: "TxinbometroBundle:Vehiculo:update" }
     requirements: { _method: post }
 
-vehiculo_delete:
+txinbometro_vehiculo_delete:
     pattern:  /{id}/delete
     defaults: { _controller: "TxinbometroBundle:Vehiculo:delete" }
     requirements: { _method: post }
 
-vehiculo_select:
+txinbometro_vehiculo_select:
     pattern:  /{id}/select
     defaults: { _controller: "TxinbometroBundle:Vehiculo:select" }
     requirements: { _method: get }

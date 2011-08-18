@@ -23,7 +23,7 @@
     <tbody>
     {% for entity in entities %}
         <tr>
-            <td><a href="{{ path('vehiculo_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+            <td><a href="{{ path('txinbometro_vehiculo_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
             <td>{{ entity.tipo }}</td>
             <td>{{ entity.marca }}</td>
             <td>{{ entity.modelo }}</td>
@@ -34,13 +34,13 @@
             <td>
                 <ul>
                     <li>
-                        <a href="{{ path('vehiculo_show', { 'id': entity.id }) }}">show</a>
+                        <a href="{{ path('txinbometro_vehiculo_show', { 'id': entity.id }) }}">show</a>
                     </li>
                     <li>
-                        <a href="{{ path('vehiculo_edit', { 'id': entity.id }) }}">edit</a>
+                        <a href="{{ path('txinbometro_vehiculo_edit', { 'id': entity.id }) }}">edit</a>
                     </li>
                     <li>
-                        <a href="{{ path('vehiculo_select', { 'id': entity.id }) }}">select</a>
+                        <a href="{{ path('txinbometro_vehiculo_select', { 'id': entity.id }) }}">select</a>
                     </li>
                 </ul>
             </td>
@@ -51,7 +51,7 @@
 
 <ul>
     <li>
-        <a href="{{ path('vehiculo_new') }}">
+        <a href="{{ path('txinbometro_vehiculo_new') }}">
             Create a new entry
         </a>
     </li>

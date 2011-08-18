@@ -1,30 +1,30 @@
-gasolina:
+txinbometro_gasolina:
     pattern:  /
     defaults: { _controller: "TxinbometroBundle:Gasolina:index" }
 
-gasolina_show:
+txinbometro_gasolina_show:
     pattern:  /{id}/show
     defaults: { _controller: "TxinbometroBundle:Gasolina:show" }
 
-gasolina_new:
+txinbometro_gasolina_new:
     pattern:  /new
     defaults: { _controller: "TxinbometroBundle:Gasolina:new" }
 
-gasolina_create:
+txinbometro_gasolina_create:
     pattern:  /create
     defaults: { _controller: "TxinbometroBundle:Gasolina:create" }
     requirements: { _method: post }
 
-gasolina_edit:
+txinbometro_gasolina_edit:
     pattern:  /{id}/edit
     defaults: { _controller: "TxinbometroBundle:Gasolina:edit" }
 
-gasolina_update:
+txinbometro_gasolina_update:
     pattern:  /{id}/update
     defaults: { _controller: "TxinbometroBundle:Gasolina:update" }
     requirements: { _method: post }
 
-gasolina_delete:
+txinbometro_gasolina_delete:
     pattern:  /{id}/delete
     defaults: { _controller: "TxinbometroBundle:Gasolina:delete" }
     requirements: { _method: post }

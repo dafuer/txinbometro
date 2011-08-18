@@ -4,7 +4,7 @@
 {% block body %}
 <h1>Gasolina creation</h1>
 
-<form action="{{ path('gasolina_create') }}" method="post" {{ form_enctype(form) }}>
+<form action="{{ path('txinbometro_gasolina_create') }}" method="post" {{ form_enctype(form) }}>
     {{ form_widget(form) }}
     <p>
         <button type="submit">Create</button>
@@ -13,7 +13,7 @@
 
 <ul class="record_actions">
     <li>
-        <a href="{{ path('gasolina') }}">
+        <a href="{{ path('txinbometro_gasolina') }}">
             Back to the list
         </a>
     </li>

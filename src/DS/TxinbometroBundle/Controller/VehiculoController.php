@@ -37,7 +37,7 @@ class VehiculoController extends Controller
         $em->flush();
 
         
-        return $this->redirect($this->generateUrl('estadisticas_general'));
+        return $this->redirect($this->generateUrl('txinbometro_estadisticas_general'));
     }
     
     /**
@@ -116,7 +116,7 @@ class VehiculoController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('vehiculo_show', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('txinbometro_vehiculo_show', array('id' => $entity->getId())));
             
         }
 
@@ -175,7 +175,7 @@ class VehiculoController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('vehiculo_edit', array('id' => $id)));
+            return $this->redirect($this->generateUrl('txinbometro_vehiculo_edit', array('id' => $id)));
         }
 
         return $this->render('TxinbometroBundle:Vehiculo:edit.html.twig', array(
@@ -208,7 +208,7 @@ class VehiculoController extends Controller
             $em->flush();
         }
 
-        return $this->redirect($this->generateUrl('vehiculo'));
+        return $this->redirect($this->generateUrl('txinbometro_vehiculo'));
     }
 
     private function createDeleteForm($id)
