@@ -1,6 +1,7 @@
 - Cambiar en las entity que en cascade no remove y sean noaction
 - Que solo se permitan dos tipos de vehiculos, motos y coches
-
+- mirar como hacer unas fixtures guapas.
+- poner por delante de todas las rutas la palabra "txinbometro"
 
 
 
@@ -10,3 +11,4 @@
 - en la pagina 406 hablan de la gestion de ACL
 - en la pagina 407 hablan de la gestion del usuario
 - 422 traduccion
+- 371 formularios

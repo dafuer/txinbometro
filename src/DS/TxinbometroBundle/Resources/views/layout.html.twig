@@ -8,8 +8,8 @@
         <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" />
     </head>
     <body>
-        <div id="menu">{% block menu %} {% endblock %}</div>
-        <h1>Txinbometro</h1>
+        <div id="menu">{% block menu %} {% render "TxinbometroBundle:Default:menu" with { 'opcion': 'Principal', 'subopcion': 'index' } %} {% endblock %}</div>
+<h1>Txinbometro</h1>
         {% block body %}
         
         {% endblock %}

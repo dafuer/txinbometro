@@ -28,3 +28,8 @@ vehiculo_delete:
     pattern:  /{id}/delete
     defaults: { _controller: "TxinbometroBundle:Vehiculo:delete" }
     requirements: { _method: post }
+
+vehiculo_select:
+    pattern:  /{id}/select
+    defaults: { _controller: "TxinbometroBundle:Vehiculo:select" }
+    requirements: { _method: get }

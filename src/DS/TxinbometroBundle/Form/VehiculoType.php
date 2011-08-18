@@ -17,7 +17,7 @@ class VehiculoType extends AbstractType
             ->add('coste')
             ->add('km_iniciales')
             ->add('capacidad')
-            ->add('usuario')
+            //->add('usuario')
         ;
     }
 

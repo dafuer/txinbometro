@@ -6,23 +6,17 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
-class DefaultController extends Controller
+class EstadisticasController extends Controller
 {
     /**
      * 
      * @Template()
      */
-    public function indexAction()
+    public function generalAction()
     {
         return array();
     }
     
-    /**
-     * @Template()
-     */
-    public function menuAction($opcion, $subopcion){
-        return array('opcion'=>$opcion, 'subopcion'=>$subopcion);
-    }
 
     
 }

@@ -13,16 +13,46 @@ use DS\TxinbometroBundle\Form\VehiculoType;
  */
 class VehiculoController extends Controller
 {
+    
+    /**
+     * Selecciona el vehiculo como el vehiculo de trabajo actual
+     *
+     */
+    public function selectAction($id)
+    {
+        $usuario = $this->container->get('security.context')->getToken()->getUser();
+        
+        $em = $this->getDoctrine()->getEntityManager();
+
+        $entity = $em->getRepository('TxinbometroBundle:Vehiculo')->find($id);
+
+        if (!$entity) {
+            throw $this->createNotFoundException('Unable to find Vehiculo entity.');
+        }
+
+        $usuario->setVehiculo($entity);
+        
+        $em->persist($usuario);
+
+        $em->flush();
+
+        
+        return $this->redirect($this->generateUrl('estadisticas_general'));
+    }
+    
     /**
      * Lists all Vehiculo entities.
      *
      */
     public function indexAction()
     {
+        $usuario = $this->container->get('security.context')->getToken()->getUser();
+        
         $em = $this->getDoctrine()->getEntityManager();
 
-        $entities = $em->getRepository('TxinbometroBundle:Vehiculo')->findAll();
-
+        //$entities = $em->getRepository('TxinbometroBundle:Vehiculo')->findAll();
+        $entities = $em->getRepository('TxinbometroBundle:Vehiculo')->getAllFrom($usuario->getId());
+        
         return $this->render('TxinbometroBundle:Vehiculo:index.html.twig', array(
             'entities' => $entities
         ));
@@ -71,11 +101,16 @@ class VehiculoController extends Controller
      */
     public function createAction()
     {
+        $usuario = $this->container->get('security.context')->getToken()->getUser();
+        
         $entity  = new Vehiculo();
         $request = $this->getRequest();
         $form    = $this->createForm(new VehiculoType(), $entity);
+       
         $form->bindRequest($request);
-
+        
+        $entity->setUsuario($usuario);
+        
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getEntityManager();
             $em->persist($entity);

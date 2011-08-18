@@ -3,9 +3,21 @@
 <div id="menu1">
 {% block menu1 %}
     
-<span style="{% if  opcion  == 'Principal' %}font-weight: bold{% endif %}">Principal</span>
+<span style="{% if  opcion  == 'Principal' %}font-weight: bold{% endif %}"><a name="menu_link" href="{{ path('index') }}">Principal</a></span> 
+ 
+{% if app.user %}
+(<a name="menu_link" href="{{ path('fos_user_security_logout') }}">{{ app.user.username }}</a>)
+{% endif %}
 |
-<span style="{% if  opcion  == 'Vehiculo' %}font-weight: bold{% endif %}">Vehiculo</span>
+<span style="{% if  opcion  == 'Vehiculo' %}font-weight: bold{% endif %}"><a name="menu_link" href="{{ path('vehiculo') }}">Vehiculo</a></span>
+
+{% if app.user %}
+    {% if app.user.vehiculo %}
+        (<a name="menu_link" href="{{ path('vehiculo') }}">{{ app.user.vehiculo.marca~' '~app.user.vehiculo.modelo }}</a>)
+    {% else %}
+        (<a name="menu_link" href="{{ path('vehiculo') }}">seleccionar</a>)
+    {% endif %}
+{% endif %}
 |
 <span style="{% if  opcion  == 'Estadisticas' %}font-weight: bold{% endif %}">Estad&iacute;sticas</span>
 |
@@ -14,6 +26,8 @@
 <span style="{% if  opcion  == 'Gasto' %}font-weight: bold{% endif %}">Gasto</span>
 
 {% endblock %}
+
+
 </div>
 
 <div id="menu2">

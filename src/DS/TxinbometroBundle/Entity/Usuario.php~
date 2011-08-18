@@ -19,7 +19,15 @@ class Usuario extends BaseUser
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     protected $id;
-
+    
+    /**
+     * @ORM\OneToOne(targetEntity="Vehiculo", inversedBy="usuario", cascade={"persist"})  
+     * @ORM\JoinColumn(name="ultimo_vehiculo", referencedColumnName="id")
+     * 
+     * Ultimo vehiculo con el que trabaja el usuario
+     */
+    protected $vehiculo;
+    
     public function __construct()
     {
         parent::__construct();

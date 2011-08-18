@@ -9,6 +9,10 @@ txinbometro_gasolina:
 txinbometro_gasto:
     resource: "@TxinbometroBundle/Resources/config/routing/gasto.yml"
     prefix:   /gasto
+ 
+txinbometro_estadisticas:
+    resource: "@TxinbometroBundle/Resources/config/routing/estadisticas.yml"
+    prefix:   /estadisticas 
     
 #acceder:
 #    pattern:  /acceder

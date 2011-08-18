@@ -22,7 +22,7 @@ class Gasto
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Vehiculo", inversedBy="vehiculos", cascade={"remove"}) 
+     * @ORM\ManyToOne(targetEntity="Vehiculo", inversedBy="vehiculos", cascade={"persist"}) 
      * @ORM\JoinColumn(name="vehiculo_id", referencedColumnName="id")
      * 
      */
