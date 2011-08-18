@@ -19,9 +19,11 @@ class GastoController extends Controller
      */
     public function indexAction()
     {
+        $usuario = $this->container->get('security.context')->getToken()->getUser();
+        
         $em = $this->getDoctrine()->getEntityManager();
 
-        $entities = $em->getRepository('TxinbometroBundle:Gasto')->findAll();
+        $entities = $em->getRepository('TxinbometroBundle:Gasto')->getAllFrom($usuario->getId());
 
         return $this->render('TxinbometroBundle:Gasto:index.html.twig', array(
             'entities' => $entities
