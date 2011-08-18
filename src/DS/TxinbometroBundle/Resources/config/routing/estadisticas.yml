@@ -1,6 +1,6 @@
 estadisticas_general:
     pattern:  /
-    defaults: { _controller: "TxinbometroBundle:Estaditicas:general" }
+    defaults: { _controller: "TxinbometroBundle:Estadisticas:general" }
     
 
 
