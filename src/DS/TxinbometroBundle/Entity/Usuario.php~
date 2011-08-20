@@ -43,4 +43,24 @@ class Usuario extends BaseUser
     {
         return $this->id;
     }
+
+    /**
+     * Set vehiculo
+     *
+     * @param DS\TxinbometroBundle\Entity\Vehiculo $vehiculo
+     */
+    public function setVehiculo(\DS\TxinbometroBundle\Entity\Vehiculo $vehiculo)
+    {
+        $this->vehiculo = $vehiculo;
+    }
+
+    /**
+     * Get vehiculo
+     *
+     * @return DS\TxinbometroBundle\Entity\Vehiculo 
+     */
+    public function getVehiculo()
+    {
+        return $this->vehiculo;
+    }
 }

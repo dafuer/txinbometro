@@ -40,7 +40,7 @@ Class Vehiculo {
      */
     protected $modelo;
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="date")
      */
     protected $compra;
     /**

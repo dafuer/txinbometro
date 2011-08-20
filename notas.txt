@@ -1,4 +1,3 @@
-- Cambiar en las entity que en cascade no remove y sean noaction
 - Que solo se permitan dos tipos de vehiculos, motos y coches
 - mirar como hacer unas fixtures guapas.
 - poner por delante de todas las rutas la palabra "txinbometro"
