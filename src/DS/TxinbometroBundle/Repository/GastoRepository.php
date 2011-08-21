@@ -12,7 +12,7 @@ use Doctrine\ORM\EntityRepository;
  */
 class GastoRepository extends EntityRepository
 {
-    public function getAllFrom($usuario_id) {
-        return $this->_em->createQuery('SELECT g FROM TxinbometroBundle:Gasto g WHERE g.vehiculo = '.$usuario_id)->getResult();
+    public function getAllFrom($vehiculo_id) {
+        return $this->_em->createQuery('SELECT g FROM TxinbometroBundle:Gasto g WHERE g.vehiculo = '.$vehiculo_id)->getResult();
     }    
 }

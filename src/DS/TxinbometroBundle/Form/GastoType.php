@@ -10,7 +10,6 @@ class GastoType extends AbstractType
     public function buildForm(FormBuilder $builder, array $options)
     {
         $builder
-            ->add('user')
             ->add('km')
             ->add('fecha')
             ->add('tipo')

@@ -24,5 +24,5 @@ class DefaultController extends Controller
         return array('opcion'=>$opcion, 'subopcion'=>$subopcion);
     }
 
-    
+
 }

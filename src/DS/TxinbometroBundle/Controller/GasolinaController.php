@@ -3,7 +3,6 @@
 namespace DS\TxinbometroBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-
 use DS\TxinbometroBundle\Entity\Gasolina;
 use DS\TxinbometroBundle\Form\GasolinaType;
 
@@ -11,17 +10,18 @@ use DS\TxinbometroBundle\Form\GasolinaType;
  * Gasolina controller.
  *
  */
-class GasolinaController extends Controller
-{
+class GasolinaController extends Controller {
+
     /**
      * Lists all Gasolina entities.
      *
      */
-    public function indexAction()
-    {
+    public function indexAction() {
+        $vehiculo = $this->container->get('security.context')->getToken()->getUser()->getVehiculo();
+
         $em = $this->getDoctrine()->getEntityManager();
 
-        $entities = $em->getRepository('TxinbometroBundle:Gasolina')->findAll();
+        $entities = $em->getRepository('TxinbometroBundle:Gasolina')->getAllFrom($vehiculo->getId());
 
         return $this->render('TxinbometroBundle:Gasolina:index.html.twig', array(
             'entities' => $entities
@@ -32,8 +32,9 @@ class GasolinaController extends Controller
      * Finds and displays a Gasolina entity.
      *
      */
-    public function showAction($id)
-    {
+    public function showAction($id) {
+        $usuario = $this->container->get('security.context')->getToken()->getUser();
+
         $em = $this->getDoctrine()->getEntityManager();
 
         $entity = $em->getRepository('TxinbometroBundle:Gasolina')->find($id);
@@ -42,26 +43,29 @@ class GasolinaController extends Controller
             throw $this->createNotFoundException('Unable to find Gasolina entity.');
         }
 
-        $deleteForm = $this->createDeleteForm($id);
+        if ($entity->getVehiculo()->getUsuario()->getId() != $usuario->getId()) {
+            throw $this->createNotFoundException('Unable to access Gasolina entity.');
+        }
+        
+            $deleteForm = $this->createDeleteForm($id);
 
-        return $this->render('TxinbometroBundle:Gasolina:show.html.twig', array(
-            'entity'      => $entity,
-            'delete_form' => $deleteForm->createView(),
-        ));
+            return $this->render('TxinbometroBundle:Gasolina:show.html.twig', array(
+                'entity' => $entity,
+                'delete_form' => $deleteForm->createView(),
+            ));
     }
 
     /**
      * Displays a form to create a new Gasolina entity.
      *
      */
-    public function newAction()
-    {
+    public function newAction() {
         $entity = new Gasolina();
-        $form   = $this->createForm(new GasolinaType(), $entity);
+        $form = $this->createForm(new GasolinaType(), $entity);
 
         return $this->render('TxinbometroBundle:Gasolina:new.html.twig', array(
             'entity' => $entity,
-            'form'   => $form->createView()
+            'form' => $form->createView()
         ));
     }
 
@@ -69,12 +73,15 @@ class GasolinaController extends Controller
      * Creates a new Gasolina entity.
      *
      */
-    public function createAction()
-    {
-        $entity  = new Gasolina();
+    public function createAction() {
+        $vehiculo = $this->container->get('security.context')->getToken()->getUser()->getVehiculo();
+
+        $entity = new Gasolina();
         $request = $this->getRequest();
-        $form    = $this->createForm(new GasolinaType(), $entity);
+        $form = $this->createForm(new GasolinaType(), $entity);
         $form->bindRequest($request);
+
+        $entity->setVehiculo($vehiculo);
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getEntityManager();
@@ -82,12 +89,11 @@ class GasolinaController extends Controller
             $em->flush();
 
             return $this->redirect($this->generateUrl('txinbometro_gasolina_show', array('id' => $entity->getId())));
-            
         }
 
         return $this->render('TxinbometroBundle:Gasolina:new.html.twig', array(
             'entity' => $entity,
-            'form'   => $form->createView()
+            'form' => $form->createView()
         ));
     }
 
@@ -95,8 +101,9 @@ class GasolinaController extends Controller
      * Displays a form to edit an existing Gasolina entity.
      *
      */
-    public function editAction($id)
-    {
+    public function editAction($id) {
+        $usuario = $this->container->get('security.context')->getToken()->getUser();
+
         $em = $this->getDoctrine()->getEntityManager();
 
         $entity = $em->getRepository('TxinbometroBundle:Gasolina')->find($id);
@@ -104,23 +111,29 @@ class GasolinaController extends Controller
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Gasolina entity.');
         }
+        
+        if ($entity->getVehiculo()->getUsuario()->getId() != $usuario->getId()) {
+            throw $this->createNotFoundException('Unable to access Gasolina entity.');
+        }
+        
 
-        $editForm = $this->createForm(new GasolinaType(), $entity);
-        $deleteForm = $this->createDeleteForm($id);
+            $editForm = $this->createForm(new GasolinaType(), $entity);
+            $deleteForm = $this->createDeleteForm($id);
 
-        return $this->render('TxinbometroBundle:Gasolina:edit.html.twig', array(
-            'entity'      => $entity,
-            'edit_form'   => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
-        ));
+            return $this->render('TxinbometroBundle:Gasolina:edit.html.twig', array(
+                'entity' => $entity,
+                'edit_form' => $editForm->createView(),
+                'delete_form' => $deleteForm->createView(),
+            ));
     }
 
     /**
      * Edits an existing Gasolina entity.
      *
      */
-    public function updateAction($id)
-    {
+    public function updateAction($id) {
+        $usuario = $this->container->get('security.context')->getToken()->getUser();
+        
         $em = $this->getDoctrine()->getEntityManager();
 
         $entity = $em->getRepository('TxinbometroBundle:Gasolina')->find($id);
@@ -129,7 +142,11 @@ class GasolinaController extends Controller
             throw $this->createNotFoundException('Unable to find Gasolina entity.');
         }
 
-        $editForm   = $this->createForm(new GasolinaType(), $entity);
+        if ($entity->getVehiculo()->getUsuario()->getId() != $usuario->getId()) {
+            throw $this->createNotFoundException('Unable to access Gasolina entity.');
+        }
+        
+        $editForm = $this->createForm(new GasolinaType(), $entity);
         $deleteForm = $this->createDeleteForm($id);
 
         $request = $this->getRequest();
@@ -144,8 +161,8 @@ class GasolinaController extends Controller
         }
 
         return $this->render('TxinbometroBundle:Gasolina:edit.html.twig', array(
-            'entity'      => $entity,
-            'edit_form'   => $editForm->createView(),
+            'entity' => $entity,
+            'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
         ));
     }
@@ -154,8 +171,9 @@ class GasolinaController extends Controller
      * Deletes a Gasolina entity.
      *
      */
-    public function deleteAction($id)
-    {
+    public function deleteAction($id) {
+        $usuario = $this->container->get('security.context')->getToken()->getUser();
+        
         $form = $this->createDeleteForm($id);
         $request = $this->getRequest();
 
@@ -168,7 +186,10 @@ class GasolinaController extends Controller
             if (!$entity) {
                 throw $this->createNotFoundException('Unable to find Gasolina entity.');
             }
-
+            
+        if ($entity->getVehiculo()->getUsuario()->getId() != $usuario->getId()) {
+            throw $this->createNotFoundException('Unable to access Gasolina entity.');
+        }
             $em->remove($entity);
             $em->flush();
         }
@@ -176,11 +197,11 @@ class GasolinaController extends Controller
         return $this->redirect($this->generateUrl('txinbometro_gasolina'));
     }
 
-    private function createDeleteForm($id)
-    {
+    private function createDeleteForm($id) {
         return $this->createFormBuilder(array('id' => $id))
-            ->add('id', 'hidden')
-            ->getForm()
+                ->add('id', 'hidden')
+                ->getForm()
         ;
     }
+
 }

@@ -3,7 +3,6 @@
 namespace DS\TxinbometroBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-
 use DS\TxinbometroBundle\Entity\Vehiculo;
 use DS\TxinbometroBundle\Form\VehiculoType;
 
@@ -11,17 +10,15 @@ use DS\TxinbometroBundle\Form\VehiculoType;
  * Vehiculo controller.
  *
  */
-class VehiculoController extends Controller
-{
-    
+class VehiculoController extends Controller {
+
     /**
      * Selecciona el vehiculo como el vehiculo de trabajo actual
      *
      */
-    public function selectAction($id)
-    {
+    public function selectAction($id) {
         $usuario = $this->container->get('security.context')->getToken()->getUser();
-        
+
         $em = $this->getDoctrine()->getEntityManager();
 
         $entity = $em->getRepository('TxinbometroBundle:Vehiculo')->find($id);
@@ -30,29 +27,32 @@ class VehiculoController extends Controller
             throw $this->createNotFoundException('Unable to find Vehiculo entity.');
         }
 
+        if ($entity->getUsuario()->getId() != $usuario->getId()) {
+            throw $this->createNotFoundException('Unable to access Vehiculo entity.');
+        }
+
         $usuario->setVehiculo($entity);
-        
+
         $em->persist($usuario);
 
         $em->flush();
 
-        
+
         return $this->redirect($this->generateUrl('txinbometro_estadisticas_general'));
     }
-    
+
     /**
      * Lists all Vehiculo entities.
      *
      */
-    public function indexAction()
-    {
+    public function indexAction() {
         $usuario = $this->container->get('security.context')->getToken()->getUser();
-        
+
         $em = $this->getDoctrine()->getEntityManager();
 
         //$entities = $em->getRepository('TxinbometroBundle:Vehiculo')->findAll();
         $entities = $em->getRepository('TxinbometroBundle:Vehiculo')->getAllFrom($usuario->getId());
-        
+
         return $this->render('TxinbometroBundle:Vehiculo:index.html.twig', array(
             'entities' => $entities
         ));
@@ -62,8 +62,9 @@ class VehiculoController extends Controller
      * Finds and displays a Vehiculo entity.
      *
      */
-    public function showAction($id)
-    {
+    public function showAction($id) {
+        $usuario = $this->container->get('security.context')->getToken()->getUser();
+
         $em = $this->getDoctrine()->getEntityManager();
 
         $entity = $em->getRepository('TxinbometroBundle:Vehiculo')->find($id);
@@ -72,10 +73,15 @@ class VehiculoController extends Controller
             throw $this->createNotFoundException('Unable to find Vehiculo entity.');
         }
 
+        if ($entity->getUsuario()->getId() != $usuario->getId()) {
+            throw $this->createNotFoundException('Unable to access Vehiculo entity.');
+        }
+
+
         $deleteForm = $this->createDeleteForm($id);
 
         return $this->render('TxinbometroBundle:Vehiculo:show.html.twig', array(
-            'entity'      => $entity,
+            'entity' => $entity,
             'delete_form' => $deleteForm->createView(),
         ));
     }
@@ -84,14 +90,13 @@ class VehiculoController extends Controller
      * Displays a form to create a new Vehiculo entity.
      *
      */
-    public function newAction()
-    {
+    public function newAction() {
         $entity = new Vehiculo();
-        $form   = $this->createForm(new VehiculoType(), $entity);
+        $form = $this->createForm(new VehiculoType(), $entity);
 
         return $this->render('TxinbometroBundle:Vehiculo:new.html.twig', array(
             'entity' => $entity,
-            'form'   => $form->createView()
+            'form' => $form->createView()
         ));
     }
 
@@ -99,30 +104,28 @@ class VehiculoController extends Controller
      * Creates a new Vehiculo entity.
      *
      */
-    public function createAction()
-    {
+    public function createAction() {
         $usuario = $this->container->get('security.context')->getToken()->getUser();
-        
-        $entity  = new Vehiculo();
+
+        $entity = new Vehiculo();
         $request = $this->getRequest();
-        $form    = $this->createForm(new VehiculoType(), $entity);
-       
+        $form = $this->createForm(new VehiculoType(), $entity);
+
         $form->bindRequest($request);
-        
+
         $entity->setUsuario($usuario);
-        
+
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getEntityManager();
             $em->persist($entity);
             $em->flush();
 
             return $this->redirect($this->generateUrl('txinbometro_vehiculo_show', array('id' => $entity->getId())));
-            
         }
 
         return $this->render('TxinbometroBundle:Vehiculo:new.html.twig', array(
             'entity' => $entity,
-            'form'   => $form->createView()
+            'form' => $form->createView()
         ));
     }
 
@@ -130,8 +133,9 @@ class VehiculoController extends Controller
      * Displays a form to edit an existing Vehiculo entity.
      *
      */
-    public function editAction($id)
-    {
+    public function editAction($id) {
+        $usuario = $this->container->get('security.context')->getToken()->getUser();
+
         $em = $this->getDoctrine()->getEntityManager();
 
         $entity = $em->getRepository('TxinbometroBundle:Vehiculo')->find($id);
@@ -140,12 +144,16 @@ class VehiculoController extends Controller
             throw $this->createNotFoundException('Unable to find Vehiculo entity.');
         }
 
+        if ($entity->getUsuario()->getId() != $usuario->getId()) {
+            throw $this->createNotFoundException('Unable to access Vehiculo entity.');
+        }
+
         $editForm = $this->createForm(new VehiculoType(), $entity);
         $deleteForm = $this->createDeleteForm($id);
 
         return $this->render('TxinbometroBundle:Vehiculo:edit.html.twig', array(
-            'entity'      => $entity,
-            'edit_form'   => $editForm->createView(),
+            'entity' => $entity,
+            'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
         ));
     }
@@ -154,8 +162,9 @@ class VehiculoController extends Controller
      * Edits an existing Vehiculo entity.
      *
      */
-    public function updateAction($id)
-    {
+    public function updateAction($id) {
+        $usuario = $this->container->get('security.context')->getToken()->getUser();
+
         $em = $this->getDoctrine()->getEntityManager();
 
         $entity = $em->getRepository('TxinbometroBundle:Vehiculo')->find($id);
@@ -164,12 +173,18 @@ class VehiculoController extends Controller
             throw $this->createNotFoundException('Unable to find Vehiculo entity.');
         }
 
-        $editForm   = $this->createForm(new VehiculoType(), $entity);
+        if ($entity->getUsuario()->getId() != $usuario->getId()) {
+            throw $this->createNotFoundException('Unable to access Vehiculo entity.');
+        }
+
+        $editForm = $this->createForm(new VehiculoType(), $entity);
         $deleteForm = $this->createDeleteForm($id);
 
         $request = $this->getRequest();
 
         $editForm->bindRequest($request);
+
+        $entity->setUsuario($usuario);
 
         if ($editForm->isValid()) {
             $em->persist($entity);
@@ -179,8 +194,8 @@ class VehiculoController extends Controller
         }
 
         return $this->render('TxinbometroBundle:Vehiculo:edit.html.twig', array(
-            'entity'      => $entity,
-            'edit_form'   => $editForm->createView(),
+            'entity' => $entity,
+            'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
         ));
     }
@@ -189,8 +204,9 @@ class VehiculoController extends Controller
      * Deletes a Vehiculo entity.
      *
      */
-    public function deleteAction($id)
-    {
+    public function deleteAction($id) {
+        $usuario = $this->container->get('security.context')->getToken()->getUser();
+
         $form = $this->createDeleteForm($id);
         $request = $this->getRequest();
 
@@ -203,6 +219,9 @@ class VehiculoController extends Controller
             if (!$entity) {
                 throw $this->createNotFoundException('Unable to find Vehiculo entity.');
             }
+            if ($entity->getUsuario()->getId() != $usuario->getId()) {
+                throw $this->createNotFoundException('Unable to access Vehiculo entity.');
+            }
 
             $em->remove($entity);
             $em->flush();
@@ -211,11 +230,11 @@ class VehiculoController extends Controller
         return $this->redirect($this->generateUrl('txinbometro_vehiculo'));
     }
 
-    private function createDeleteForm($id)
-    {
+    private function createDeleteForm($id) {
         return $this->createFormBuilder(array('id' => $id))
-            ->add('id', 'hidden')
-            ->getForm()
+                ->add('id', 'hidden')
+                ->getForm()
         ;
     }
+
 }

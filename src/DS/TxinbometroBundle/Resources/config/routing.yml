@@ -14,6 +14,7 @@ txinbometro_estadisticas:
     resource: "@TxinbometroBundle/Resources/config/routing/estadisticas.yml"
     prefix:   /estadisticas 
     
+
 #acceder:
 #    pattern:  /acceder
 #    defaults: { _controller: TxinbometroBundle:Default:acceder }

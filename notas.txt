@@ -1,7 +1,6 @@
 - Que solo se permitan dos tipos de vehiculos, motos y coches
 - mirar como hacer unas fixtures guapas.
-- poner por delante de todas las rutas la palabra "txinbometro"
-- hacer los repositorios
+- en las acciones show y delete (tal vez alguna mas) puedes entrar a ver las cosas de otro usuario
 
 
 
