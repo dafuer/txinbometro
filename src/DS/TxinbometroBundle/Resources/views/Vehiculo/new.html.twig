@@ -1,6 +1,17 @@
 {# src/DS/TxinbometroBundle/Resources/views/Vehiculo/new.html.twig #}
 {% extends "TxinbometroBundle::layout.html.twig" %}
 
+{% block stylesheets %}
+{{ parent() }}
+<link href="{{ asset('/css/ui-lightness/jquery-ui-1.8.16.custom.css') }}" rel="stylesheet" type="text/css" /></link>
+{% endblock %}
+
+{% block javascript %}
+{{ parent() }}
+    <script src="{{ asset('/js/jquery-1.6.2.min.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('/js/jquery-ui-1.8.16.custom.min.js') }}" type="text/javascript"></script>
+{% endblock %}
+
 {% block menu %} {% render "TxinbometroBundle:Default:menu" with { 'opcion': 'Vehiculo', 'subopcion': 'none' } %} {% endblock %}
 
 {% block body %}
@@ -20,4 +31,13 @@
         </a>
     </li>
 </ul>
+
+<!--<script>
+	$(function() {
+		$("#ds_txinbometrobundle_vehiculotype_compra").datepicker();
+	});
+$("form input.date").datepicker({
+    dateFormat: 'dd/mm/y'
+});            
+</script> -->
 {% endblock %}
