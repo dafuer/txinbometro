@@ -35,3 +35,7 @@ h1{
 .personal{
     text-align: right;
 }
+
+.records_list{
+    width: 50%;
+}
