@@ -1,0 +1,7 @@
+    
+txinbometro_graficos_graph:
+    pattern:  /graph
+    defaults: { _controller: "TxinbometroBundle:Graficos:graph" }
+    
+
+

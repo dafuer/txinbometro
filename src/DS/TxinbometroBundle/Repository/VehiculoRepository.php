@@ -16,4 +16,5 @@ class VehiculoRepository extends EntityRepository {
         return $this->_em->createQuery('SELECT v FROM TxinbometroBundle:Vehiculo v WHERE v.usuario = '.$usuario_id)->getResult();
     }
 
+
 }
