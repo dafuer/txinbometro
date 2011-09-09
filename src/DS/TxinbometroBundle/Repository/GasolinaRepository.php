@@ -4,6 +4,8 @@ namespace DS\TxinbometroBundle\Repository;
 
 use Doctrine\ORM\EntityRepository;
 
+use DS\TxinbometroBundle\Entity\ResumenConsumo;
+
 /**
  * GasolinaRepository
  *
@@ -20,7 +22,8 @@ class GasolinaRepository extends EntityRepository
      * $tabla
      */
     public function getConsumos($vehiculo){
-        //$dato_list=array();
+        $resumenConsumo=new ResumenConsumo();
+//$dato_list=array();
         
 
         $dato_list=$this->_em->createQuery('SELECT g FROM TxinbometroBundle:Gasolina g WHERE g.vehiculo = '.$vehiculo->getId().' ORDER BY g.km')->getResult();//getArrayResult();  
@@ -136,10 +139,21 @@ class GasolinaRepository extends EntityRepository
 
         }
         else {
-            $listado=null;
+            
+            return $resumenConsumo;
+            //$listado=null;
         }
         
-        return $listado;
+        $resumenConsumo->setListado($listado);
+        $resumenConsumo->setKm($km);
+        $resumenConsumo->setDias($dias);
+        $resumenConsumo->setLitros($litros);
+        $resumenConsumo->setConsumo($consumo);
+        $resumenConsumo->setCosteKm($costeKm);
+        $resumenConsumo->setFrecuencia($frecuencia);
+        $resumenConsumo->setKmDia($kmDia);
+        
+        return $resumenConsumo;
         
     }    
 }

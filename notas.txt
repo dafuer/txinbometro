@@ -2,6 +2,7 @@
 - mirar como hacer unas fixtures guapas.
 - en las acciones show y delete (tal vez alguna mas) puedes entrar a ver las cosas de otro usuario
 - Estando sin loguearte puedes acceder a las estadisticas
+- revisar si en un comentario pueden inyectar javascript.
 
 
 

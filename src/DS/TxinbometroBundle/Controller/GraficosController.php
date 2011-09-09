@@ -22,9 +22,8 @@ class GraficosController extends Controller
         include_once __DIR__ . '/../../../../vendor/jpgraph/jpgraph_line.php';
 
         
-        $this->lista=$em->getRepository('TxinbometroBundle:Gasolina')->getConsumos($vehiculo);
-       
-    
+        $consumoObject=$em->getRepository('TxinbometroBundle:Gasolina')->getConsumos($vehiculo);
+        $this->lista=$consumoObject->getListado();
         
         $c=0;
         $f=array();
@@ -63,17 +62,16 @@ class GraficosController extends Controller
         // Pongo ticks manuales, para que los limites del eje y queden bonitos y ademas
         // El color del fragmento de valores de Y mayores no quede con fondo blanco
         $graph->yscale->SetAutoTicks();
-        //$graph->img->SetAntiAliasing();
+        $graph->img->SetAntiAliasing();
         //$graph->xgrid->Show();
         $graph->SetMarginColor('#fdffd1');
         $graph->SetFrame(true, '#fdffd1');
         // Create the linear plot
         $lineplot=new \LinePlot($ydata,$xdata);
-        $lineplot->SetColor("#293c82");
         //$lineplot->mark->SetType(MARK_X);
         //$lineplot->value->Show();
         //$lineplot->SetCenter();
-        $lineplot->SetWeight(1);
+        
 
         //Añado las areas de colores
         for ($i=1;$i<count($this->lista);$i++) {
@@ -91,13 +89,13 @@ class GraficosController extends Controller
 
             $lineplot->AddArea($i-1,$i,LP_AREA_FILLED,$color);
         }
-        $lineplot->mark->SetWidth(2);
+        $lineplot->mark->SetWidth(1);
 
 
 
 
         //Establezco las lineas de maximo, minimo y media
-    /*    $consumo=$moto->getConsumo();
+        $consumo=$consumoObject->getConsumo();
         $ymedia[0]=$consumo['total']['medio'];
         $ymedia[1]=$consumo['total']['medio'];
         $ymax[0]=$consumo['total']['maximo'];
@@ -114,20 +112,21 @@ class GraficosController extends Controller
         $xmin[1]=$mayorx;
 
         $mediaplot=new \LinePlot($ymedia,$xmedia);
-        $mediaplot->SetColor('#FF9999');
         $graph->Add($mediaplot);
-
+        $mediaplot->SetColor('#FF9999');
+        
         $maxplot=new \LinePlot($ymax,$xmax);
-        $maxplot->SetColor('#888888');
         $graph->Add($maxplot);
+        $maxplot->SetColor('#888888');
 
         $minplot=new \LinePlot($ymin,$xmin);
+        $graph->Add($minplot);
         $minplot->SetColor('#777777');
-        $graph->Add($minplot);*/
 
         $acumuladoplot=new \LinePlot($ydataacumulado,$xdata);
+        $graph->Add($acumuladoplot);
         $acumuladoplot->SetColor('black');
-        $graph->Add($acumuladoplot);	
+        $acumuladoplot->SetWeight(1);
 
         $graph->xaxis->SetLabelAngle(90);
         // Setup margin and titles
@@ -141,41 +140,12 @@ class GraficosController extends Controller
         $graph->xaxis->SetTickLabels($f);
         // Add the plot to the graph
         $graph->Add($lineplot);
+        $lineplot->SetColor("#293c82");
+        $lineplot->SetWeight(1);
 //$graph->SetGridDepth(false);
         // Display the graph
         return $graph->Stroke();
-        
-        
-        /*
-// Some data 
-        $ydata = array(11.5, 3, 8, 12, 5, 1, 9, 13, 5, 7);
 
-// Create the graph. These two calls are always required 
-        $graph = new \Graph(450, 250, "auto");
-        $graph->SetScale("textlin");
-        //$graph->img->SetAntiAliasing(false);
-        $graph->xgrid->Show();
-
-// Create the linear plot 
-        $lineplot = new \LinePlot($ydata);
-        $lineplot->SetColor("black");
-        $lineplot->SetWeight(2);
-        $lineplot->SetLegend("Horas");
-
-// Setup margin and titles 
-        $graph->img->SetMargin(40, 20, 20, 40);
-        $graph->title->Set("Ejemplo: Horas de Trabajo");
-        $graph->xaxis->title->Set("Días");
-        $graph->yaxis->title->Set("Horas de Trabajo");
-        $graph->ygrid->SetFill(true, '#EFEFEF@0.5', '#F9BB64@0.5');
-//$graph->SetShadow(); 
-// Add the plot to the graph 
-        $graph->Add($lineplot);
-
-// Display the graph 
-        $graph->Stroke();
-        
-        */
         
     }
     
