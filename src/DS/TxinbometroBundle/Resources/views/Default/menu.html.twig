@@ -20,7 +20,6 @@
 {% endif %}
 |
 <span style="{% if  opcion  == 'Estadisticas' %}font-weight: bold{% endif %}"><a name="menu_link" href="{{ path('txinbometro_estadisticas_general') }}">Estad&iacute;sticas</a></span>
-
 |
 <span style="{% if  opcion  == 'Gasolina' %}font-weight: bold{% endif %}"><a name="menu_link" href="{{ path('txinbometro_gasolina') }}">Gasolina</a></span>
 |
@@ -33,6 +32,9 @@
 
 <div id="menu2">
     {% block menu2 %}
-        
+        {% if opcion == 'Estadisticas' %}
+            <span style="{% if  subopcion  == '' or subopcion == 'General' %}font-weight: bold{% endif %}"><a name="menu_link" href="{{ path('txinbometro_estadisticas_general') }}">General</a></span>
+            | Mensuales | Economicas 
+        {% endif %}
     {% endblock %}
 </div>
