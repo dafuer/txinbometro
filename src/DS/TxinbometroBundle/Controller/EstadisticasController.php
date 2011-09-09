@@ -16,7 +16,6 @@ class EstadisticasController extends Controller {
      */
     public function generalAction() {
         $vehiculo = $this->container->get('security.context')->getToken()->getUser()->getVehiculo();
-
         $em = $this->getDoctrine()->getEntityManager();
 
         //$entities = $em->getRepository('TxinbometroBundle:Gasolina')->getConsumos($vehiculo);
