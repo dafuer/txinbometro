@@ -13,6 +13,6 @@ use Doctrine\ORM\EntityRepository;
 class GastoRepository extends EntityRepository
 {
     public function getAllFrom($vehiculo_id) {
-        return $this->_em->createQuery('SELECT g FROM TxinbometroBundle:Gasto g WHERE g.vehiculo = '.$vehiculo_id.' ORDER BY g.fecha')->getResult();
+        return $this->_em->createQuery('SELECT g FROM TxinbometroBundle:Gasto g WHERE g.vehiculo = '.$vehiculo_id.' ORDER BY g.fecha DESC')->getResult();
     }    
 }

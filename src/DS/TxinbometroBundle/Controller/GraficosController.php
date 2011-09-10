@@ -13,7 +13,7 @@ class GraficosController extends Controller
      * 
      * @Template()
      */
-    public function graphAction() {
+    public function consumogeneralkmAction() {
         //$vehiculo = $this->container->get('security.context')->getToken()->getUser()->getVehiculo();
         $sesion=$this->get('session');
         
@@ -151,6 +151,56 @@ class GraficosController extends Controller
         
     }
     
+    
+    public function comparativausoAction() {
+
+        //$vehiculo = $this->container->get('security.context')->getToken()->getUser()->getVehiculo();
+        $sesion=$this->get('session');
+        
+        $vehiculo=$sesion->get('vehiculo');
+        
+        include_once __DIR__ . '/../../../../vendor/jpgraph/jpgraph.php';
+        include_once __DIR__ . '/../../../../vendor/jpgraph/jpgraph_pie.php';
+        include_once __DIR__ . '/../../../../vendor/jpgraph/jpgraph_pie3d.php';
+
+        
+        $consumoObject=$sesion->get('resumenConsumo');
+        
+        //$this->lista=$consumoObject->getListado();
+       
+        $xdata=array('Urabano','Mixto','Carretera');
+        $km=$consumoObject->getKm();
+        $ydata = array($km['urbano'], $km['mixto'],$km['carretera']);
+        $graph = new \PieGraph(500, 300);//, "auto");
+        //$graph->SetScale("textlin");
+        $graph->img->SetMargin(40, 20, 20, 40);
+        $graph->title->Set("Comparativa de uso");
+        //$graph->xaxis->title->Set("Tipo de uso" );
+        //$graph->yaxis->title->Set("Km" );
+
+        $pieplot =new \PiePlot3D($ydata);
+        $pieplot->SetLegends($xdata);
+
+        // Use percentage values in the legends values (This is also the default)
+//$pieplot->SetLabelType(PIE_VALUE_PER);
+
+// The label array values may have printf() formatting in them. The argument to the
+// form,at string will be the value of the slice (either the percetage or absolute
+// depending on what was specified in the SetLabelType() above.
+        $lbl = array($km['urbano']."km \n%.1f%%",$km['mixto']."km \n%.1f%%",$km['carretera']."km \n%.1f%%");
+
+//$lbl = array($km['urbano']."km", $km['mixto']."km",$km['carretera']."km");
+        $pieplot->SetLabels($lbl);
+        $pieplot->SetLabelPos(1);
+        $pieplot->SetSliceColors(array('#d86464','#e8ea60','#7dda7a'));
+        //$barplot->SetColor("orange");
+        //$graph->xaxis->SetTickLabels($xdata);
+        //$graph->ygrid->SetFill(true,'#EFEFEF@0.5','#DDDDDD@0.5');
+        $graph->SetMarginColor('#fdffd1');
+        $graph->SetFrame(true, '#fdffd1');
+        $graph->Add($pieplot);
+        return $graph->Stroke();
+    }    
     
 
 }

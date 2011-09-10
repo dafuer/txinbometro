@@ -15,7 +15,7 @@ use DS\TxinbometroBundle\Entity\ResumenConsumo;
 class GasolinaRepository extends EntityRepository
 {
     public function getAllFrom($vehiculo_id) {
-        return $this->_em->createQuery('SELECT g FROM TxinbometroBundle:Gasolina g WHERE g.vehiculo = '.$vehiculo_id.' ORDER BY g.km')->getResult();
+        return $this->_em->createQuery('SELECT g FROM TxinbometroBundle:Gasolina g WHERE g.vehiculo = '.$vehiculo_id.' ORDER BY g.km DESC')->getResult();
     }        
     
     /* Devuelve una tabla con la siguiente estructura

@@ -1,7 +1,11 @@
     
-txinbometro_graficos_graph:
+txinbometro_graficos_consumogeneralkm:
     pattern:  /graph
-    defaults: { _controller: "TxinbometroBundle:Graficos:graph" }
+    defaults: { _controller: "TxinbometroBundle:Graficos:consumogeneralkm" }
+    
+txinbometro_graficos_comparativauso:
+    pattern:  /comparativauso
+    defaults: { _controller: "TxinbometroBundle:Graficos:comparativauso" }
     
 
 
