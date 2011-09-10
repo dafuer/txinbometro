@@ -1,4 +1,3 @@
-- Que al cargar el usuario cargue el vehiculo y procese sus datos
 - Que al cambiar el vehiculo cambien los datos
 - Que al cambiar datos se regeneren los valores en las variables de sesion
 - Que solo se permitan dos tipos de vehiculos, motos y coches

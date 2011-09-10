@@ -33,3 +33,7 @@ txinbometro_vehiculo_select:
     pattern:  /{id}/select
     defaults: { _controller: "TxinbometroBundle:Vehiculo:select" }
     requirements: { _method: get }
+    
+txinbometro_vehiculo_cargar:
+    pattern: /cargar
+    defaults: { _controller: "TxinbometroBundle:Vehiculo:cargar" }

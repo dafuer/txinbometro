@@ -46,13 +46,13 @@ class GasolinaController extends Controller {
         if ($entity->getVehiculo()->getUsuario()->getId() != $usuario->getId()) {
             throw $this->createNotFoundException('Unable to access Gasolina entity.');
         }
-        
-            $deleteForm = $this->createDeleteForm($id);
 
-            return $this->render('TxinbometroBundle:Gasolina:show.html.twig', array(
-                'entity' => $entity,
-                'delete_form' => $deleteForm->createView(),
-            ));
+        $deleteForm = $this->createDeleteForm($id);
+
+        return $this->render('TxinbometroBundle:Gasolina:show.html.twig', array(
+            'entity' => $entity,
+            'delete_form' => $deleteForm->createView(),
+        ));
     }
 
     /**
@@ -88,8 +88,13 @@ class GasolinaController extends Controller {
             $em->persist($entity);
             $em->flush();
 
+            // Anyado este codigo para actualizar la variable de sesion
+            $consumoObject = $em->getRepository('TxinbometroBundle:Gasolina')->getConsumos($this->get('session')->get('vehiculo'));
+            $this->get('session')->set('resumenConsumo', $consumoObject);
+
             return $this->redirect($this->generateUrl('txinbometro_gasolina_show', array('id' => $entity->getId())));
         }
+
 
         return $this->render('TxinbometroBundle:Gasolina:new.html.twig', array(
             'entity' => $entity,
@@ -111,20 +116,20 @@ class GasolinaController extends Controller {
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Gasolina entity.');
         }
-        
+
         if ($entity->getVehiculo()->getUsuario()->getId() != $usuario->getId()) {
             throw $this->createNotFoundException('Unable to access Gasolina entity.');
         }
-        
 
-            $editForm = $this->createForm(new GasolinaType(), $entity);
-            $deleteForm = $this->createDeleteForm($id);
 
-            return $this->render('TxinbometroBundle:Gasolina:edit.html.twig', array(
-                'entity' => $entity,
-                'edit_form' => $editForm->createView(),
-                'delete_form' => $deleteForm->createView(),
-            ));
+        $editForm = $this->createForm(new GasolinaType(), $entity);
+        $deleteForm = $this->createDeleteForm($id);
+
+        return $this->render('TxinbometroBundle:Gasolina:edit.html.twig', array(
+            'entity' => $entity,
+            'edit_form' => $editForm->createView(),
+            'delete_form' => $deleteForm->createView(),
+        ));
     }
 
     /**
@@ -133,7 +138,7 @@ class GasolinaController extends Controller {
      */
     public function updateAction($id) {
         $usuario = $this->container->get('security.context')->getToken()->getUser();
-        
+
         $em = $this->getDoctrine()->getEntityManager();
 
         $entity = $em->getRepository('TxinbometroBundle:Gasolina')->find($id);
@@ -145,7 +150,7 @@ class GasolinaController extends Controller {
         if ($entity->getVehiculo()->getUsuario()->getId() != $usuario->getId()) {
             throw $this->createNotFoundException('Unable to access Gasolina entity.');
         }
-        
+
         $editForm = $this->createForm(new GasolinaType(), $entity);
         $deleteForm = $this->createDeleteForm($id);
 
@@ -156,7 +161,9 @@ class GasolinaController extends Controller {
         if ($editForm->isValid()) {
             $em->persist($entity);
             $em->flush();
-
+            // Anyado este codigo para actualizar la variable de sesion
+            $consumoObject = $em->getRepository('TxinbometroBundle:Gasolina')->getConsumos($this->get('session')->get('vehiculo'));
+            $this->get('session')->set('resumenConsumo', $consumoObject);
             return $this->redirect($this->generateUrl('txinbometro_gasolina_edit', array('id' => $id)));
         }
 
@@ -173,7 +180,7 @@ class GasolinaController extends Controller {
      */
     public function deleteAction($id) {
         $usuario = $this->container->get('security.context')->getToken()->getUser();
-        
+
         $form = $this->createDeleteForm($id);
         $request = $this->getRequest();
 
@@ -186,13 +193,17 @@ class GasolinaController extends Controller {
             if (!$entity) {
                 throw $this->createNotFoundException('Unable to find Gasolina entity.');
             }
-            
-        if ($entity->getVehiculo()->getUsuario()->getId() != $usuario->getId()) {
-            throw $this->createNotFoundException('Unable to access Gasolina entity.');
-        }
+
+            if ($entity->getVehiculo()->getUsuario()->getId() != $usuario->getId()) {
+                throw $this->createNotFoundException('Unable to access Gasolina entity.');
+            }
             $em->remove($entity);
             $em->flush();
         }
+
+            // Anyado este codigo para actualizar la variable de sesion
+            $consumoObject = $em->getRepository('TxinbometroBundle:Gasolina')->getConsumos($this->get('session')->get('vehiculo'));
+            $this->get('session')->set('resumenConsumo', $consumoObject);
 
         return $this->redirect($this->generateUrl('txinbometro_gasolina'));
     }

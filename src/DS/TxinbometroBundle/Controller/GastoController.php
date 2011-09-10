@@ -87,7 +87,9 @@ class GastoController extends Controller {
             $em = $this->getDoctrine()->getEntityManager();
             $em->persist($entity);
             $em->flush();
-
+            // Anyado este codigo para actualizar la variable de sesion
+            $consumoObject = $em->getRepository('TxinbometroBundle:Gasolina')->getConsumos($this->get('session')->get('vehiculo'));
+            $this->get('session')->set('resumenConsumo', $consumoObject);
             return $this->redirect($this->generateUrl('txinbometro_gasto_show', array('id' => $entity->getId())));
         }
 
@@ -153,7 +155,9 @@ class GastoController extends Controller {
         if ($editForm->isValid()) {
             $em->persist($entity);
             $em->flush();
-
+            // Anyado este codigo para actualizar la variable de sesion
+            $consumoObject = $em->getRepository('TxinbometroBundle:Gasolina')->getConsumos($this->get('session')->get('vehiculo'));
+            $this->get('session')->set('resumenConsumo', $consumoObject);
             return $this->redirect($this->generateUrl('txinbometro_gasto_edit', array('id' => $id)));
         }
 
@@ -190,7 +194,9 @@ class GastoController extends Controller {
             $em->remove($entity);
             $em->flush();
         }
-
+            // Anyado este codigo para actualizar la variable de sesion
+            $consumoObject = $em->getRepository('TxinbometroBundle:Gasolina')->getConsumos($this->get('session')->get('vehiculo'));
+            $this->get('session')->set('resumenConsumo', $consumoObject);
         return $this->redirect($this->generateUrl('txinbometro_gasto'));
     }
 

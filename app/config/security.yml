@@ -8,6 +8,8 @@ security:
             pattern: ^/
             form_login:
                 provider: fos_userbundle
+                default_target_path: /vehiculo/cargar
+                always_use_default_target_path: true
             logout:       true
             anonymous:    true
 

@@ -14,15 +14,17 @@ class GraficosController extends Controller
      * @Template()
      */
     public function graphAction() {
-        $vehiculo = $this->container->get('security.context')->getToken()->getUser()->getVehiculo();
+        //$vehiculo = $this->container->get('security.context')->getToken()->getUser()->getVehiculo();
+        $sesion=$this->get('session');
         
-        $em = $this->getDoctrine()->getEntityManager();
+        $vehiculo=$sesion->get('vehiculo');
         
         include_once __DIR__ . '/../../../../vendor/jpgraph/jpgraph.php';
         include_once __DIR__ . '/../../../../vendor/jpgraph/jpgraph_line.php';
 
         
-        $consumoObject=$em->getRepository('TxinbometroBundle:Gasolina')->getConsumos($vehiculo);
+        $consumoObject=$sesion->get('resumenConsumo');
+        
         $this->lista=$consumoObject->getListado();
         
         $c=0;

@@ -37,8 +37,27 @@ class VehiculoController extends Controller {
 
         $em->flush();
 
-
+        // Ahora guardo en las variables de sesion tanto el vehiculo como sus consumos procesados
+        $sesion=$this->get('session');
+        $sesion->set('vehiculo',$entity);
+        
+        $consumoObject=$em->getRepository('TxinbometroBundle:Gasolina')->getConsumos($entity);
+        $sesion->set('resumenConsumo',$consumoObject);
+        
+        
         return $this->redirect($this->generateUrl('txinbometro_estadisticas_general'));
+    }
+
+    public function cargarAction() {
+        $usuario = $this->container->get('security.context')->getToken()->getUser();
+
+        $vehiculo = $usuario->getVehiculo();
+
+        if ($vehiculo == null) {
+            return $this->redirect('txinbometr_vehiculo');
+        } else {   
+            return $this->forward('TxinbometroBundle:Vehiculo:select', array('id' => $vehiculo->getId()));
+        }
     }
 
     /**
