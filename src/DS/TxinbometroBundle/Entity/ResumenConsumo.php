@@ -8,6 +8,7 @@ class ResumenConsumo {
     protected $km;
     protected $dias;
     protected $litros;
+    protected $costeLitros;
     protected $consumo;
     protected $costeKm;
     protected $frecuencia;
@@ -28,6 +29,10 @@ class ResumenConsumo {
 
     public function getLitros() {
         return $this->litros;
+    }
+    
+    public function getCosteLitros() {
+        return $this->costeLitros;
     }
 
     public function getConsumo() {
@@ -64,6 +69,10 @@ class ResumenConsumo {
 
     public function setLitros($x) {
         $this->litros = $x;
+    }
+    
+    public function setCosteLitros($x) {
+        $this->costeLitros = $x;
     }
 
     public function setConsumo($x) {

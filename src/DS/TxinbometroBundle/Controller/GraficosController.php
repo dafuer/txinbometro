@@ -287,5 +287,60 @@ class GraficosController extends Controller
         return $graph->Stroke();       
         
     }
+    
+    public function comparativaeconomicaAction(){
+        include_once __DIR__ . '/../../../../vendor/jpgraph/jpgraph.php';
+        include_once __DIR__ . '/../../../../vendor/jpgraph/jpgraph_pie.php';
+        include_once __DIR__ . '/../../../../vendor/jpgraph/jpgraph_pie3d.php';
+        
+        $vehiculo=$this->get('session')->get('vehiculo');
+
+        $em = $this->getDoctrine()->getEntityManager();
+
+        $lista_datos = $em->getRepository('TxinbometroBundle:Gasto')->getAllFrom($vehiculo->getId());   
+        
+        $motototal=$vehiculo->getCoste();
+
+        $costerevisiones=0;
+        $costecomplementos=0;
+        $costeseguros=0;
+        $costerepuestos=0;
+        $a='';
+        
+
+        $i=0;
+        foreach($lista_datos as $dato) {
+            if($dato->getTipo()=='revision') $costerevisiones+=$dato->getCoste();
+            if($dato->getTipo()=='complemento') $costecomplementos+=$dato->getCoste();
+            if($dato->getTipo()=='seguro') $costeseguros+=$dato->getCoste();
+            if($dato->getTipo()=='repuesto') $costerepuestos+=$dato->getCoste();            
+        }
+        
+        $costeLitros=$this->get('session')->get('resumenConsumo')->getCosteLitros();
+
+        $sumatotal=$motototal+$costerevisiones+$costecomplementos+$costerepuestos+$costeseguros+$costeLitros['total'];
+
+        $xdata=array('Moto','Revision','Complementos','Seguros','Gasolina','Repuestos');
+
+        $ydata = array($motototal, $costerevisiones,$costecomplementos,$costecomplementos,$costeLitros['total'],$costerepuestos);
+        $graph = new \PieGraph(500, 300);
+        $graph->img->SetMargin(40, 20, 20, 40);
+        $graph->title->Set("Comparativa de gastos");
+
+        $pieplot =new \PiePlot3D($ydata);
+        $graph->Add($pieplot);
+        $pieplot->SetLegends($xdata);
+
+        //$lbl = array($motototal."km \n%.1f%%",$costerevisiones."km \n%.1f%%",$costecomplementos."km \n%.1f%%");
+
+        //$pieplot->SetLabels($lbl);
+        $pieplot->SetLabelPos(1);
+        $pieplot->SetSliceColors(array('#d86464','#e8ea60','#7dda7a','#ddaaaa','#aaaadd','#aaddaa'));
+        //$pieplot->SetTheme("pastel");
+        $graph->SetMarginColor('#fdffd1');
+        $graph->SetFrame(true, '#fdffd1');
+        
+        $graph->Stroke();        
+    }
 
 }

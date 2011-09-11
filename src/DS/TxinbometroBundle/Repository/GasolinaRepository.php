@@ -151,6 +151,7 @@ class GasolinaRepository extends EntityRepository
         $resumenConsumo->setKm($km);
         $resumenConsumo->setDias($dias);
         $resumenConsumo->setLitros($litros);
+        $resumenConsumo->setCosteLitros($costeLitros);
         $resumenConsumo->setConsumo($consumo);
         $resumenConsumo->setCosteKm($costeKm);
         $resumenConsumo->setFrecuencia($frecuencia);

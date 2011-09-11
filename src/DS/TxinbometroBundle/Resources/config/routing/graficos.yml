@@ -11,5 +11,7 @@ txinbometro_graficos_usomensual:
     pattern:  /usomensual
     defaults: { _controller: "TxinbometroBundle:Graficos:usomensual" }
     
-
+txinbometro_graficos_comparativaeconomica:
+    pattern:  /comparativaeconomica
+    defaults: { _controller: "TxinbometroBundle:Graficos:comparativaeconomica" }
 
