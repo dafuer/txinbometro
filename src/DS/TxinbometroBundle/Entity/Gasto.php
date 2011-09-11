@@ -57,9 +57,9 @@ class Gasto
     private $coste;
 
     /**
-     * @var string $comentario
+     * @var text $comentario
      *
-     * @ORM\Column(name="comentario", type="string", length=255)
+     * @ORM\Column(name="comentario", type="text")
      */
     private $comentario;
 

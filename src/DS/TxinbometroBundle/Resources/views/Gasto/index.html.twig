@@ -32,7 +32,7 @@
             <td>{{ entity.fecha|date('Y-m-d H:i:s') }}</td>
             <td>{{ entity.tipo }}</td>
             <td>{{ entity.coste }}</td>
-            <td>{{ entity.comentario  }}</td>
+            <td>{{ entity.comentario | raw }}</td>
             <td>
                 <ul>
                     <li>
