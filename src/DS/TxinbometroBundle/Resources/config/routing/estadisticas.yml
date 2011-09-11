@@ -2,7 +2,12 @@ txinbometro_estadisticas_general:
     pattern:  /
     defaults: { _controller: "TxinbometroBundle:Estadisticas:general" }
     
-
+txinbometro_estadisticas_mensual:
+    pattern:  /mensual
+    defaults: { _controller: "TxinbometroBundle:Estadisticas:mensual" }
     
-
+txinbometro_estadisticas_economicas:
+    pattern:  /economicas
+    defaults: { _controller: "TxinbometroBundle:Estadisticas:economicas" }
+    
 

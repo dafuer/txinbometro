@@ -179,6 +179,7 @@ class GraficosController extends Controller
         //$graph->yaxis->title->Set("Km" );
 
         $pieplot =new \PiePlot3D($ydata);
+        $graph->Add($pieplot);
         $pieplot->SetLegends($xdata);
 
         // Use percentage values in the legends values (This is also the default)
@@ -198,9 +199,93 @@ class GraficosController extends Controller
         //$graph->ygrid->SetFill(true,'#EFEFEF@0.5','#DDDDDD@0.5');
         $graph->SetMarginColor('#fdffd1');
         $graph->SetFrame(true, '#fdffd1');
-        $graph->Add($pieplot);
+        
         return $graph->Stroke();
     }    
     
+    
+    public function usomensualAction(){
+        include_once __DIR__ . '/../../../../vendor/jpgraph/jpgraph.php';
+        include_once __DIR__ . '/../../../../vendor/jpgraph/jpgraph_line.php';
+        
+        $this->meses=$this->get('session')->get('resumenConsumo')->getMeses();
+
+        $c=0;
+        $f=array();
+        $xdata=array();
+        $ydata=array();
+
+        $j=count($this->meses)-1;
+        // Creo los puntos
+        for ($i=0;$i<count($this->meses);$i++) {
+            $f[$i]=$j;
+            $xdata[$i]=$this->meses[$j]['fecha']['total'];
+            $ydata[$i]=$this->meses[$i]['km_recorridos']['total'];
+
+            $fc[$i]=$j;
+            $xdatac[$i]=$this->meses[$j]['fecha']['carretera'];
+            $ydatac[$i]=$this->meses[$i]['km_recorridos']['carretera'];
+
+            $fu[$i]=$j;
+            $xdatau[$i]=$this->meses[$j]['fecha']['mixto'];
+            $ydatau[$i]=$this->meses[$i]['km_recorridos']['mixto'];
+
+            $fm[$i]=$j;
+            $xdatam[$i]=$this->meses[$j]['fecha']['urbano'];
+            $ydatam[$i]=$this->meses[$i]['km_recorridos']['urbano'];
+            $j--;
+        }
+
+
+        // La escala de datos
+        $mayorx=max($f);
+        $minimox=min($f);
+        $mayory=max($ydata);
+        $minimoy=min($ydata);
+
+        $graph = new \Graph(600,400);//,"auto");
+
+        //$graph->SetScale("textlin");
+        $graph->SetScale('intlin',0 ,$mayory,$minimox,$mayorx);
+        $graph->yscale->SetAutoTicks();
+        $graph->SetMarginColor('#fdffd1');
+        $graph->SetFrame(true, '#fdffd1');
+
+        // Inserto las lineas en el orden inverso al interesante para que si se solapan la que mejor se vea sea la mas interesante
+        $cplot=new \LinePlot($ydatac,$f);
+        $graph->Add($cplot);        
+        $cplot->SetColor('#7dda7a');
+        $cplot->SetWeight(1);
+
+        $mplot=new \LinePlot($ydatau,$f);
+        $graph->Add($mplot);
+        $mplot->SetColor('#e8ea60');
+        $mplot->SetWeight(1);
+
+        $uplot=new \LinePlot($ydatam,$f);
+        $graph->Add($uplot);
+        $uplot->SetColor('#d86464');
+        $uplot->SetWeight(1);
+
+        // Create the linear plot
+        $lineplot=new \LinePlot($ydata,$f);
+        $graph->Add($lineplot);        
+        $lineplot->SetColor("#293c82");
+        $lineplot->SetWeight(1);
+        $lineplot->mark->SetWidth(2);
+        
+        $graph->xaxis->SetLabelAngle(90);
+        // Setup margin and titles
+        $graph->img->SetMargin(40,20,20,60);
+        $graph->title->Set("Uso mensual");
+        $graph->xaxis->title->Set("ano/mes");
+        $graph->yaxis->title->Set("Km's");
+        $graph->ygrid->SetFill(true,'#fdffd1@0','#fdffd1@0');
+        $graph->xaxis->SetTickLabels($xdata);
+
+        // Display the graph
+        return $graph->Stroke();       
+        
+    }
 
 }

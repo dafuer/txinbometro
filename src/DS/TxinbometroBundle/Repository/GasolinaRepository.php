@@ -18,8 +18,11 @@ class GasolinaRepository extends EntityRepository
         return $this->_em->createQuery('SELECT g FROM TxinbometroBundle:Gasolina g WHERE g.vehiculo = '.$vehiculo_id.' ORDER BY g.km DESC')->getResult();
     }        
     
-    /* Devuelve una tabla con la siguiente estructura
-     * $tabla
+    
+    
+    
+    /* Este codigo es para estar poco orgulloso.
+     * Devuelve un objeto de tipo resumenConsumo con los calculos procesados de cada repostaje
      */
     public function getConsumos($vehiculo){
         $resumenConsumo=new ResumenConsumo();
@@ -152,8 +155,163 @@ class GasolinaRepository extends EntityRepository
         $resumenConsumo->setCosteKm($costeKm);
         $resumenConsumo->setFrecuencia($frecuencia);
         $resumenConsumo->setKmDia($kmDia);
+   
+        /* ***********************************************************
+         * *********** Ahora hago los calculos mensuales *************
+         * ***********************************************************/
+        
+        $ff=$listado[count($listado)-1]['fecha']->getTimestamp(); //fecha fin
+        //$fff=getdate($ff); //fecha fin formateada
+        //$utf=gmmktime(0,0,0,$listado[count($listado)-1]['fecha']->format('n'),1,$listado[count($listado)-1]['fecha']->format('Y')); //unixtimestamp mes final
+        $utf=gmmktime(0,0,0,$listado[count($listado)-1]['fecha']->format('n'),1,$listado[count($listado)-1]['fecha']->format('Y')); //unixtimestamp mes final
+        $diasparaultimomes=($ff-$utf)/86400; // Dias que han pasado del ultimo mes
+
+        $meses=array();
+        $diasrestantes=array();
+
+        $m=0; //contador de meses
+        $d=count($listado)-1; //contador de repostajes
+        $diasrestantes[0]=$diasparaultimomes;
+
+        $kmrestantes=0; //kilometros restantes para completar un repostaje
+        foreach (array('total', 'carretera', 'mixto', 'urbano') as $tipo) {
+            $meses[0]['fecha'][$tipo]=$this->restarMeses($listado[count($listado)-1]['fecha']->format('Y'),$listado[count($listado)-1]['fecha']->format('n'),0);//($listado[count($listado)-1]['fecha']->format('Y'))."/".($listado[count($listado)-1]['fecha']->format('n'));
+            $meses[0]['km_recorridos'][$tipo]=0;
+        }
+
+        while($d>=0) {
+            if($kmrestantes==0) $kmrestantes=$listado[$d]['dias'];
+
+            if($kmrestantes>$diasrestantes[$m]) {
+                $meses[$m]['km_recorridos']['total']+=($diasrestantes[$m])*$listado[$d]['km_dia'];
+                $meses[$m]['km_recorridos'][$listado[$d]['tipo']]+=($diasrestantes[$m])*$listado[$d]['km_dia'];
+
+                $kmrestantes=($kmrestantes-$diasrestantes[$m]);
+                $diasrestantes[$m]=0;
+
+                $m++;
+                foreach (array('total', 'carretera', 'mixto', 'urbano') as $tipo) {
+                    $nuevomes=$this->restarMeses($listado[count($listado)-1]['fecha']->format('Y'),$listado[count($listado)-1]['fecha']->format('n'),$m);
+                    $meses[$m]['fecha'][$tipo]=$nuevomes;
+                    //$meses[$m]['fecha'][$tipo]=($listado[count($listado)-1]['fecha']->format('Y'))."/".($listado[count($listado)-1]['fecha']->format('n')-$m<10 ? "0".($listado[count($listado)-1]['fecha']->format('n')-$m) : ($listado[count($listado)-1]['fecha']->format('n')-$m));
+                    $meses[$m]['km_recorridos'][$tipo]=0;
+                }
+                $diasrestantes[$m]=$this->diasDe($listado[count($listado)-1]['fecha']->format('Y'),$listado[count($listado)-1]['fecha']->format('n'),$m);
+
+            }
+            elseif($kmrestantes<$diasrestantes[$m]) {
+                $meses[$m]['km_recorridos']['total']+=$kmrestantes*$listado[$d]['km_dia'];
+                $meses[$m]['km_recorridos'][$listado[$d]['tipo']]+=$kmrestantes*$listado[$d]['km_dia'];
+
+                $diasrestantes[$m]-=$kmrestantes;
+                $kmrestantes=0;
+
+                $d--;
+            }
+            else {
+                $meses[$m]['km_recorridos']['total']+=$kmrestantes*$listado[$d]['km_dia'];
+                $meses[$m]['km_recorridos'][$listado[$d]['tipo']]+=$kmrestantes*$listado[$d]['km_dia'];
+
+                $diasrestantes[$m]=0;
+                $kmrestantes=0;
+
+                $m++;
+                foreach (array('total', 'carretera', 'mixto', 'urbano') as $tipo) {
+                    $nuevomes=$this->restarMeses($listado[count($listado)-1]['fecha']->format('Y'),$listado[count($listado)-1]['fecha']->format('n'),$m);
+                    $meses[$m]['fecha'][$tipo]=$nuevomes;
+                    //$meses[$m]['fecha'][$tipo]=($listado[count($listado)-1]['fecha']->format('Y'))."/".($listado[count($listado)-1]['fecha']->format('n')-$m<10 ? "0".($listado[count($listado)-1]['fecha']->format('n')-$m) : ($listado[count($listado)-1]['fecha']->format('n')-$m));
+                    $meses[$m]['km_recorridos'][$tipo]=0;
+                }
+                $diasrestantes[$m]=$this->diasDe($listado[count($listado)-1]['fecha']->format('Y'),$listado[count($listado)-1]['fecha']->format('n'),$m);
+
+                $d--;
+            }
+        }
+
+        asort($meses);        
+        
+        $resumenConsumo->setMeses($meses);
+        
+        
         
         return $resumenConsumo;
         
+    }
+    
+    
+    
+    /* Funciones necesarias para los calculos */
+    
+        public function restarMeses($year,$mon,$n) {
+        $meses=$year*12;
+        $meses+=$mon;
+
+        $meses-=$n;
+
+        $nyear=intval($meses/12);
+        $nmes=$meses-$nyear*12;
+
+        if($nmes==0){
+            $nmes=12;
+            $nyear--;
+        }
+
+
+
+        //$mes=$mon-$n;
+        return ($nyear)."/".($nmes<10 ? "0".$nmes : $nmes);
+
+    }
+    
+   public function diasDe($year,$mon,$n) {
+        // $n es el numero de meses que le quieres restar a la cantidad para devolver los dias del mes. pon 0 si no te interesa
+
+        $meses=$year*12;
+        $meses+=$mon;
+
+        $meses-=$n;
+
+        $anho=intval($meses/12);
+        $mes=$meses-$anho*12;
+
+        if($mes==0){
+            $mes=12;
+            $anho--;
+        }
+
+        if (((fmod($anho,4)==0) and (fmod($anho,100)!=0)) or (fmod($anho,400)==0)) {
+            $dias_febrero = 29;
+        }
+        else {
+            $dias_febrero = 28;
+        }
+        switch($mes) {
+            case 1: return 31;
+                break;
+            case 2: return $dias_febrero;
+                break;
+            case 3: return 31;
+                break;
+            case 4: return 30;
+                break;
+            case 5: return 31;
+                break;
+            case 6: return 30;
+                break;
+            case 7: return 31;
+                break;
+            case 8: return 31;
+                break;
+            case 9: return 30;
+                break;
+            case 10: return 31;
+                break;
+            case 11: return 30;
+                break;
+            case 12: return 31;
+                break;
+
+        }
     }    
+   
 }

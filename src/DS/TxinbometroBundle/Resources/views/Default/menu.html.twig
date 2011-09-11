@@ -34,7 +34,10 @@
     {% block menu2 %}
         {% if opcion == 'Estadisticas' %}
             <span style="{% if  subopcion  == '' or subopcion == 'General' %}font-weight: bold{% endif %}"><a name="menu_link" href="{{ path('txinbometro_estadisticas_general') }}">General</a></span>
-            | Mensuales | Economicas 
+            | 
+            <span style="{% if subopcion == 'Mensual' %}font-weight: bold{% endif %}"><a name="menu_link" href="{{ path('txinbometro_estadisticas_mensual') }}">Mensual</a></span>
+            | 
+            <span style="{% if subopcion == 'Economicas' %}font-weight: bold{% endif %}"><a name="menu_link" href="{{ path('txinbometro_estadisticas_economicas') }}">Economicas</a></span>
         {% endif %}
     {% endblock %}
 </div>

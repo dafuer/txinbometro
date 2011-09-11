@@ -12,6 +12,7 @@ class ResumenConsumo {
     protected $costeKm;
     protected $frecuencia;
     protected $kmDia;
+    protected $meses;
 
     public function getListado() {
         return $this->listado;
@@ -44,6 +45,10 @@ class ResumenConsumo {
     public function getKmDia() {
         return $this->kmDia;
     }
+    
+    public function getMeses(){
+        return $this->meses;
+    }
 
     public function setListado($x) {
         $this->listado = $x;
@@ -75,6 +80,10 @@ class ResumenConsumo {
 
     public function setkmDia($x) {
         $this->kmDia = $x;
+    }
+    
+    public function setMeses($x){
+        $this->meses=$x;
     }
 
 }

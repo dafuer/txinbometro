@@ -7,5 +7,9 @@ txinbometro_graficos_comparativauso:
     pattern:  /comparativauso
     defaults: { _controller: "TxinbometroBundle:Graficos:comparativauso" }
     
+txinbometro_graficos_usomensual:
+    pattern:  /usomensual
+    defaults: { _controller: "TxinbometroBundle:Graficos:usomensual" }
+    
 
 
