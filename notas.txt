@@ -1,9 +1,6 @@
-- añadir estadisticas mensuales y economicas
 - Que solo se permitan dos tipos de vehiculos, motos y coches
 - Crear otro vehiculo y probar como funciona todo. Al crear el vehiculo se tendra que cargar todos los datos.
 - mirar como hacer unas fixtures guapas.
-- en las acciones show y delete (tal vez alguna mas) puedes entrar a ver las cosas de otro usuario
-- Estando sin loguearte puedes acceder a las estadisticas
 - revisar si en un comentario pueden inyectar javascript.
 - La base de datos creada por doctrine genera algunos errores, crear un script y hacerlo directamente en sql. Los problemas:
     - los comentarios son longtext en vez de text
