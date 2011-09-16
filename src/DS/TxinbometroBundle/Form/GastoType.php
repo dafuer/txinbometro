@@ -14,7 +14,7 @@ class GastoType extends AbstractType
             ->add('fecha')
             ->add('tipo')
             ->add('coste')
-            ->add('comentario')
+            ->add('comentario',null,array('attr' => array('class' => 'tinymce' ))) //,'tinymce'=>'{"theme":"simple"}')))
         ;
     }
 

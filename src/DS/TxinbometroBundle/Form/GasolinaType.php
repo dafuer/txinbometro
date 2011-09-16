@@ -16,7 +16,7 @@ class GasolinaType extends AbstractType
             ->add('coste')
             ->add('tipo')
             ->add('gasolinera')
-            ->add('comentario')
+            ->add('comentario',null,array('attr' => array('class' => 'tinymce' ))) //,'tinymce'=>'{"theme":"simple"}')))
         ;
     }
 
