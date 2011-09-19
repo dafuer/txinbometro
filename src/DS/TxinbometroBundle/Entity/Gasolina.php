@@ -3,6 +3,7 @@
 namespace DS\TxinbometroBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * DS\TxinbometroBundle\Entity\Gasolina
@@ -58,7 +59,7 @@ class Gasolina
 
     /**
      * @var string $tipo
-     *
+     * @Assert\Choice(choices = { "carretera", "mixto", "urbano" },message = "Elige un tipo valido.")
      * @ORM\Column(name="tipo", type="string", length=255)
      */
     private $tipo;
@@ -73,7 +74,7 @@ class Gasolina
     /**
      * @var text $comentario
      *
-     * @ORM\Column(name="comentario", type="text")
+     * @ORM\Column(name="comentario", type="text", nullable=true)
      */
     private $comentario;
 

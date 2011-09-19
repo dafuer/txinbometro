@@ -1,18 +1,11 @@
-- Que solo se permitan dos tipos de vehiculos, motos y coches
-- Crear otro vehiculo y probar como funciona todo. Al crear el vehiculo se tendra que cargar todos los datos.
-- mirar como hacer unas fixtures guapas.
-- revisar si en un comentario pueden inyectar javascript.
-- La base de datos creada por doctrine genera algunos errores, crear un script y hacerlo directamente en sql. Los problemas:
-    - los comentarios son longtext en vez de text
-    - la BD no es utf8_general_ci
-    - en la tabla usuario se crea dependencia hacia vehiculo innecesaria.
+Temas pendientes:
+ - Que solo se permitan dos tipos de vehiculos, motos y coches
+ - Crear otro vehiculo y probar como funciona todo. Al crear el vehiculo se tendra que cargar todos los datos.
+ - mirar como hacer unas fixtures guapas.
+ - Preparar SQL  de creacion de la BD
 
+Mejoras:
+ - El objeto resumenConsumo solo genera datos de los tickets de gasolina y no de los gastos
 
-
-
-- pagina 240 comienza con symfony, antes doctrine
-- en la pagina 300 se habla de como cambiar las rutas para ponerlas bonitas /blog/primer-post en vez de /blog/5
-- en la pagina 406 hablan de la gestion de ACL
-- en la pagina 407 hablan de la gestion del usuario
-- 422 traduccion
-- 371 formularios
+Bugs:
+ - No se puede borrar un vehiculo porque sale un error.

@@ -11,7 +11,7 @@ class GasolinaType extends AbstractType
     {
         $builder
             ->add('km')
-            ->add('fecha')
+            ->add('fecha','date',array('widget' => 'single_text', 'format' => 'yyyy-MM-dd hh:mm:ss'))
             ->add('litros')
             ->add('coste')
             ->add('tipo')

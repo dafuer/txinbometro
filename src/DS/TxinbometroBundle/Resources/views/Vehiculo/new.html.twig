@@ -2,14 +2,16 @@
 {% extends "TxinbometroBundle::layout.html.twig" %}
 
 {% block stylesheets %}
-{{ parent() }}
-<link href="{{ asset('/css/ui-lightness/jquery-ui-1.8.16.custom.css') }}" rel="stylesheet" type="text/css" /></link>
+    {{ parent() }}
+    <link href="{{ asset('/css/ui-lightness/jquery-ui-1.8.16.custom.css') }}" rel="stylesheet" type="text/css" /></link>
 {% endblock %}
-
 {% block javascript %}
-{{ parent() }}
+    {{ parent() }}
     <script src="{{ asset('/js/jquery-1.6.2.min.js') }}" type="text/javascript"></script>
     <script src="{{ asset('/js/jquery-ui-1.8.16.custom.min.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('/js/jquery-ui-timepicker-addon.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('/bundles/txinbometro/javascript/comun.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('/bundles/txinbometro/javascript/vehiculo/vehiculoForm.js') }}" type="text/javascript"></script>
 {% endblock %}
 
 {% block menu %} {% render "TxinbometroBundle:Default:menu" with { 'opcion': 'Vehiculo', 'subopcion': 'none' } %} {% endblock %}

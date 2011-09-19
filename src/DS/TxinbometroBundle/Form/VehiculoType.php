@@ -13,17 +13,10 @@ class VehiculoType extends AbstractType
             ->add('tipo')
             ->add('marca')
             ->add('modelo')
-            ->add('compra')
-            /*->    add('compra', 'date', array(
-                'attr' => array('class' => 'date'),
-                'widget' => 'single_text',
-                'input' => 'string',
-                'format' => 'dd/mm/yy', //\IntlDateFormatter::FULL
-            ))*/
+            ->add('compra','date',array('widget' => 'single_text', 'format' => 'yyyy-MM-dd'))
             ->add('coste')
             ->add('km_iniciales')
             ->add('capacidad')
-            //->add('usuario')
         ;
     }
 

@@ -1,6 +1,19 @@
 {# src/DS/TxinbometroBundle/Resources/views/Gasolina/edit.html.twig #}
 {% extends "TxinbometroBundle::layout.html.twig" %}
 
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="{{ asset('/css/ui-lightness/jquery-ui-1.8.16.custom.css') }}" rel="stylesheet" type="text/css" /></link>
+{% endblock %}
+{% block javascript %}
+    {{ parent() }}
+    <script src="{{ asset('/js/jquery-1.6.2.min.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('/js/jquery-ui-1.8.16.custom.min.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('/js/jquery-ui-timepicker-addon.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('/bundles/txinbometro/javascript/comun.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('/bundles/txinbometro/javascript/gasolina/gasolinaForm.js') }}" type="text/javascript"></script>
+{% endblock %}
+    
 {% block body %}
 <h1>Gasolina edit</h1>
 

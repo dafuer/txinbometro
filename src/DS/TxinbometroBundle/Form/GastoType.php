@@ -11,12 +11,13 @@ class GastoType extends AbstractType
     {
         $builder
             ->add('km')
-            ->add('fecha')
+            ->add('fecha','date',array('widget' => 'single_text', 'format' => 'yyyy-MM-dd hh:mm:ss'))
             ->add('tipo')
             ->add('coste')
             ->add('comentario',null,array('attr' => array('class' => 'tinymce' ))) //,'tinymce'=>'{"theme":"simple"}')))
         ;
     }
+
 
     public function getName()
     {
