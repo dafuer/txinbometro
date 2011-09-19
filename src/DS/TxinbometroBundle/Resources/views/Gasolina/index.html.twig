@@ -33,7 +33,7 @@
             <td>{{ entity.fecha|date('Y-m-d H:i:s') }}</td>
             <td>{{ entity.litros }}</td>
             <td>{{ entity.coste }}</td>
-            <td>{{ entity.tipo }}</td>
+            <td>{{ entity.tipo | capitalize}}</td>
             <td>{{ entity.gasolinera }}</td>
             <td>{{ entity.comentario | raw }}</td>
             <td>

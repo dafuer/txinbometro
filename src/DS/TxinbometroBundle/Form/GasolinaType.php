@@ -14,7 +14,7 @@ class GasolinaType extends AbstractType
             ->add('fecha','date',array('widget' => 'single_text', 'format' => 'yyyy-MM-dd hh:mm:ss'))
             ->add('litros')
             ->add('coste')
-            ->add('tipo')
+            ->add('tipo','choice',array( 'choices'=>array('carretera'=>'Carretera','mixto'=>'Mixto','urbano'=>'Urbano')))
             ->add('gasolinera')
             ->add('comentario',null,array('attr' => array('class' => 'tinymce' ))) //,'tinymce'=>'{"theme":"simple"}')))
         ;
