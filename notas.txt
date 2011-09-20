@@ -1,6 +1,4 @@
 Temas pendientes:
- - Que solo se permitan dos tipos de vehiculos, motos y coches (copiar de tipos de depositos)
- - Que solo se permitan los tipos de gastos controlados (al igual que el punto anterior)
  - Crear otro vehiculo y probar como funciona todo. Al crear el vehiculo se tendra que cargar todos los datos.
  - mirar como hacer unas fixtures guapas.
  - Preparar SQL  de creacion de la BD
@@ -8,6 +6,6 @@ Temas pendientes:
 Mejoras:
  - Sugerir gasolineras tipicas
  - El objeto resumenConsumo solo genera datos de los tickets de gasolina y no de los gastos
+ - moto-nick. esto además abre la posibilidad de rutas bonitas.
 
 Bugs:
- - No se puede borrar un vehiculo porque sale un error.

@@ -30,7 +30,7 @@
             <td><a href="{{ path('txinbometro_gasto_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
             <td>{{ entity.km }}</td>
             <td>{{ entity.fecha|date('Y-m-d H:i:s') }}</td>
-            <td>{{ entity.tipo }}</td>
+            <td>{{ entity.tipo | capitalize }}</td>
             <td>{{ entity.coste }}</td>
             <td>{{ entity.comentario | raw }}</td>
             <td>

@@ -10,7 +10,7 @@ class VehiculoType extends AbstractType
     public function buildForm(FormBuilder $builder, array $options)
     {
         $builder
-            ->add('tipo')
+            ->add('tipo','choice',array('choices'=>array('coche'=>'Coche','moto'=>'Moto')))
             ->add('marca')
             ->add('modelo')
             ->add('compra','date',array('widget' => 'single_text', 'format' => 'yyyy-MM-dd'))
