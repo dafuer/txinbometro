@@ -10,3 +10,4 @@ Mejoras:
  - Al añadir un deposito, en show, mostrar que variaciones presenta este deposito frente a las medias.
 
 Bugs:
+ - No funciona el entorno de produccion
