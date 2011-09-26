@@ -1,13 +1,15 @@
 Temas pendientes:
  - mirar como hacer unas fixtures guapas.
+ - Listar en pantalla los resultados de todos los consumos. Ahora mismo solo se grafican.
  - Cambiar las plantillas por defecto de fosuser
 
 Mejoras:
+ - Al hacer un show de un ticket de la gasolina sacar una estadistica de que valores presenta frente a los valores medios
  - Estilos (CSS)
  - Sugerir gasolineras tipicas
  - El objeto resumenConsumo solo genera datos de los tickets de gasolina y no de los gastos
  - moto-nick. esto además abre la posibilidad de rutas bonitas.
  - Al añadir un deposito, en show, mostrar que variaciones presenta este deposito frente a las medias.
+ - Permitir insertar breaks de tickets, te tal forma que si pierdes un tiquet sea capaz de continuar la aplicación a partir del siguiente.
 
 Bugs:
- - No funciona el entorno de produccion

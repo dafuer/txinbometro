@@ -176,8 +176,15 @@ en el archivo `app/config/security.yml`.
 Apuntes a Desarrolladores
 -------------------------
 
-- SECCIÓN POR HACER
+- SECCIÓN POR MEJORAR -
 
+   En esta seccion faltan graficos y desarrollo. En resumen tengo 4 entidas 
+(representadas en 4 tablas). Usuarios, que tienen vehiculos y estos a su vez 
+tienen gastos y gasolina. (Punto a pensar: se podria pensar que tambien hay
+gastos que son del usuario y no del vehiculo. ejemplo: la compra de un casco de 
+moto). Cuando te logeas se genera un objeto de tipo ResumenConsumo en el que se
+calculan todos los estadisticos y es guardado en la variable de sesion. Este objeto
+sera el utilizado para generar y mostrar las distintas estadisticas.
 
 
 
