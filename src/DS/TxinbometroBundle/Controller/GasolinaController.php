@@ -19,6 +19,8 @@ class GasolinaController extends Controller {
     public function indexAction() {
         $vehiculo = $this->container->get('security.context')->getToken()->getUser()->getVehiculo();
 
+        if ($vehiculo==null) return $this->render("TxinbometroBundle:Default:primeroseleccionarvehiculo.html.twig");
+        
         $em = $this->getDoctrine()->getEntityManager();
 
         $entities = $em->getRepository('TxinbometroBundle:Gasolina')->getAllFrom($vehiculo->getId());
@@ -38,6 +40,7 @@ class GasolinaController extends Controller {
         $em = $this->getDoctrine()->getEntityManager();
 
         $entity = $em->getRepository('TxinbometroBundle:Gasolina')->find($id);
+        
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Gasolina entity.');

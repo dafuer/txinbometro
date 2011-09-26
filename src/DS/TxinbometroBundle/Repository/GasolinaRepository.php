@@ -31,10 +31,9 @@ class GasolinaRepository extends EntityRepository
 
         $dato_list=$this->_em->createQuery('SELECT g FROM TxinbometroBundle:Gasolina g WHERE g.vehiculo = '.$vehiculo->getId().' ORDER BY g.km')->getResult();//getArrayResult();  
         
-        
-
+     
         //Si hay datos, comienzo el estudio
-        if($dato_list!=NULL) {
+        if($dato_list!=null && count($dato_list)>1) {
             // Inicializo las variables
             $km=array();
             $nDatos=array();
@@ -128,16 +127,23 @@ class GasolinaRepository extends EntityRepository
             // Derivo algunos valores mas para los que no es necesario hacerlos sobre la iteracion anterior
 
             foreach (array('total', 'carretera', 'mixto', 'urbano') as $tipo) {
-                $kmDia[$tipo]=$km[$tipo]/$dias[$tipo];
+                if($dias[$tipo]==0) $kmDia[$tipo]=0;
+                else $kmDia[$tipo]=$km[$tipo]/$dias[$tipo];
             }
 
 
             $listado=$lista;
 
             foreach (array('total', 'carretera', 'mixto', 'urbano') as $tipo) {
-                $consumo[$tipo]['medio']=$consumo[$tipo]['medio']/$nDatos[$tipo];
-                $costeKm[$tipo]['medio']=$costeKm[$tipo]['medio']/$nDatos[$tipo];
-                $frecuencia[$tipo]['medio']=$frecuencia[$tipo]['medio']/$nDatos[$tipo];
+                if($nDatos[$tipo]==0){
+                    $consumo[$tipo]['medio']=null;
+                    $costeKm[$tipo]['medio']=0;
+                    $frecuencia[$tipo]['medio']=null;
+                }else{
+                    $consumo[$tipo]['medio']=$consumo[$tipo]['medio']/$nDatos[$tipo];
+                    $costeKm[$tipo]['medio']=$costeKm[$tipo]['medio']/$nDatos[$tipo];
+                    $frecuencia[$tipo]['medio']=$frecuencia[$tipo]['medio']/$nDatos[$tipo];
+                }
             }
 
         }

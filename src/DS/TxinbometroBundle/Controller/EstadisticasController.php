@@ -15,6 +15,14 @@ class EstadisticasController extends Controller {
      * @Template()
      */
     public function generalAction() {
+        $vehiculo = $this->container->get('security.context')->getToken()->getUser()->getVehiculo();
+
+        if ($vehiculo==null) return $this->render("TxinbometroBundle:Default:primeroseleccionarvehiculo.html.twig");
+
+        $sesion=$this->get('session');
+        $consumoObject=$sesion->get('resumenConsumo');             
+        if ($consumoObject==null || $consumoObject->getListado()==null ) return $this->render("TxinbometroBundle:Default:primeroinsertadatos.html.twig");
+        
         return array();
     }
 
@@ -23,6 +31,10 @@ class EstadisticasController extends Controller {
      * @Template()
      */
     public function mensualAction() {
+        $vehiculo = $this->container->get('security.context')->getToken()->getUser()->getVehiculo();
+
+        if ($vehiculo==null) return $this->render("TxinbometroBundle:Default:primeroseleccionarvehiculo.html.twig");
+        
         return array();
     }
 
@@ -34,6 +46,8 @@ class EstadisticasController extends Controller {
         $resumenConsumo=$this->get('session')->get('resumenConsumo');
 
         $vehiculo=$this->get('session')->get('vehiculo');
+
+        if ($vehiculo==null) return $this->render("TxinbometroBundle:Default:primeroseleccionarvehiculo.html.twig");        
         
         $costevehiculo=$vehiculo->getCoste();
 

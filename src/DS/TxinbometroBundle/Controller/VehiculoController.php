@@ -23,13 +23,14 @@ class VehiculoController extends Controller {
 
         $entity = $em->getRepository('TxinbometroBundle:Vehiculo')->find($id);
 
+        if ($entity->getUsuario()->getId() != $usuario->getId()) {
+            throw $this->createNotFoundException('Unable to access Vehiculo entity.');
+        }        
+        
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Vehiculo entity.');
         }
 
-        if ($entity->getUsuario()->getId() != $usuario->getId()) {
-            throw $this->createNotFoundException('Unable to access Vehiculo entity.');
-        }
 
         $usuario->setVehiculo($entity);
 
@@ -54,7 +55,7 @@ class VehiculoController extends Controller {
         $vehiculo = $usuario->getVehiculo();
 
         if ($vehiculo == null) {
-            return $this->redirect('txinbometr_vehiculo');
+            return $this->redirect($this->generateUrl('txinbometro_vehiculo'));
         } else {   
             return $this->forward('TxinbometroBundle:Vehiculo:select', array('id' => $vehiculo->getId()));
         }
@@ -88,12 +89,12 @@ class VehiculoController extends Controller {
 
         $entity = $em->getRepository('TxinbometroBundle:Vehiculo')->find($id);
 
-        if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Vehiculo entity.');
-        }
-
         if ($entity->getUsuario()->getId() != $usuario->getId()) {
             throw $this->createNotFoundException('Unable to access Vehiculo entity.');
+        }
+        
+        if (!$entity) {
+            throw $this->createNotFoundException('Unable to find Vehiculo entity.');
         }
 
 
@@ -159,13 +160,14 @@ class VehiculoController extends Controller {
 
         $entity = $em->getRepository('TxinbometroBundle:Vehiculo')->find($id);
 
+        if ($entity->getUsuario()->getId() != $usuario->getId()) {
+            throw $this->createNotFoundException('Unable to access Vehiculo entity.');
+        }
+        
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Vehiculo entity.');
         }
 
-        if ($entity->getUsuario()->getId() != $usuario->getId()) {
-            throw $this->createNotFoundException('Unable to access Vehiculo entity.');
-        }
 
         $editForm = $this->createForm(new VehiculoType(), $entity);
         $deleteForm = $this->createDeleteForm($id);
@@ -188,12 +190,12 @@ class VehiculoController extends Controller {
 
         $entity = $em->getRepository('TxinbometroBundle:Vehiculo')->find($id);
 
-        if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Vehiculo entity.');
-        }
-
         if ($entity->getUsuario()->getId() != $usuario->getId()) {
             throw $this->createNotFoundException('Unable to access Vehiculo entity.');
+        }
+        
+        if (!$entity) {
+            throw $this->createNotFoundException('Unable to find Vehiculo entity.');
         }
 
         $editForm = $this->createForm(new VehiculoType(), $entity);
@@ -235,11 +237,12 @@ class VehiculoController extends Controller {
             $em = $this->getDoctrine()->getEntityManager();
             $entity = $em->getRepository('TxinbometroBundle:Vehiculo')->find($id);
 
-            if (!$entity) {
-                throw $this->createNotFoundException('Unable to find Vehiculo entity.');
-            }
             if ($entity->getUsuario()->getId() != $usuario->getId()) {
                 throw $this->createNotFoundException('Unable to access Vehiculo entity.');
+            }
+            
+            if (!$entity) {
+                throw $this->createNotFoundException('Unable to find Vehiculo entity.');
             }
 
             $em->remove($entity);

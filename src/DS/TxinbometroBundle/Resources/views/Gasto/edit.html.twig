@@ -1,6 +1,8 @@
 {# src/DS/TxinbometroBundle/Resources/views/Gasto/edit.html.twig #}
 {% extends "TxinbometroBundle::layout.html.twig" %}
 
+{% block menu %} {% render "TxinbometroBundle:Default:menu" with { 'opcion': 'Gasto', 'subopcion': '' } %} {% endblock %}
+
 {% block stylesheets %}
     {{ parent() }}
     <link href="{{ asset('/css/ui-lightness/jquery-ui-1.8.16.custom.css') }}" rel="stylesheet" type="text/css" /></link>

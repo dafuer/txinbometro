@@ -19,6 +19,8 @@ class GastoController extends Controller {
     public function indexAction() {
         $vehiculo = $this->container->get('security.context')->getToken()->getUser()->getVehiculo();
 
+        if ($vehiculo==null) return $this->render("TxinbometroBundle:Default:primeroseleccionarvehiculo.html.twig");
+        
         $em = $this->getDoctrine()->getEntityManager();
 
         $entities = $em->getRepository('TxinbometroBundle:Gasto')->getAllFrom($vehiculo->getId());

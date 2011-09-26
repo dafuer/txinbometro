@@ -1,6 +1,6 @@
 Temas pendientes:
- - Crear otro vehiculo y probar como funciona todo. Al crear el vehiculo se tendra que cargar todos los datos.
  - mirar como hacer unas fixtures guapas.
+ - Cambiar las plantillas por defecto de fosuser
 
 Mejoras:
  - Estilos (CSS)

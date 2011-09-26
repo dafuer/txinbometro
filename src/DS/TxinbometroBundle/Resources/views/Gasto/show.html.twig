@@ -1,6 +1,8 @@
 {# src/DS/TxinbometroBundle/Resources/views/Gasto/show.html.twig #}
 {% extends "TxinbometroBundle::layout.html.twig" %}
 
+{% block menu %} {% render "TxinbometroBundle:Default:menu" with { 'opcion': 'Gasto', 'subopcion': '' } %} {% endblock %}
+
 {% block body %}
 <h1>Gasto</h1>
 
