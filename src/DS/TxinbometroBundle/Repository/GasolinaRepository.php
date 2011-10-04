@@ -42,6 +42,7 @@ class GasolinaRepository extends EntityRepository
             $litros=array();
             $costeLitros=array();
             $kmDia=array();
+            $costeLitro=array();
 
             $lista = array();
 
@@ -56,10 +57,12 @@ class GasolinaRepository extends EntityRepository
                     $consumo[$tipo][$tipo2]=0;
                     $costeKm[$tipo][$tipo2]=0;
                     $frecuencia[$tipo][$tipo2]=0;
+                    $costeLitro[$tipo][$tipo2]=0;
                 }
                 $consumo[$tipo]['minimo']=999;
                 $costeKm[$tipo]['minimo']=999;
                 $frecuencia[$tipo]['minimo']=999;
+                $costeLitro[$tipo]['minimo']=999;
             }
 
 
@@ -70,7 +73,9 @@ class GasolinaRepository extends EntityRepository
             for ($i=1;$i<count($dato_list);$i++) {
                 // Obtengo los intervalos entre datos
                 $dato2=$dato_list[$i];
-
+                   
+                
+                $lista[$i-1]['km']=$dato2->getKm();
                 $lista[$i-1]['km_recorridos']=$dato2->getKm()-$dato1->getKm();
                 $lista[$i-1]['dias']=($dato2->getFecha()->getTimestamp()-$dato1->getFecha()->getTimestamp())/86400;
                 $lista[$i-1]['fecha']=$dato2->getFecha();
@@ -162,7 +167,7 @@ class GasolinaRepository extends EntityRepository
         $resumenConsumo->setCosteKm($costeKm);
         $resumenConsumo->setFrecuencia($frecuencia);
         $resumenConsumo->setKmDia($kmDia);
-   
+        $resumenConsumo->setCosteLitro($costeLitro);
         /* ***********************************************************
          * *********** Ahora hago los calculos mensuales *************
          * ***********************************************************/

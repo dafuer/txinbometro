@@ -17,4 +17,9 @@
         </service>
     </services>
     -->
+    <services>
+        <service id="twig.extension.txinbometro.utils" class="DS\TxinbometroBundle\Twig\Extension\UtilsExtension" public="false">
+            <tag name="twig.extension" />
+        </service>
+    </services>    
 </container>

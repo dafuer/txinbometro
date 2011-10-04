@@ -44,4 +44,80 @@
         </form>
     </li>
 </ul>
+
+
+<BR/>
+<h3>Resumen</h3>
+{% if consumoObject.consumo.total.maximo == datos.consumo %}
+<img src="{{ asset('bundles/txinbometro/images/flechaArribaRoja.png') }}" /></img>{{ datos.consumo | round(2) }} es el m&aacute;ximo de consumo! <BR/>
+{% elseif consumoObject.consumo[datos.tipo].maximo == datos.consumo %}
+<img src="{{ asset('bundles/txinbometro/images/flechaArribaRoja.png') }}" /></img>{{ datos.consumo | round(2) }} es el m&aacute;ximo de consumo en {{datos.tipo}}! <BR/>
+{% endif %}
+
+{% if consumoObject.consumo.total.minimo == datos.consumo %}
+<img src="{{ asset('bundles/txinbometro/images/flechaVerdeAbajo.png') }}" /></img>{{ datos.consumo | round(2) }} es el m&iacute;nimo de consumo! <BR/>
+{% elseif consumoObject.consumo[datos.tipo].minimo == datos.consumo %}
+<img src="{{ asset('bundles/txinbometro/images/flechaVerdeAbajo.png') }}" /></img>{{ datos.consumo | round(2) }} es el m&iacute;nimo de consumo en {{datos.tipo}}! <BR/>
+{% endif %}
+
+
+
+{% if consumoObject.frecuencia.total.maximo == datos.dias %}
+<img src="{{ asset('bundles/txinbometro/images/flechaAzulDerecha.png') }}" /></img>{{ datos.dias | round(2) }} es el repostaje m&aacute;s para el que m&aacute;s has esperado! <BR/>
+{% elseif consumoObject.frecuencia[datos.tipo].maximo == datos.dias %}
+<img src="{{ asset('bundles/txinbometro/images/flechaAzulDerecha.png') }}" /></img>{{ datos.dias | round(2) }} es el repostaje m&aacute;s para el que m&aacute;s has esperado en {{datos.tipo}}! <BR/>
+{% endif %}
+
+{% if consumoObject.frecuencia.total.minimo == datos.dias %}
+<img src="{{ asset('bundles/txinbometro/images/flechaAzulDerecha.png') }}" /></img>{{ datos.dias | round(2) }} es el repostaje m&aacute;s r&aacute;pido! <BR/>
+{% elseif consumoObject.frecuencia[datos.tipo].minimo == datos.dias %}
+<img src="{{ asset('bundles/txinbometro/images/flechaAzulDerecha.png') }}" /></img>{{ datos.dias | round(2) }} es el repostaje m&aacute;s r&aacute;pido en {{datos.tipo}}! <BR/>
+{% endif %}
+
+
+
+{% if consumoObject.costeLitro.total.maximo == entity.costeLitro %}
+<img src="{{ asset('bundles/txinbometro/images/flechaArribaRoja.png') }}" /></img>{{ entity.costeLitro | round(2) }} es el m&aacute;ximo precio de la gasolina! <BR/>
+{% endif %}
+
+{% if consumoObject.costeLitro.total.minimo == entity.costeLitro %}
+<img src="{{ asset('bundles/txinbometro/images/flechaVerdeAbajo.png') }}" /></img>{{ entity.costeLitro | round(2) }} es el m&iacute;nimo precio de la gasolina! <BR/>
+{% endif %}
+
+
+
+<BR/>
+<table class="record_properties">
+    <thead>
+        <tr>
+            <th> </th>
+            <th>Media {{datos.tipo}}</th>
+            <th>Dep&oacute;sito actual</th>
+            <th>Media general</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Consumo</td>
+            <td>{{ consumoObject.consumo[datos.tipo].medio | round(2) }}</td>
+            <td>
+                <img src="{{ consumoObject.consumo[datos.tipo].medio < datos.consumo? asset('bundles/txinbometro/images/flechaRojaArriba.png'):asset('bundles/txinbometro/images/flechaVerdeAbajo.png') }}" /></img>
+                &nbsp;&nbsp;&nbsp;{{ datos.consumo | round(2) }}&nbsp;&nbsp;&nbsp;
+                <img src="{{ consumoObject.consumo.total.medio < datos.consumo? asset('bundles/txinbometro/images/flechaRojaArriba.png'):asset('bundles/txinbometro/images/flechaVerdeAbajo.png') }}" /></img>
+            </td>          
+            <td>{{ consumoObject.consumo.total.medio | round(2) }}</td>
+        </tr>     
+        <tr>
+            <td>Duracion en dias</td>
+            <td>{{ consumoObject.frecuencia[datos.tipo].medio | round(2) }}</td>
+            <td>
+                <img src="{{ consumoObject.frecuencia[datos.tipo].medio < datos.dias? asset('bundles/txinbometro/images/flechaRojaArriba.png'):asset('bundles/txinbometro/images/flechaVerdeAbajo.png') }}" /></img>
+                &nbsp;&nbsp;&nbsp;{{ datos.dias | round(2) }}&nbsp;&nbsp;&nbsp;
+                <img src="{{ consumoObject.frecuencia.total.medio < datos.dias? asset('bundles/txinbometro/images/flechaRojaArriba.png'):asset('bundles/txinbometro/images/flechaVerdeAbajo.png') }}" /></img>
+            </td>     
+            <td>{{ consumoObject.frecuencia.total.medio | round(2) }}</td>
+        </tr>          
+    </tbody>
+</table>
+
 {% endblock %}

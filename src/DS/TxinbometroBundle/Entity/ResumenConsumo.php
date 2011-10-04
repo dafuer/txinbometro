@@ -4,19 +4,46 @@ namespace DS\TxinbometroBundle\Entity;
 
 class ResumenConsumo {
 
+    /**
+     * Es una tabla que contiene para cada repostaje
+     * km
+     * km_recorridos
+     * dias
+     * fecha
+     * comentario
+     * coste
+     * litros
+     * consumo
+     * coste_km
+     * tipo
+     * km
+     * autonomia
+     * km_restantes
+     * desposito_restante
+     * km_dia
+     */
     protected $listado;
     protected $km;
     protected $dias;
     protected $litros;
-    protected $costeLitros;
+    protected $costeLitros; // Representa el total de euros dedicado a combustible
     protected $consumo;
     protected $costeKm;
     protected $frecuencia;
     protected $kmDia;
     protected $meses;
+    protected $costeLitro; // Representa el coste por litro
 
     public function getListado() {
         return $this->listado;
+    }
+    
+    public function getListadoParaKm($km){        
+        foreach ($this->listado as $linea){
+            if($linea['km']==$km) return $linea;
+        }
+        
+        return null;
     }
 
     public function getKm() {
@@ -53,6 +80,10 @@ class ResumenConsumo {
     
     public function getMeses(){
         return $this->meses;
+    }
+    
+    public function getCosteLitro(){
+        return $this->costeLitro;
     }
 
     public function setListado($x) {
@@ -93,6 +124,10 @@ class ResumenConsumo {
     
     public function setMeses($x){
         $this->meses=$x;
+    }
+    
+    public function setCosteLitro($x){
+        $this->costeLitro=$x;
     }
 
 }

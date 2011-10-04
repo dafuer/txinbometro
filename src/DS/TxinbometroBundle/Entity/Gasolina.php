@@ -79,6 +79,10 @@ class Gasolina
     private $comentario;
 
 
+    
+    public function getCosteLitro(){
+        return $this->coste/$this->litros;
+    }
 
     /**
      * Get id

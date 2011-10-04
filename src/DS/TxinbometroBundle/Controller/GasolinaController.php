@@ -49,12 +49,17 @@ class GasolinaController extends Controller {
         if ($entity->getVehiculo()->getUsuario()->getId() != $usuario->getId()) {
             throw $this->createNotFoundException('Unable to access Gasolina entity.');
         }
-
+       
         $deleteForm = $this->createDeleteForm($id);
 
+        $consumoObject=$this->get('session')->get('resumenConsumo');
+        $datos=$consumoObject->getListadoParaKm($entity->getKm());        
+        
         return $this->render('TxinbometroBundle:Gasolina:show.html.twig', array(
             'entity' => $entity,
             'delete_form' => $deleteForm->createView(),
+            'consumoObject' => $consumoObject,
+            'datos' => $datos
         ));
     }
 
