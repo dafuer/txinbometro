@@ -64,4 +64,4 @@
 
 [TinymceBundle]
     git=git://github.com/stfalcon/TinymceBundle.git
-    target=bundles/Stfalcon/Bundle/TinymceBundle
+    target=/bundles/Stfalcon/Bundle/TinymceBundle

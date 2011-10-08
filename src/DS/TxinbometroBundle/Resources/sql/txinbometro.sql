@@ -37,7 +37,7 @@ CREATE TABLE IF NOT EXISTS `txinbometro_gasolina` (
   `comentario` text,
   PRIMARY KEY (`id`),
   KEY `IDX_C8330ECF25F7D575` (`vehiculo_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8_general_ci;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -55,7 +55,7 @@ CREATE TABLE IF NOT EXISTS `txinbometro_gasto` (
   `comentario` text,
   PRIMARY KEY (`id`),
   KEY `IDX_32B69B0625F7D575` (`vehiculo_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8_general_ci;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -87,7 +87,7 @@ CREATE TABLE IF NOT EXISTS `txinbometro_usuario` (
   UNIQUE KEY `UNIQ_5B4A2D7D92FC23A8` (`username_canonical`),
   UNIQUE KEY `UNIQ_5B4A2D7DA0D96FBF` (`email_canonical`),
   UNIQUE KEY `UNIQ_5B4A2D7D3109FA40` (`ultimo_vehiculo`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8_general_ci;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -107,7 +107,7 @@ CREATE TABLE IF NOT EXISTS `txinbometro_vehiculo` (
   `capacidad` double NOT NULL,
   PRIMARY KEY (`id`),
   KEY `IDX_F2ED1956DB38439E` (`usuario_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8_general_ci;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
 
 --
 -- Filtros para las tablas descargadas (dump)

@@ -6,6 +6,7 @@ Temas pendientes:
  - Verificar que no pueda meter 2 repostajes en el mismo km.
  - Verificar que no pueda meter 2 gastos en el mismo instante.
  - Añadir estadistico costeLitro, que represente cual es el maximo al que se ha pagado el litro de gasolina
+ - Botones de siguiente y anterior en los shows de gasto y gasolina
 
 Mejoras:
  - Al hacer un show de un ticket de la gasolina sacar una estadistica de que valores presenta frente a los valores medios
