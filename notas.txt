@@ -19,3 +19,4 @@ Mejoras:
 
 Bugs:
  - Mal instalada en el servidor porta
+ - Al introducir un gasto peta en porta.
