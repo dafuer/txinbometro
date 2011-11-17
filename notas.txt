@@ -7,6 +7,8 @@ Temas pendientes:
  - Verificar que no pueda meter 2 gastos en el mismo instante.
  - Añadir estadistico costeLitro, que represente cual es el maximo al que se ha pagado el litro de gasolina
  - Botones de siguiente y anterior en los shows de gasto y gasolina
+ - Al registrarte que te redirija a alguna pagina
+ - Al crear un vehiculo que lo seleccione
 
 Mejoras:
  - Al hacer un show de un ticket de la gasolina sacar una estadistica de que valores presenta frente a los valores medios
@@ -18,4 +20,3 @@ Mejoras:
  - Permitir insertar breaks de tickets, te tal forma que si pierdes un tiquet sea capaz de continuar la aplicación a partir del siguiente.
 
 Bugs:
- - Mal instalada en el servidor porta

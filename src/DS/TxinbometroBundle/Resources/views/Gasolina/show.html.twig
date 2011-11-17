@@ -49,9 +49,9 @@
 <BR/>
 <h3>Resumen</h3>
 {% if consumoObject.consumo.total.maximo == datos.consumo %}
-<img src="{{ asset('bundles/txinbometro/images/flechaArribaRojo.png') }}" /></img>{{ datos.consumo | round(2) }} es el m&aacute;ximo de consumo! <BR/>
+<img src="{{ asset('bundles/txinbometro/images/flechaRojoArriba.png') }}" /></img>{{ datos.consumo | round(2) }} es el m&aacute;ximo de consumo! <BR/>
 {% elseif consumoObject.consumo[datos.tipo].maximo == datos.consumo %}
-<img src="{{ asset('bundles/txinbometro/images/flechaArribaRojo.png') }}" /></img>{{ datos.consumo | round(2) }} es el m&aacute;ximo de consumo en {{datos.tipo}}! <BR/>
+<img src="{{ asset('bundles/txinbometro/images/flechaRojoArriba.png') }}" /></img>{{ datos.consumo | round(2) }} es el m&aacute;ximo de consumo en {{datos.tipo}}! <BR/>
 {% endif %}
 
 {% if consumoObject.consumo.total.minimo == datos.consumo %}
@@ -63,9 +63,9 @@
 
 
 {% if consumoObject.frecuencia.total.maximo == datos.dias %}
-<img src="{{ asset('bundles/txinbometro/images/flechaAzulDerecha.png') }}" /></img>{{ datos.dias | round(2) }} es el repostaje m&aacute;s para el que m&aacute;s has esperado! <BR/>
+<img src="{{ asset('bundles/txinbometro/images/flechaAzulDerecha.png') }}" /></img>{{ datos.dias | round(2) }} es el repostaje para el que m&aacute;s has esperado! <BR/>
 {% elseif consumoObject.frecuencia[datos.tipo].maximo == datos.dias %}
-<img src="{{ asset('bundles/txinbometro/images/flechaAzulDerecha.png') }}" /></img>{{ datos.dias | round(2) }} es el repostaje m&aacute;s para el que m&aacute;s has esperado en {{datos.tipo}}! <BR/>
+<img src="{{ asset('bundles/txinbometro/images/flechaAzulDerecha.png') }}" /></img>{{ datos.dias | round(2) }} es el repostaje para el que m&aacute;s has esperado en {{datos.tipo}}! <BR/>
 {% endif %}
 
 {% if consumoObject.frecuencia.total.minimo == datos.dias %}
