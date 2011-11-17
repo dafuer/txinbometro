@@ -20,3 +20,4 @@ Mejoras:
  - Permitir insertar breaks de tickets, te tal forma que si pierdes un tiquet sea capaz de continuar la aplicación a partir del siguiente.
 
 Bugs:
+ 
