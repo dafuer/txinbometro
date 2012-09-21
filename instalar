@@ -1,0 +1,5 @@
+php bin/vendors install 
+php app/console assets:install --symlink web
+php app/console propel:build-model
+php app/console ca:c
+./permisos
