@@ -11,7 +11,7 @@ services:
         class: %mopa_bootstrap.navbar.generic%
         arguments:
             # first argument: a named array of menues:
-            - {}
+            - { leftmenu: @mopa_bootstrap.navbar_main_menu= }
             #- { leftmenu: @mopa_bootstrap.examplemenu=, rightmenu: @mopa_bootstrap.exampledropdown= }
             - {}
             #- { searchform: Dafuer\GetOptGeneratorBundle\Form\NavbarType  }
@@ -23,4 +23,19 @@ services:
         tags:
             # The alias is used to retrieve the navbar in templates
             - { name: mopa_bootstrap.navbar, alias: frontendNavbar }
+            
+    mopa_bootstrap.navbar_menu_builder:
+        class: DS\TxinbometroBundle\Menu\NavbarMenuBuilder
+        scope: request
+        arguments: [ '@knp_menu.factory', '@security.context' ] 
+        
+    mopa_bootstrap.navbar_main_menu:
+        class: Knp\Menu\MenuItem
+        factory_service: mopa_bootstrap.navbar_menu_builder
+        factory_method: createMainMenu
+        arguments: [ '@request' ]
+        scope: request
+        tags:
+            - { name: knp_menu.menu, alias: main }
+
        
