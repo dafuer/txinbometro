@@ -1,4 +1,31 @@
 {# src/DS/TxinbometroBundle/Resources/views/Gasolina/edit.html.twig #}
+
+
+{% extends "TxinbometroBundle::layout.html.twig" %}
+
+
+{% block bundle_content %}
+<h1>Estad&iacute;sticas Econ&oacute;micas</h1>
+
+<b>Coste del vehiculo</b> {{ costeVehiculo }}&euro; <BR/>
+<b>Coste de las revisiones</b> {{ costeRevisiones }}&euro; <BR/>
+<b>Coste de los repuestos</b> {{ costeRepuestos }}&euro; <BR/>
+<b>Coste de complementos</b> {{ costeComplementos }}&euro; <BR/>
+<b>Coste de seguros</b> {{ costeSeguros }}&euro; <BR/>
+ <BR/>
+<b>Suma total</b> {{ costeTotal }}&euro; <BR/>
+
+
+<BR/><BR/>
+<img src="{{ path('txinbometro_graficos_comparativaeconomica') }}" /></img>
+
+{% endblock %}
+
+
+
+
+
+{#
 {% extends "TxinbometroBundle::layout.html.twig" %}
 
 {% block menu %} {% render "TxinbometroBundle:Default:menu" with { 'opcion': 'Estadisticas', 'subopcion': 'Economicas' } %} {% endblock %}
@@ -18,4 +45,4 @@
 <BR/><BR/>
 <img src="{{ path('txinbometro_graficos_comparativaeconomica') }}" /></img>
 {% endblock %}
-
+#}

@@ -1,4 +1,48 @@
-<!DOCTYPE html>
+{% extends 'MopaBootstrapBundle::base.html.twig' %}
+
+{% block navbar %} {{ mopa_bootstrap_navbar('frontendNavbar') }} {% endblock navbar %}
+
+{% block head_style %}
+  
+
+{% stylesheets
+       '@TxinbometroBundle/Resources/public/less/dafuermopabootstrap.less'
+%}
+    <link href="{{ asset_url }}" type="text/css" rel="stylesheet" />
+    {% endstylesheets %}
+{#    
+    <link rel="stylesheet" type="text/css" href="{{ asset('bundles/dafuergetoptgenerator/css/reset-bootstrap-icons.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('bundles/manymulesfontawesome/css/font-awesome.css') }}" />
+#}
+{% endblock %}
+
+
+{% block container_class %}container{% endblock container_class %}
+
+{% block title %}Txinbometro{% endblock %}
+
+{% block page_header %}{% endblock %}
+
+{% block content %}
+
+    <div class="hero-unit" style="padding-top: 30px;">
+        <center>
+            <div class="page-header" style="border-bottom: 1px solid #862725;">
+                <h1>Txinbometro</h1>
+                <h2 style="color:gray">Controla y gestiona los gastos de tu vehiculo</h2>
+            </div>         
+        </center>
+        {% block bundle_content %}{% endblock %}
+    </div>
+{% endblock %}
+
+{% block footer %}<div class="hero-unit" style="padding: 0.5em;">&nbsp;<span class="pull-right">Dafuer - 2012 &copy;</span></div>{% endblock footer %}
+
+
+
+
+
+{#<!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -17,4 +61,4 @@
         {% endblock %}
         {% block javascripts %}{% endblock %}
     </body>
-</html>
+</html>#}
