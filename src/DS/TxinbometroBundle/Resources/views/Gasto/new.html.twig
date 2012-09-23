@@ -1,4 +1,29 @@
 {# src/DS/TxinbometroBundle/Resources/views/Gasto/new.html.twig #}
+
+{% extends "TxinbometroBundle::layout.html.twig" %}
+
+
+{% block bundle_content %}
+<h1>Gasto creation</h1>
+
+<form action="{{ path('txinbometro_gasto_create') }}" method="post" {{ form_enctype(form) }}>
+    {{ form_widget(form) }}
+    <p>
+        <button type="submit">Create</button>
+    </p>
+</form>
+
+<ul class="record_actions">
+    <li>
+        <a href="{{ path('txinbometro_gasto') }}">
+            Back to the list
+        </a>
+    </li>
+</ul>
+
+{{ tinymce_init() }}
+{% endblock %}
+{#
 {% extends "TxinbometroBundle::layout.html.twig" %}
 
 {% block menu %} {% render "TxinbometroBundle:Default:menu" with { 'opcion': 'Gasto', 'subopcion': '' } %} {% endblock %}
@@ -36,3 +61,4 @@
 
 {{ tinymce_init() }}
 {% endblock %}
+#}

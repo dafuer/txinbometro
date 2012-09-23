@@ -1,4 +1,49 @@
 {# src/DS/TxinbometroBundle/Resources/views/Gasto/show.html.twig #}
+
+{% extends "TxinbometroBundle::layout.html.twig" %}
+
+
+{% block bundle_content %}
+<h1>Gasto</h1>
+
+<table class="record_properties">
+    <tbody>
+        <tr>
+            <th>Id</th>                <td>{{ entity.id }}</td>        </tr>
+        <tr>
+            <th>Km</th>                <td>{{ entity.km }}</td>        </tr>
+        <tr>
+            <th>Fecha</th>                <td>{{ entity.fecha|date('Y-m-d H:i:s') }}</td>        </tr>
+        <tr>
+            <th>Tipo</th>                <td>{{ entity.tipo | capitalize }}</td>        </tr>
+        <tr>
+            <th>Coste</th>                <td>{{ entity.coste }}</td>        </tr>
+        <tr>
+            <th>Comentario</th>                <td>{{ entity.comentario | raw }}</td>        </tr>
+    </tbody>
+</table>
+
+<ul class="record_actions">
+    <li>
+        <a href="{{ path('txinbometro_gasto') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('txinbometro_gasto_edit', { 'id': entity.id }) }}">
+            Edit
+        </a>
+    </li>
+    <li>
+        <form action="{{ path('txinbometro_gasto_delete', { 'id': entity.id }) }}" method="post">
+            {{ form_widget(delete_form) }}
+            <button type="submit">Delete</button>
+        </form>
+    </li>
+</ul>
+
+{% endblock %}
+{#
 {% extends "TxinbometroBundle::layout.html.twig" %}
 
 {% block menu %} {% render "TxinbometroBundle:Default:menu" with { 'opcion': 'Gasto', 'subopcion': '' } %} {% endblock %}
@@ -42,3 +87,4 @@
     </li>
 </ul>
 {% endblock %}
+#}

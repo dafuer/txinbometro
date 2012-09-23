@@ -1,4 +1,42 @@
 {# src/DS/TxinbometroBundle/Resources/views/Gasolina/edit.html.twig #}
+
+{# src/DS/TxinbometroBundle/Resources/views/Gasolina/edit.html.twig #}
+
+
+{% extends "TxinbometroBundle::layout.html.twig" %}
+
+
+{% block bundle_content %}
+
+<h1>Gasolina edit</h1>
+
+<form action="{{ path('txinbometro_gasolina_update', { 'id': entity.id }) }}" method="post" {{ form_enctype(edit_form) }}>
+    {{ form_widget(edit_form) }}
+    <p>
+        <button type="submit">Edit</button>
+    </p>
+</form>
+
+<ul class="record_actions">
+    <li>
+        <a href="{{ path('txinbometro_gasolina') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>
+        <form action="{{ path('txinbometro_gasolina_delete', { 'id': entity.id }) }}" method="post">
+            {{ form_widget(delete_form) }}
+            <button type="submit">Delete</button>
+        </form>
+    </li>
+</ul>
+
+{{ tinymce_init() }}
+
+{% endblock %}
+
+{#
+
 {% extends "TxinbometroBundle::layout.html.twig" %}
 
 {% block menu %} {% render "TxinbometroBundle:Default:menu" with { 'opcion': 'Gasolina', 'subopcion': '' } %} {% endblock %}
@@ -42,3 +80,5 @@
 
 {{ tinymce_init() }}
 {% endblock %}
+
+#}

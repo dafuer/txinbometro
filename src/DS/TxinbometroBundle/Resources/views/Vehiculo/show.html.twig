@@ -1,4 +1,53 @@
 {# src/DS/TxinbometroBundle/Resources/views/Vehiculo/show.html.twig #}
+
+{% extends "TxinbometroBundle::layout.html.twig" %}
+
+
+{% block bundle_content %}
+<h1>Vehiculo</h1>
+
+<table class="record_properties">
+    <tbody>
+        <tr>
+            <th>Id</th>                <td>{{ entity.id }}</td>        </tr>
+        <tr>
+            <th>Tipo</th>                <td>{{ entity.tipo | capitalize }}</td>        </tr>
+        <tr>
+            <th>Marca</th>                <td>{{ entity.marca }}</td>        </tr>
+        <tr>
+            <th>Modelo</th>                <td>{{ entity.modelo }}</td>        </tr>
+        <tr>
+            <th>Compra</th>                <td>{{ entity.compra|date('Y-m-d') }}</td>        </tr>
+        <tr>
+            <th>Coste</th>                <td>{{ entity.coste }}</td>        </tr>
+        <tr>
+            <th>Km_iniciales</th>                <td>{{ entity.kminiciales }}</td>        </tr>
+        <tr>
+            <th>Capacidad</th>                <td>{{ entity.capacidad }}</td>        </tr>
+    </tbody>
+</table>
+
+<ul class="record_actions">
+    <li>
+        <a href="{{ path('txinbometro_vehiculo') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('txinbometro_vehiculo_edit', { 'id': entity.id }) }}">
+            Edit
+        </a>
+    </li>
+    <li>
+        <form action="{{ path('txinbometro_vehiculo_delete', { 'id': entity.id }) }}" method="post">
+            {{ form_widget(delete_form) }}
+            <button type="submit">Delete</button>
+        </form>
+    </li>
+</ul>
+{% endblock %}
+
+{#
 {% extends "TxinbometroBundle::layout.html.twig" %}
 
 {% block menu %} {% render "TxinbometroBundle:Default:menu" with { 'opcion': 'Vehiculo', 'subopcion': 'none' } %} {% endblock %}
@@ -46,3 +95,4 @@
     </li>
 </ul>
 {% endblock %}
+#}
