@@ -2,4 +2,4 @@ app/cache/
 app/logs/
 /nbproject/private/
 *~
-vendor
+vendor/
