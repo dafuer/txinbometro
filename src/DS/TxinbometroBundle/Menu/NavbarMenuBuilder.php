@@ -25,9 +25,17 @@ class NavbarMenuBuilder extends AbstractNavbarMenuBuilder
         $menu = $this->factory->createItem('root');
         $menu->setChildrenAttribute('class', 'nav');
 
-        $menu->addChild('Vehiculo',array('route' => 'txinbometro_vehiculo'));
-        $menu->addChild('Estadisticas',array('route' => 'txinbometro_estadisticas_general'));
+        $menu->addChild('Vehiculo',array('route' => 'txinbometro_vehiculo', 'label' => 'Veh&iacute;culo', 'extras'=>array('safe_label'=>true) ));
+        
+        $estadisticas=$this->createDropdownMenuItem($menu, 'Estadisticas' ); //addChild('Estadisticas',array('route' => 'txinbometro_estadisticas_general'));
+        $estadisticas->setLabel('Estad&iacute;sticas');
+        $estadisticas->setExtras(array('safe_label'=>true) );
+        $estadisticas->addChild('General',array('route' =>'txinbometro_estadisticas_general'));
+        $estadisticas->addChild('Mensual',array('route' =>'txinbometro_estadisticas_mensual'));
+        $estadisticas->addChild('Economicas',array('route' =>'txinbometro_estadisticas_economicas', 'label' => 'Econ&oacute;micas', 'extras'=>array('safe_label'=>true) ));
+        
         $menu->addChild('Gasolina',array('route' => 'txinbometro_gasolina'));
+        
         $menu->addChild('Gastos',array('route' => 'txinbometro_gasto'));
         
         /*
@@ -40,6 +48,7 @@ class NavbarMenuBuilder extends AbstractNavbarMenuBuilder
         return $menu;
     }
 
+/*    
     public function createRightSideDropdownMenu(Request $request)
     {
         $menu = $this->factory->createItem('root');
@@ -57,4 +66,5 @@ class NavbarMenuBuilder extends AbstractNavbarMenuBuilder
 
         return $menu;
     }
-}
+ */
+ }
