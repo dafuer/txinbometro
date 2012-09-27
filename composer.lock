@@ -20,18 +20,18 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/dafuer/DafuerJpgraphBundle",
-                "reference": "eabd897879870d88f91c99d06f0cab6b2bdec73d"
+                "reference": "2e4b9b79317e3af410364fd68c41982b5a58c952"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/dafuer/DafuerJpgraphBundle/zipball/eabd897879870d88f91c99d06f0cab6b2bdec73d",
-                "reference": "eabd897879870d88f91c99d06f0cab6b2bdec73d",
+                "url": "https://github.com/dafuer/DafuerJpgraphBundle/zipball/2e4b9b79317e3af410364fd68c41982b5a58c952",
+                "reference": "2e4b9b79317e3af410364fd68c41982b5a58c952",
                 "shasum": ""
             },
             "require": {
                 "asial/jpgraph": "3.5.0b1"
             },
-            "time": "1348644351",
+            "time": "1348729900",
             "type": "symfony-bundle",
             "installation-source": "source",
             "autoload": {
@@ -178,12 +178,12 @@
             "source": {
                 "type": "git",
                 "url": "git://github.com/doctrine/DoctrineBundle.git",
-                "reference": "065947875fd66b3f89ed01f94859e8600491ada5"
+                "reference": "274c24f8ddc8924cc9cbe63b937e031a9068db5a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/doctrine/DoctrineBundle/zipball/065947875fd66b3f89ed01f94859e8600491ada5",
-                "reference": "065947875fd66b3f89ed01f94859e8600491ada5",
+                "url": "https://github.com/doctrine/DoctrineBundle/zipball/274c24f8ddc8924cc9cbe63b937e031a9068db5a",
+                "reference": "274c24f8ddc8924cc9cbe63b937e031a9068db5a",
                 "shasum": ""
             },
             "require": {
@@ -200,7 +200,7 @@
             "suggest": {
                 "doctrine/orm": "The Doctrine ORM integration is optional in the bundle."
             },
-            "time": "1348519642",
+            "time": "1348752376",
             "type": "symfony-bundle",
             "extra": {
                 "branch-alias": {
@@ -977,12 +977,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/phiamo/MopaBootstrapBundle.git",
-                "reference": "b6887c29eed58a9bd3c933fb0d6f43505b10a04e"
+                "reference": "9dc78e5b18dfcd12fc06247dd95fe11ea225b3df"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/phiamo/MopaBootstrapBundle/zipball/b6887c29eed58a9bd3c933fb0d6f43505b10a04e",
-                "reference": "b6887c29eed58a9bd3c933fb0d6f43505b10a04e",
+                "url": "https://github.com/phiamo/MopaBootstrapBundle/zipball/9dc78e5b18dfcd12fc06247dd95fe11ea225b3df",
+                "reference": "9dc78e5b18dfcd12fc06247dd95fe11ea225b3df",
                 "shasum": ""
             },
             "require": {
@@ -996,7 +996,7 @@
                 "knplabs/knp-menu-bundle": "1.1.*",
                 "thomas-mcdonald/bootstrap-sass": "dev-master"
             },
-            "time": "1348581913",
+            "time": "1348773189",
             "type": "symfony-bundle",
             "extra": {
                 "branch-alias": {
@@ -1278,18 +1278,18 @@
             "source": {
                 "type": "git",
                 "url": "git://github.com/swiftmailer/swiftmailer.git",
-                "reference": "1e5482485f30a2431f9b8eb19a091eef4b57008c"
+                "reference": "1a987b45ea8dcbbe9680499800c67fc97a2d07f6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/swiftmailer/swiftmailer/zipball/1e5482485f30a2431f9b8eb19a091eef4b57008c",
-                "reference": "1e5482485f30a2431f9b8eb19a091eef4b57008c",
+                "url": "https://github.com/swiftmailer/swiftmailer/zipball/1a987b45ea8dcbbe9680499800c67fc97a2d07f6",
+                "reference": "1a987b45ea8dcbbe9680499800c67fc97a2d07f6",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.2.4"
             },
-            "time": "1347542176",
+            "time": "1348747908",
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -1500,12 +1500,12 @@
             "source": {
                 "type": "git",
                 "url": "git://github.com/symfony/symfony.git",
-                "reference": "21d16e60fa2d4dc12a489817070896daf806b55d"
+                "reference": "f62fa8a79edc94240a7fd3ef3096ddd789eced4f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/symfony/symfony/zipball/21d16e60fa2d4dc12a489817070896daf806b55d",
-                "reference": "21d16e60fa2d4dc12a489817070896daf806b55d",
+                "url": "https://github.com/symfony/symfony/zipball/f62fa8a79edc94240a7fd3ef3096ddd789eced4f",
+                "reference": "f62fa8a79edc94240a7fd3ef3096ddd789eced4f",
                 "shasum": ""
             },
             "require": {
@@ -1554,7 +1554,7 @@
                 "propel/propel1": "dev-master",
                 "monolog/monolog": "dev-master"
             },
-            "time": "1348488710",
+            "time": "1348749927",
             "type": "library",
             "extra": {
                 "branch-alias": {

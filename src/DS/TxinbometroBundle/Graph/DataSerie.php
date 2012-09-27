@@ -1,7 +1,10 @@
 <?php
 
+namespace DS\TxinbometroBundle\Graph;
 
-class DataSerieAccess extends BaseDataAccess {
+use Dafuer\JpgraphBundle\Graph\BaseDataAccess;
+
+class DataSerie extends BaseDataAccess {
 
     public function __construct() {
         $this->graphindexpath = __DIR__ . "/DataSerie.yml";
@@ -11,7 +14,7 @@ class DataSerieAccess extends BaseDataAccess {
 
 
 
-    public function AeroClim($params) {
+    public function consumoGeneralKm($params) {
         
         if (!isset($params['station']))
             return $this->emptyResult();

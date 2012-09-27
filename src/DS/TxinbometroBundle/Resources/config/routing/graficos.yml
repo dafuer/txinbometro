@@ -1,4 +1,9 @@
     
+txinbometro_graficos_graphs:
+    pattern:  /graphs
+    defaults: { _controller: "TxinbometroBundle:Graficos:graph" }
+
+    
 txinbometro_graficos_consumogeneralkm:
     pattern:  /graph
     defaults: { _controller: "TxinbometroBundle:Graficos:consumogeneralkm" }

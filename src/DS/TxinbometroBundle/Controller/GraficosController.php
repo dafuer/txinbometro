@@ -5,7 +5,7 @@ namespace DS\TxinbometroBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
-
+use DS\TxinbometroBundle\Graph;
 
 class GraficosController extends Controller
 {
@@ -14,9 +14,9 @@ class GraficosController extends Controller
     public function graphAction() {   
         $request = $this->get('request');
 
-        $dataaccess=new Graph\DataSerieAccess;
+        $dataaccess=new Graph\DataSerie;
         
-        return $this->forward('DafuerJpgraphBundle:Graph:query', array('request' => $request, 'dataaccess' => $dataaccess)); //'dataaccess'=>$dataaccess));
+        return $this->forward('DafuerJpgraphBundle:Graph:query', array('request' => $request, 'dataaccess' => $dataaccess)); 
     }
     
     

@@ -1,0 +1,13 @@
+consumogeneralkm:
+    role: ROLE_USER
+    function: consumoGeneralKm
+    description: Consumo general a lo largo de los kilometros
+    style: lineplot_timeserie
+    custom_style:
+        graph_title: Evolucion consumo respecto a los kilometros
+        lineplot_legend: Litros a los 100 km
+        graph_yaxis_title: litros/100km
+        graph_xaxis_title: Kms
+        lineplot_marks: 0
+        graph_xaxis_title_position:  "high"        
+    classify: Consumo  
