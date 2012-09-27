@@ -19,10 +19,12 @@ class AppKernel extends Kernel
             new JMS\SecurityExtraBundle\JMSSecurityExtraBundle(),
             new JMS\AopBundle\JMSAopBundle(),
             new Stfalcon\Bundle\TinymceBundle\StfalconTinymceBundle(),
-        new Mopa\Bundle\BootstrapBundle\MopaBootstrapBundle(),
-        new Knp\Bundle\MenuBundle\KnpMenuBundle(),
-        new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
-        //new Craue\FormFlowBundle\CraueFormFlowBundle(),            
+            new Mopa\Bundle\BootstrapBundle\MopaBootstrapBundle(),
+            new Knp\Bundle\MenuBundle\KnpMenuBundle(),
+            new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
+            new Dafuer\JpgraphBundle\DafuerJpgraphBundle(),
+
+            //new Craue\FormFlowBundle\CraueFormFlowBundle(),            
             new FOS\UserBundle\FOSUserBundle(),
             new DS\TxinbometroBundle\TxinbometroBundle(),
         );

@@ -1,0 +1,218 @@
+# Autor: David Fuertes
+# github: dafuer
+
+# Here you can define you graph styles_
+# The rules are simply: Only one level of nesting_ Two level only for style tag_
+# One element one object
+# Style tag is remplaced with de values of the linked tag
+
+    
+# all options are___
+
+#generic_graph: tag_name
+#    graph_width: integer
+#    graph_height: integer
+#    graph_scale: XXXXXXXXXXXXX
+#    graph_box: boolean
+#    graph_title: string
+#    graph_title_font: string XXXX
+#    graph_xaxis_ticklabels: array # Array de valores o %XDATA% para referirse a los valores del array de X_
+#    graph_yaxis_hidezerolabel: boolean
+#    graph_yaxis_hideline: boolean
+#    graph_xgrid_show: true
+#    graph_xgrid_linestyle: "solid"
+#    graph_xgrid_color: '#E3E3E3'   
+#    graph_img_antialiasing: false
+#    graph_legend_frameweight: integer
+#    graph_margincolor: color
+#    graph_frame: [boolean,color, integer] #[draw it?, color, width]
+#    
+#generic_lineplot:
+#    lineplot_color: color
+#    lineplot_weight: integer
+#    lineplot_legend: string
+#    lineplot_marks: integer #If #points < max_ptos_to_mark, marks are used_ If -1 never used_ if 0 never use mark_ if -1 always use mark_
+#    lineplot_mark_color: color
+#    lineplot_mark_width: integer
+
+# graph_xaxis_scale_dateformat: 'Y'
+
+#graph_yscale_min
+#...
+
+# You can put here your styles_ If you want that the examples run properly, you can't remove example styles
+
+graph_example:
+    graph: graph
+    graph_width: 300   
+    graph_height: 250
+    graph_scale: "textlin" 
+    graph_box: false
+    graph_antialiasing: false
+    graph_title: "My graph"    
+
+graph_example2: 
+    style: [ "graph_example" ]
+    graph_width: 600   
+    graph_height: 400
+    graph_scale: "intlin" 
+    graph_box: false
+    graph_antialiasing: false
+       
+xaxis_example: 
+    graph_xaxis_ticklabels: [ 'A', 'B', 'C', 'D' ]
+    graph_xaxis_linestyle: "solid"
+      
+lineplot_example:
+    style: [ xaxis_example , yaxis_timeserie , lineplot_mark_timeserie ]
+    lineplot: lineplot
+    lineplot_color: "#6495ED"
+    lineplot_legend: 'Line1'
+    graph_xaxis_labelangle: 0 
+
+
+##### FIN DE EXAMPLES #####################
+
+background:
+   graph_margincolor: "#F5F5F5" 
+   
+title_general: 
+    graph_title: ''
+    graph_title_font_family: FF_ARIAL
+    graph_title_font_style: FS_BOLD #require font_family to set
+    graph_title_font_size: 12 #require font_style to set 
+    
+graph_pie:
+    style: [ title_general ]
+    graph: piegraph
+    graph_width: 400   
+    graph_height: 250
+    title: ''
+    
+pieplot_general:
+    style: [ 'background', 'graph_pie' ]
+    lineplot: pieplot
+    
+
+graph_gantt:
+    style: [ title_general ]
+    graph: ganttgraph
+    graph_width: 500   
+    graph_height: 250
+    title: ''  
+
+ganttplot_general:
+    style: [ 'background', 'graph_gantt' ]
+    lineplot: ganttplot    
+    lineplot_weight: 10
+
+graph_timeserie:
+    style: [  background, title_general , xgrid_timeserie , legend_timeserie ]
+    graph: graph
+    graph_width: 400   
+    graph_height: 250
+    graph_scale: "intlin" 
+    graph_box: false
+    graph_title: ''
+    graph_img_antialiasing: false
+    graph_img_margin_left: 60
+    graph_img_margin_right: 30
+    graph_img_margin_top: 20
+    graph_img_margin_bottom: 80
+    graph_frame: [false,'#555555', 1]
+    graph_clipping: true    
+    
+    
+error_graph:
+    canvasgraph_width: 10
+    canvasgraph_height: 10
+    canvasgraph_color: '#f5f5f5'
+
+legend_timeserie:
+    graph_legend_frameweight: 1
+    graph_legend_abspos_x:      0.0             # 0.0
+    graph_legend_abspos_y:      20.0            # 20.0
+    graph_legend_abspos_halign: right           # right
+    graph_legend_abspos_valign: top             # top
+    graph_legend_layout:        LEGEND_VERT     # LEGEND_VERT
+    graph_legend_shadow:        darkgray@0.5    # 'darkgray@0.5'
+    graph_legend_fillcolor:     white@0         # 'white@0'
+    graph_legend_hide:          true            # true    
+  
+xaxis_timeserie: 
+    #graph_xaxis_ticklabels: [ 'a', 'b', 'c', 'd' ]
+    graph_xaxis_title: ''
+    graph_xaxis_labelangle: 90 
+    graph_xaxis_labelformatcallback: AutoTimeCallback
+    graph_xaxis_pos: min  
+    graph_xaxis_titlemargin: 30
+    graph_xaxis_title_position: "middle" # "high", "middle" and "low"
+
+yaxis_timeserie: 
+    graph_yaxis_number: 0
+    graph_yaxis_hidezerolabel: true
+    graph_yaxis_hideline: false
+    graph_yaxis_title: ''
+    graph_yaxis_titlemargin: 45   
+                               
+                
+xgrid_timeserie: 
+    graph_xgrid_show: true
+    graph_xgrid_linestyle: "solid"
+    graph_xgrid_color: '#E3E3E3'
+    graph_xgrid_linestyle: "solid"
+        
+ygrid_timeserie:
+    graph_ygrid_fill: [true, '#FF99FF@0.9', '#CCCCDD@0.9']
+      
+lineplot_mark_timeserie:
+    lineplot: lineplot
+    lineplot_marks: -1
+    lineplot_mark_color: %lineplot_color%
+    lineplot_mark_fillcolor: %lineplot_color%
+    lineplot_mark_width: 3
+    lineplot_mark_type: MARK_X
+       
+lineplot_timeserie:
+    style: [  graph_timeserie , xaxis_timeserie , yaxis_timeserie , lineplot_mark_timeserie, ygrid_timeserie ]
+    lineplot: lineplot
+    lineplot_color: "#6495ED"
+    lineplot_weight: 1
+    lineplot_legend: ''
+    graph_yscale_autoticks: true
+    #graph_yscale_grace_min: 0
+    #graph_yscale_grace_min: 0
+    graph_xaxis_labelformatcallback:  AutoTimeCallback
+    graph_xaxis_labelangle: 90    
+
+errorlineplot_timeserie:
+    style: [ lineplot_timeserie ]
+    lineplot: errorlineplot
+    errorlineplot_color: gray
+    lineplot_marks: 0
+    
+    
+boxplot_timeserie:
+    style: [ lineplot_timeserie ]
+    lineplot: boxplot 
+    
+barplot_timeserie:
+    style: [ lineplot_timeserie ]
+    lineplot: barplot     
+
+scatterplot_general:
+    style: [ lineplot_timeserie ]
+    lineplot: scatterplot   
+    graph_scale: intlin
+    graph_xaxis_labelformatcallback: %%%
+    
+barplot_general:
+    style: [ lineplot_timeserie ]
+    lineplot: barplot  
+    graph_scale: 'intlin'
+
+lineplot_general:
+    style: [ lineplot_timeserie ]
+    lineplot: lineplot  
+    graph_scale: 'intlin'
+    graph_xaxis_labelformatcallback: %%%

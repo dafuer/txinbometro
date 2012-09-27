@@ -9,6 +9,17 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
 class GraficosController extends Controller
 {
+    
+
+    public function graphAction() {   
+        $request = $this->get('request');
+
+        $dataaccess=new Graph\DataSerieAccess;
+        
+        return $this->forward('DafuerJpgraphBundle:Graph:query', array('request' => $request, 'dataaccess' => $dataaccess)); //'dataaccess'=>$dataaccess));
+    }
+    
+    
     /**
      * 
      * @Template()

@@ -22,8 +22,10 @@
     "twitter/bootstrap": "master",
     "knplabs/knp-paginator-bundle": "dev-master",
     "knplabs/knp-menu-bundle": "dev-master",    
-    "mopa/bootstrap-bundle": "dev-master",
-    "friendsofsymfony/user-bundle": "*"
+    "mopa/bootstrap-bundle": "master",
+    "mopa/composer-bridge": "dev-master",
+    "friendsofsymfony/user-bundle": "*",
+    "dafuer/dafuer-jpgraph-bundle": "*"
 },
 "scripts": {
     "post-install-cmd": [
@@ -54,6 +56,20 @@
                     "reference": "v2.0.4"
                 }
             }
-        }
+        },
+            {
+                "type": "package",
+                "package":{
+                    "name": "asial/jpgraph",
+                    "version": "3.5.0b1",
+                    "dist":{
+                        "url": "http://jpgraph.net/download/download.php?p=5",
+                        "type": "tar"
+                    }
+                }
+            }            
+        
 ]
+
+
 }

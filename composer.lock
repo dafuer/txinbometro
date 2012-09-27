@@ -1,6 +1,46 @@
 {
-    "hash": "57d5824eeca67114a3b0237568224ead",
+    "hash": "6de7d8db1aefde5b326c4da30cb6f10b",
     "packages": [
+        {
+            "name": "asial/jpgraph",
+            "version": "3.5.0b1",
+            "dist": {
+                "type": "tar",
+                "url": "http://jpgraph.net/download/download.php?p=5",
+                "reference": null,
+                "shasum": null
+            },
+            "type": "library",
+            "installation-source": "dist"
+        },
+        {
+            "name": "dafuer/dafuer-jpgraph-bundle",
+            "version": "dev-master",
+            "target-dir": "Dafuer/JpgraphBundle",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/dafuer/DafuerJpgraphBundle",
+                "reference": "eabd897879870d88f91c99d06f0cab6b2bdec73d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://github.com/dafuer/DafuerJpgraphBundle/zipball/eabd897879870d88f91c99d06f0cab6b2bdec73d",
+                "reference": "eabd897879870d88f91c99d06f0cab6b2bdec73d",
+                "shasum": ""
+            },
+            "require": {
+                "asial/jpgraph": "3.5.0b1"
+            },
+            "time": "1348644351",
+            "type": "symfony-bundle",
+            "installation-source": "source",
+            "autoload": {
+                "psr-0": {
+                    "Dafuer\\JpgraphBundle": ""
+                }
+            },
+            "description": "This package provides a easy integration of jpgraph library into Symfony2 project"
+        },
         {
             "name": "doctrine/common",
             "version": "2.3.x-dev",
@@ -138,12 +178,12 @@
             "source": {
                 "type": "git",
                 "url": "git://github.com/doctrine/DoctrineBundle.git",
-                "reference": "d3c930599723c8343472a5791b0f5909a4111a73"
+                "reference": "065947875fd66b3f89ed01f94859e8600491ada5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/doctrine/DoctrineBundle/zipball/d3c930599723c8343472a5791b0f5909a4111a73",
-                "reference": "d3c930599723c8343472a5791b0f5909a4111a73",
+                "url": "https://github.com/doctrine/DoctrineBundle/zipball/065947875fd66b3f89ed01f94859e8600491ada5",
+                "reference": "065947875fd66b3f89ed01f94859e8600491ada5",
                 "shasum": ""
             },
             "require": {
@@ -160,7 +200,7 @@
             "suggest": {
                 "doctrine/orm": "The Doctrine ORM integration is optional in the bundle."
             },
-            "time": "1347289964",
+            "time": "1348519642",
             "type": "symfony-bundle",
             "extra": {
                 "branch-alias": {
@@ -372,7 +412,7 @@
                 {
                     "name": "Johannes M. Schmitt",
                     "email": "schmittjoh@gmail.com",
-                    "homepage": "http://jmsyst.com",
+                    "homepage": "https://github.com/schmittjoh",
                     "role": "Developer of wrapped JMSSerializerBundle"
                 }
             ],
@@ -414,7 +454,7 @@
                 {
                     "name": "Johannes M. Schmitt",
                     "email": "schmittjoh@gmail.com",
-                    "homepage": "https://github.com/schmittjoh",
+                    "homepage": "http://jmsyst.com",
                     "role": "Developer of wrapped JMSSerializerBundle"
                 }
             ],
@@ -516,7 +556,7 @@
                 {
                     "name": "Johannes M. Schmitt",
                     "email": "schmittjoh@gmail.com",
-                    "homepage": "https://github.com/schmittjoh",
+                    "homepage": "http://jmsyst.com",
                     "role": "Developer of wrapped JMSSerializerBundle"
                 }
             ],
@@ -579,7 +619,7 @@
                 {
                     "name": "Johannes M. Schmitt",
                     "email": "schmittjoh@gmail.com",
-                    "homepage": "http://jmsyst.com",
+                    "homepage": "https://github.com/schmittjoh",
                     "role": "Developer of wrapped JMSSerializerBundle"
                 }
             ],
@@ -741,7 +781,7 @@
                     "email": "stof@notk.org"
                 },
                 {
-                    "name": "Knplabs",
+                    "name": "KnpLabs",
                     "homepage": "http://knplabs.com"
                 },
                 {
@@ -937,12 +977,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/phiamo/MopaBootstrapBundle.git",
-                "reference": "8d52545a75bf09bf42fb38a48026cdeb918a0f80"
+                "reference": "b6887c29eed58a9bd3c933fb0d6f43505b10a04e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/phiamo/MopaBootstrapBundle/zipball/8d52545a75bf09bf42fb38a48026cdeb918a0f80",
-                "reference": "8d52545a75bf09bf42fb38a48026cdeb918a0f80",
+                "url": "https://github.com/phiamo/MopaBootstrapBundle/zipball/b6887c29eed58a9bd3c933fb0d6f43505b10a04e",
+                "reference": "b6887c29eed58a9bd3c933fb0d6f43505b10a04e",
                 "shasum": ""
             },
             "require": {
@@ -956,7 +996,7 @@
                 "knplabs/knp-menu-bundle": "1.1.*",
                 "thomas-mcdonald/bootstrap-sass": "dev-master"
             },
-            "time": "1348139117",
+            "time": "1348581913",
             "type": "symfony-bundle",
             "extra": {
                 "branch-alias": {
@@ -1186,19 +1226,19 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/stfalcon/TinymceBundle",
-                "reference": "ce971ecc1b0e4ea62bcf814f5a132e377646be5b"
+                "reference": "58ad3b0edd3798e3052cd3f955f7e8badda0a614"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/stfalcon/TinymceBundle/zipball/ce971ecc1b0e4ea62bcf814f5a132e377646be5b",
-                "reference": "ce971ecc1b0e4ea62bcf814f5a132e377646be5b",
+                "url": "https://github.com/stfalcon/TinymceBundle/zipball/58ad3b0edd3798e3052cd3f955f7e8badda0a614",
+                "reference": "58ad3b0edd3798e3052cd3f955f7e8badda0a614",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.3.0",
                 "symfony/symfony": ">=2.1"
             },
-            "time": "1348039144",
+            "time": "1348670903",
             "type": "symfony-bundle",
             "installation-source": "source",
             "autoload": {
@@ -1460,12 +1500,12 @@
             "source": {
                 "type": "git",
                 "url": "git://github.com/symfony/symfony.git",
-                "reference": "237629ad64b4b6ce2d2c6ad15a2085f128d6f11e"
+                "reference": "21d16e60fa2d4dc12a489817070896daf806b55d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/symfony/symfony/zipball/237629ad64b4b6ce2d2c6ad15a2085f128d6f11e",
-                "reference": "237629ad64b4b6ce2d2c6ad15a2085f128d6f11e",
+                "url": "https://github.com/symfony/symfony/zipball/21d16e60fa2d4dc12a489817070896daf806b55d",
+                "reference": "21d16e60fa2d4dc12a489817070896daf806b55d",
                 "shasum": ""
             },
             "require": {
@@ -1514,7 +1554,7 @@
                 "propel/propel1": "dev-master",
                 "monolog/monolog": "dev-master"
             },
-            "time": "1348209286",
+            "time": "1348488710",
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -1600,18 +1640,18 @@
             "source": {
                 "type": "git",
                 "url": "git://github.com/fabpot/Twig.git",
-                "reference": "b4d1d62b82e83c6fd3d5a6cd46a186de64275bb4"
+                "reference": "b8c917972f74da88f0e930ea32a90566739d87ac"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/fabpot/Twig/zipball/b4d1d62b82e83c6fd3d5a6cd46a186de64275bb4",
-                "reference": "b4d1d62b82e83c6fd3d5a6cd46a186de64275bb4",
+                "url": "https://github.com/fabpot/Twig/zipball/b8c917972f74da88f0e930ea32a90566739d87ac",
+                "reference": "b8c917972f74da88f0e930ea32a90566739d87ac",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.2.4"
             },
-            "time": "1347961095",
+            "time": "1348667791",
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -1665,6 +1705,6 @@
         "stfalcon/tinymce-bundle": 20,
         "knplabs/knp-paginator-bundle": 20,
         "knplabs/knp-menu-bundle": 20,
-        "mopa/bootstrap-bundle": 20
+        "mopa/composer-bridge": 20
     }
 }

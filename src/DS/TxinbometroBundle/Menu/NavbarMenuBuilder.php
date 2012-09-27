@@ -26,10 +26,11 @@ class NavbarMenuBuilder extends AbstractNavbarMenuBuilder
         $menu->setChildrenAttribute('class', 'nav');
 
         $menu->addChild('Vehiculo',array('route' => 'txinbometro_vehiculo', 'label' => 'Veh&iacute;culo', 'extras'=>array('safe_label'=>true) ));
-        
-        $estadisticas=$this->createDropdownMenuItem($menu, 'Estadisticas' ); //addChild('Estadisticas',array('route' => 'txinbometro_estadisticas_general'));
-        $estadisticas->setLabel('Estad&iacute;sticas');
-        $estadisticas->setExtras(array('safe_label'=>true) );
+ 
+        $estadisticas=$this->createDropdownMenuItem($menu, 'Estadisticas', true,array(),array('label'=>'Estad&iacute;sticas', 'extras'=>array('safe_label'=>true))); 
+        //$estadisticas=$this->createDropdownMenuItem($menu, 'Estadisticas' );
+        //$estadisticas->setLabel('Estad&iacute;sticas');
+        //$estadisticas->setExtras(array('safe_label'=>true) );
         $estadisticas->addChild('General',array('route' =>'txinbometro_estadisticas_general'));
         $estadisticas->addChild('Mensual',array('route' =>'txinbometro_estadisticas_mensual'));
         $estadisticas->addChild('Economicas',array('route' =>'txinbometro_estadisticas_economicas', 'label' => 'Econ&oacute;micas', 'extras'=>array('safe_label'=>true) ));

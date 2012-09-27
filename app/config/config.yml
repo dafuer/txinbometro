@@ -114,3 +114,10 @@ mopa_bootstrap:
                 icon: trash
             widget_add_btn:
                 icon: plus-sign               
+
+
+dafuer_jpgraph: 
+    constants: 
+        jpg-config.inc.php:
+            TTF_DIR:   '/usr/share/fonts/truetype/msttcorefonts/'
+            MBTTF_DIR: '/usr/share/fonts/truetype/msttcorefonts/'
