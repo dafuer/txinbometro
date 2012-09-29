@@ -14,16 +14,14 @@ class GraficosController extends Controller
     public function graphAction() {   
         $request = $this->get('request');
 
-        $dataaccess=new Graph\DataSerie($this->get('session'));
+        $dataaccess=new Graph\DataSerie($this->get('session'), $this->getDoctrine()->getEntityManager());
         
         return $this->forward('DafuerJpgraphBundle:Graph:query', array('request' => $request, 'dataaccess' => $dataaccess)); 
     }
     
     
     /**
-     * 
-     * @Template()
-     */
+    
     public function consumogeneralkmAction() {
         //$vehiculo = $this->container->get('security.context')->getToken()->getUser()->getVehiculo();
         
@@ -352,5 +350,5 @@ class GraficosController extends Controller
         
         $graph->Stroke();        
     }
-
+*/
 }

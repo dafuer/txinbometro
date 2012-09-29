@@ -146,7 +146,7 @@ xaxis_timeserie:
     graph_xaxis_labelformatcallback: AutoTimeCallback
     graph_xaxis_pos: min  
     graph_xaxis_titlemargin: 30
-    graph_xaxis_title_position: "middle" # "high", "middle" and "low"
+    graph_xaxis_title_position: "high" # "high", "middle" and "low"
 
 yaxis_timeserie: 
     graph_yaxis_number: 0

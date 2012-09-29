@@ -28,7 +28,7 @@ consumogeneralkm:
     classify: Consumo  
     
 comparativauso:
-    roles: [ IS_AUTHENTICATED_ANONYMOUSLY ]
+    roles: ROLE_USER
     function: comparativaUso
     description: Comparativa de los tipos de usos dados
     style: pieplot_general
@@ -36,4 +36,42 @@ comparativauso:
         graph_title: Comparativa de uso
         lineplot_legend: ['Urabano','Mixto','Carretera']
         lineplot_slicecolors: [ '#d86464','#e8ea60','#7dda7a' ]
+    classify: Comparativa  
+    
+usomensual:
+    role: ROLE_USER
+    function: usoMensual
+    description: Kilometros recorridos cada mes
+    style: lineplot_general
+    custom_style:
+        graph_title: Uso mensual
+        graph_yaxis_title: kms
+        graph_xaxis_title: fecha
+        lineplot_marks: "0"
+        graph_yscale_min: "0"
+        graph_plots:
+            total: 
+                lineplot_color: black
+                lineplot_legend: 'consumo'
+            carretera:
+                lineplot_color: green
+                lineplot_legend: 'carretera'
+            mixto:
+                lineplot_color: darkgoldenrod3
+                lineplot_legend: 'mixto'
+            urbano: 
+                lineplot_color:  red
+                lineplot_legend: 'urbano'
+    classify: Consumo  
+    
+    
+comparativaeconomica:
+    roles: ROLE_USER
+    function: comparativaEconomica
+    description: Comparativa del gasto de las distintas partidas
+    style: pieplot_general
+    custom_style:
+        graph_title: Comparativa economica
+        lineplot_legend: ['Moto','Revision','Complementos','Seguros','Gasolina','Repuestos']
+        lineplot_slicecolors: [ '#d86464','#e8ea60','#7dda7a','#ddaaaa','#aaaadd','#aaddaa' ]
     classify: Comparativa  

@@ -3,18 +3,20 @@
 namespace DS\TxinbometroBundle\Graph;
 
 use Dafuer\JpgraphBundle\Graph\BaseDataAccess;
+use DS\TxinbometroBundle\Entity;
 
 class DataSerie extends BaseDataAccess {
 
     protected $session;
+    protected $em;
 
-
-    public function __construct($session) {
+    public function __construct($session,$em) {
         $this->graphindexpath = __DIR__ . "/DataSerie.yml";
 
         parent::__construct();
         
         $this->session=$session;
+        $this->em=$em;
     }
 
 
@@ -80,15 +82,83 @@ class DataSerie extends BaseDataAccess {
         $xdata=array('Urabano','Mixto','Carretera');        
         $ydata = array($km['urbano'], $km['mixto'],$km['carretera']);
   
-//        $pieplot->SetLegends($xdata);
-
 //        $lbl = array($km['urbano']."km \n%.1f%%",$km['mixto']."km \n%.1f%%",$km['carretera']."km \n%.1f%%");
 
 //        $pieplot->SetLabels($lbl);
 //        $pieplot->SetLabelPos(1);
-     
+           
+        return array( 'ydata'=>array( 'pie'=>$ydata) ); 
+    }
+    
+      public function usoMensual($params) {
+        $meses=$km=$lista= $this->session->get('resumenConsumo')->getMeses();
+
+        $c=0;
+        $f=array();
+        $xdata=array();
+        $ydata=array();
+
+        $j=count($meses)-1;
+        // Creo los puntos
+        for ($i=0;$i<count($meses);$i++) {
+            $f[$i]=$j;
+            $xdata[$i]=$meses[$j]['fecha']['total'];
+            $ydata[$i]=$meses[$i]['km_recorridos']['total'];
+
+            $fc[$i]=$j;
+            $xdatac[$i]=$meses[$j]['fecha']['carretera'];
+            $ydatac[$i]=$meses[$i]['km_recorridos']['carretera'];
+
+            $fu[$i]=$j;
+            $xdatau[$i]=$meses[$j]['fecha']['mixto'];
+            $ydatau[$i]=$meses[$i]['km_recorridos']['mixto'];
+
+            $fm[$i]=$j;
+            $xdatam[$i]=$meses[$j]['fecha']['urbano'];
+            $ydatam[$i]=$meses[$i]['km_recorridos']['urbano'];
+            $j--;
+        }
+
+       
+        return array('xdata'=>array('carretera'=>$f,'mixto'=>$f,'urbano'=>$f,'total'=>$f), 'ydata'=>array( 'carretera'=>$ydatac, 'mixto'=>$ydatam, 'urbano'=>$ydatau,'total'=>$ydata));
+          
+      }
+      
+      
+      
+      public function comparativaEconomica($params) {
         
-        return array( 'ydata'=>array( 'pie'=>$ydata) ); //, 'custom'=>array('pie'=>array('lineplot_slicecolors'=>$colors)) );
-    }    
+        $vehiculo=$this->session->get('vehiculo');
+
+        $lista_datos = $this->em->getRepository('TxinbometroBundle:Gasto')->getAllFrom($vehiculo->getId());
+        
+        $motototal=$vehiculo->getCoste();
+
+        $costerevisiones=0;
+        $costecomplementos=0;
+        $costeseguros=0;
+        $costerepuestos=0;
+        $a='';
+        
+
+        $i=0;
+        foreach($lista_datos as $dato) {
+            if($dato->getTipo()=='revision') $costerevisiones+=$dato->getCoste();
+            if($dato->getTipo()=='complemento') $costecomplementos+=$dato->getCoste();
+            if($dato->getTipo()=='seguro') $costeseguros+=$dato->getCoste();
+            if($dato->getTipo()=='repuesto') $costerepuestos+=$dato->getCoste();            
+        }
+        
+        $costeLitros=$this->session->get('resumenConsumo')->getCosteLitros();
+
+        $sumatotal=$motototal+$costerevisiones+$costecomplementos+$costerepuestos+$costeseguros+$costeLitros['total'];
+
+        $xdata=array('Moto','Revision','Complementos','Seguros','Gasolina','Repuestos');
+
+        $ydata = array($motototal, $costerevisiones,$costecomplementos,$costecomplementos,$costeLitros['total'],$costerepuestos);
+       
+         
+        return array( 'ydata'=>array( 'pie'=>$ydata) ); 
+      }
     
 }
