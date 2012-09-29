@@ -14,18 +14,3 @@
 <img src="{{ path('txinbometro_graficos_graphs',{'dataserie':'comparativauso'}) }}" /></img>
 </center>
 {% endblock %}
-
-{#
-{% extends "TxinbometroBundle::layout.html.twig" %}
-
-{% block menu %} {% render "TxinbometroBundle:Default:menu" with { 'opcion': 'Estadisticas', 'subopcion': 'General' } %} {% endblock %}
-
-{% block body %}
-<h1>Estad&iacute;sticas Generales</h1>
-
-<img src="{{ path('txinbometro_graficos_consumogeneralkm') }}" /></img>
-<BR/><BR/>
-<img src="{{ path('txinbometro_graficos_comparativauso') }}" /></img>
-{% endblock %}
-
-#}

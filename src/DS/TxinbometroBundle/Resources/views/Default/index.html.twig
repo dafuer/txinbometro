@@ -31,33 +31,7 @@ Si eres usuario <a href="{{ path('fos_user_security_login') }}">accede</a>, sino
 
 {% endblock %}
 
-{#
 
-{% extends "TxinbometroBundle::layout.html.twig" %}
-
-{% block menu %} {% render "TxinbometroBundle:Default:menu" with { 'opcion': 'Principal', 'subopcion': 'index' } %} {% endblock %}
-
-{% block body %}
-Bienvenido {{ app.user ? app.user.username : 'invitado' }} a la p&aacute;gina web Txinbometro donde podr&aacute;s mantener un seguimiento del uso y consumo de t&uacute; veh&iacute;culo.
-
-
-
-<BR/><BR/><BR/><BR/>
-Si eres usuario <a href="{{ path('fos_user_security_login') }}">accede</a>, sino <a href="{{ path('fos_user_registration_register') }}">registrate</a>.
-
-<BR/>
-<hr/>
-<BR/>
-
-(Aqui van estadisticas generales del usuario)<BR/>
-(km's en el ultimo mes)<BR/>
-...
-
-<BR/>
-<BR/>
-{% endblock %}
-
-#}
 
 
 
