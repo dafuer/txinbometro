@@ -74,7 +74,7 @@ lineplot_example:
 ##### FIN DE EXAMPLES #####################
 
 background:
-   graph_margincolor: "#F5F5F5" 
+   graph_margincolor: "#EEE" 
    
 title_general: 
     graph_title: ''
@@ -91,8 +91,8 @@ graph_pie:
     
 pieplot_general:
     style: [ 'background', 'graph_pie' ]
-    lineplot: pieplot
-    
+    lineplot: pieplot3d
+     
 
 graph_gantt:
     style: [ title_general ]
@@ -109,7 +109,7 @@ ganttplot_general:
 graph_timeserie:
     style: [  background, title_general , xgrid_timeserie , legend_timeserie ]
     graph: graph
-    graph_width: 400   
+    graph_width: 600   
     graph_height: 250
     graph_scale: "intlin" 
     graph_box: false

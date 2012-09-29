@@ -4,14 +4,15 @@
 
 
 {% block bundle_content %}
-
+<center>
 <h1>Estad&iacute;sticas Generales</h1>
 
+
+<BR/><BR/>
+
 <img src={{ path('txinbometro_graficos_graphs',{'dataserie':'consumogeneralkm'}) }} ></img>
-<BR/><BR/>
-<img src="{{ path('txinbometro_graficos_consumogeneralkm') }}" /></img>
-<BR/><BR/>
-<img src="{{ path('txinbometro_graficos_comparativauso') }}" /></img>
+<img src="{{ path('txinbometro_graficos_graphs',{'dataserie':'comparativauso'}) }}" /></img>
+</center>
 {% endblock %}
 
 {#

@@ -2,12 +2,38 @@ consumogeneralkm:
     role: ROLE_USER
     function: consumoGeneralKm
     description: Consumo general a lo largo de los kilometros
-    style: lineplot_timeserie
+    style: lineplot_general
     custom_style:
         graph_title: Evolucion consumo respecto a los kilometros
         lineplot_legend: Litros a los 100 km
         graph_yaxis_title: litros/100km
         graph_xaxis_title: Kms
         lineplot_marks: 0
-        graph_xaxis_title_position:  "high"        
+        graph_xaxis_title_position:  "high" 
+        graph_yscale_min: "0"
+#        graph_legend_hide: false
+        graph_plots:
+            consumo: 
+                lineplot_color: darkred
+                lineplot_legend: 'consumo'
+            acumulado:
+                lineplot_color: black
+                lineplot_legend: 'consumo acumulado'
+            maximo:
+                lineplot_color: red
+                lineplot_legend: 'maximo consumo'
+            minimo: 
+                lineplot_color: red
+                lineplot_legend: 'minimo consumo'
     classify: Consumo  
+    
+comparativauso:
+    roles: [ IS_AUTHENTICATED_ANONYMOUSLY ]
+    function: comparativaUso
+    description: Comparativa de los tipos de usos dados
+    style: pieplot_general
+    custom_style:
+        graph_title: Comparativa de uso
+        lineplot_legend: ['Urabano','Mixto','Carretera']
+        lineplot_slicecolors: [ '#d86464','#e8ea60','#7dda7a' ]
+    classify: Comparativa  
