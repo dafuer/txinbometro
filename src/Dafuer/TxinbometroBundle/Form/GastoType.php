@@ -1,0 +1,31 @@
+<?php
+
+namespace Dafuer\TxinbometroBundle\Form;
+
+use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+
+class GastoType extends AbstractType {
+
+    public function buildForm(FormBuilderInterface $builder, array $options) {
+        $builder
+                ->add('km')
+                ->add('fecha', 'date', array('widget' => 'single_text', 'format' => 'yyyy-MM-dd hh:mm:ss'))
+                ->add('tipo', 'choice', array('choices' => array('revision' => 'Revision', 'reparacion' => 'Reparacion', 'repuesto' => 'Repuesto', 'complemento' => 'Complemento', 'seguro' => 'Seguro')))
+                ->add('coste')
+                ->add('comentario', null, array('attr' => array('class' => 'tinymce'))) //,'tinymce'=>'{"theme":"simple"}')))
+        ;
+    }
+
+    public function getName() {
+        return 'ds_txinbometrobundle_gastotype';
+    }
+
+    public function setDefaultOptions(OptionsResolverInterface $resolver) {
+        $resolver->setDefaults(array(
+            'data_class' => 'Dafuer\TxinbometroBundle\Entity\Gasto',
+        ));
+    }
+
+}

@@ -26,7 +26,7 @@ class AppKernel extends Kernel
 
             //new Craue\FormFlowBundle\CraueFormFlowBundle(),            
             new FOS\UserBundle\FOSUserBundle(),
-            new DS\TxinbometroBundle\TxinbometroBundle(),
+            new Dafuer\TxinbometroBundle\TxinbometroBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

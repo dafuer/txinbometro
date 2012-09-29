@@ -1,0 +1,43 @@
+{# src/Dafuer/TxinbometroBundle/Resources/views/Default/menu.html.twig #}
+
+<div id="menu1">
+{% block menu1 %}
+        
+<span style="{{  opcion  == 'Principal' ? 'font-weight: bold;' : '' }} "><a name="menu_link" href="{{ path('index') }}">Principal</a></span> 
+ 
+{% if app.user %}
+(<a name="menu_link" href="{{ path('fos_user_security_logout') }}">{{ app.user.username }}</a>)
+{% endif %}
+|
+<span style="{{  opcion  == 'Vehiculo' ? 'font-weight: bold;' : '' }}"><a name="menu_link" href="{{ path('txinbometro_vehiculo') }}">Vehiculo</a></span>
+
+{% if app.user %}
+    {% if app.user.vehiculo %}
+        (<a name="menu_link" href="{{ path('txinbometro_vehiculo') }}">{{ app.user.vehiculo.marca~' '~app.user.vehiculo.modelo }}</a>)
+    {% else %}
+        (<a name="menu_link" href="{{ path('txinbometro_vehiculo') }}">seleccionar</a>)
+    {% endif %}
+{% endif %}
+|
+<span style="{{  opcion  == 'Estadisticas' ? 'font-weight: bold;' : '' }}"><a name="menu_link" href="{{ path('txinbometro_estadisticas_general') }}">Estad&iacute;sticas</a></span>
+|
+<span style="{{  opcion  == 'Gasolina' ? 'font-weight: bold;;' : '' }} {{  app.user and app.user.vehiculo ? '' : 'text-decoration:line-through;' }}"><a name="menu_link" href="{{ path('txinbometro_gasolina') }}">Gasolina</a></span>
+|
+<span style="{{  opcion  == 'Gasto' ? 'font-weight: bold;' : '' }}{{  app.user and app.user.vehiculo ? '' : 'text-decoration:line-through;' }}"><a name="menu_link" href="{{ path('txinbometro_gasto') }}">Gasto</a></span>
+
+{% endblock %}
+
+
+</div>
+
+<div id="menu2">
+    {% block menu2 %}
+        {% if opcion == 'Estadisticas' %}
+            <span style="{% if  subopcion  == '' or subopcion == 'General' %}font-weight: bold;{% endif %}"><a name="menu_link" href="{{ path('txinbometro_estadisticas_general') }}">General</a></span>
+            | 
+            <span style="{% if subopcion == 'Mensual' %}font-weight: bold;{% endif %}"><a name="menu_link" href="{{ path('txinbometro_estadisticas_mensual') }}">Mensual</a></span>
+            | 
+            <span style="{% if subopcion == 'Economicas' %}font-weight: bold;{% endif %}"><a name="menu_link" href="{{ path('txinbometro_estadisticas_economicas') }}">Economicas</a></span>
+        {% endif %}
+    {% endblock %}
+</div>

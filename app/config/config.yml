@@ -74,7 +74,7 @@ jms_security_extra:
 fos_user:
     db_driver: orm 
     firewall_name: main
-    user_class: DS\TxinbometroBundle\Entity\Usuario
+    user_class: Dafuer\TxinbometroBundle\Entity\Usuario
     
 
 stfalcon_tinymce:
