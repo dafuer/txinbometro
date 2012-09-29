@@ -74,7 +74,7 @@ lineplot_example:
 ##### FIN DE EXAMPLES #####################
 
 background:
-   graph_margincolor: "#EEE" 
+   graph_margincolor: "#202328" 
    
 title_general: 
     graph_title: ''
@@ -126,7 +126,7 @@ graph_timeserie:
 error_graph:
     canvasgraph_width: 10
     canvasgraph_height: 10
-    canvasgraph_color: '#f5f5f5'
+    canvasgraph_color: '#202328'
 
 legend_timeserie:
     graph_legend_frameweight: 1
@@ -147,6 +147,7 @@ xaxis_timeserie:
     graph_xaxis_pos: min  
     graph_xaxis_titlemargin: 30
     graph_xaxis_title_position: "high" # "high", "middle" and "low"
+    graph_yscale_autoticks: true
 
 yaxis_timeserie: 
     graph_yaxis_number: 0
