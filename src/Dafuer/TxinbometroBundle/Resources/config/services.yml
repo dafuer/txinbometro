@@ -27,7 +27,7 @@ services:
     mopa_bootstrap.navbar_menu_builder:
         class: Dafuer\TxinbometroBundle\Menu\NavbarMenuBuilder
         scope: request
-        arguments: [ '@knp_menu.factory', '@security.context' ] 
+        arguments: [ '@knp_menu.factory', '@security.context', '@session' ] 
         
     mopa_bootstrap.navbar_main_menu:
         class: Knp\Menu\MenuItem

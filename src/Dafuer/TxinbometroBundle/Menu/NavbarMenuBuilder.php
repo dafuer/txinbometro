@@ -11,22 +11,30 @@ class NavbarMenuBuilder extends AbstractNavbarMenuBuilder
 {
     protected $securityContext;
     protected $isLoggedIn;
+    protected $session;
 
-    public function __construct(FactoryInterface $factory, SecurityContextInterface $securityContext)
+    public function __construct(FactoryInterface $factory, SecurityContextInterface $securityContext, $session)
     {
         parent::__construct($factory);
 
         $this->securityContext = $securityContext;
         $this->isLoggedIn = $this->securityContext->isGranted('IS_AUTHENTICATED_FULLY');
+        $this->session=$session;
     }
 
     public function createMainMenu(Request $request)
     {
         $menu = $this->factory->createItem('root');
         $menu->setChildrenAttribute('class', 'nav');
-
-        $menu->addChild('Vehiculo',array('route' => 'txinbometro_vehiculo', 'label' => 'Veh&iacute;culo', 'extras'=>array('safe_label'=>true) ));
- 
+        
+        $vehiculo=$this->session->get('vehiculo');
+        
+        if($vehiculo!=null){
+            $menu->addChild('Vehiculo',array('route' => 'txinbometro_vehiculo', 'label' => $vehiculo->getMarca()." ".$vehiculo->getModelo(), 'extras'=>array('safe_label'=>true) ));
+        }else{
+            $menu->addChild('Vehiculo',array('route' => 'txinbometro_vehiculo', 'label' => 'Veh&iacute;culo', 'extras'=>array('safe_label'=>true) ));
+        }
+        
         $estadisticas=$this->createDropdownMenuItem($menu, 'Estadisticas', true,array(),array('label'=>'Estad&iacute;sticas', 'extras'=>array('safe_label'=>true))); 
         //$estadisticas=$this->createDropdownMenuItem($menu, 'Estadisticas' );
         //$estadisticas->setLabel('Estad&iacute;sticas');
@@ -68,4 +76,4 @@ class NavbarMenuBuilder extends AbstractNavbarMenuBuilder
         return $menu;
     }
  */
- }
+}
