@@ -16,7 +16,13 @@ class GasolinaType extends AbstractType {
                 ->add('coste')
                 ->add('tipo', 'choice', array('choices' => array('carretera' => 'Carretera', 'mixto' => 'Mixto', 'urbano' => 'Urbano')))
                 ->add('gasolinera')
-                ->add('comentario', null, array('attr' => array('class' => 'tinymce'))) //,'tinymce'=>'{"theme":"simple"}')))
+                ->add('comentario', 'textarea', array('attr' => array(
+                                                        'class' => 'tinymce',
+                                                        'data-theme' => 'medium' // simple, advanced, bbcode
+                                                     )
+                                                )
+                      )
+                //->add('comentario', null, array('attr' => array('class' => 'tinymce'))) //,'tinymce'=>'{"theme":"simple"}')))
         ;
     }
 
