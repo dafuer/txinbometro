@@ -14,7 +14,13 @@ class GastoType extends AbstractType {
                 ->add('fecha', 'date', array('widget' => 'single_text', 'format' => 'yyyy-MM-dd hh:mm:ss'))
                 ->add('tipo', 'choice', array('choices' => array('revision' => 'Revision', 'reparacion' => 'Reparacion', 'repuesto' => 'Repuesto', 'complemento' => 'Complemento', 'seguro' => 'Seguro')))
                 ->add('coste')
-                ->add('comentario', null, array('attr' => array('class' => 'tinymce'))) //,'tinymce'=>'{"theme":"simple"}')))
+                ->add('comentario', 'textarea', array('attr' => array(
+                                                        'class' => 'tinymce',
+                                                        'data-theme' => 'medium' // simple, advanced, bbcode
+                                                     )
+                                                )
+                      )                
+                //->add('comentario', null, array('attr' => array('class' => 'tinymce'))) //,'tinymce'=>'{"theme":"simple"}')))
         ;
     }
 
