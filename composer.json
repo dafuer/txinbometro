@@ -25,7 +25,8 @@
     "mopa/bootstrap-bundle": "master",
     "mopa/composer-bridge": "dev-master",
     "friendsofsymfony/user-bundle": "*",
-    "dafuer/dafuer-jpgraph-bundle": "*"
+    "dafuer/dafuer-jpgraph-bundle": "*",
+    "leafo/lessphp": "dev-master"
 },
 "scripts": {
     "post-install-cmd": [
