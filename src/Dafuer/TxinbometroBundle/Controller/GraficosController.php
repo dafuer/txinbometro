@@ -14,7 +14,7 @@ class GraficosController extends Controller
     public function graphAction() {   
         $request = $this->get('request');
 
-        $dataaccess=new Graph\DataSerie($this->get('session'), $this->getDoctrine()->getEntityManager());
+        $dataaccess=new Graph\DataSerie($this->get('security.context'), $this->get('session'), $this->getDoctrine()->getEntityManager());
         
         return $this->forward('DafuerJpgraphBundle:Graph:query', array('request' => $request, 'dataaccess' => $dataaccess)); 
     }

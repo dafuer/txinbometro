@@ -2,6 +2,7 @@
 
 namespace Dafuer\TxinbometroBundle\Graph;
 
+use Symfony\Component\Security\Core\SecurityContextInterface;
 use Dafuer\JpgraphBundle\Graph\BaseDataAccess;
 use Dafuer\TxinbometroBundle\Entity;
 
@@ -10,10 +11,10 @@ class DataSerie extends BaseDataAccess {
     protected $session;
     protected $em;
 
-    public function __construct($session,$em) {
+    public function __construct(SecurityContextInterface $securityContext,$session,$em) {
         $this->graphindexpath = __DIR__ . "/DataSerie.yml";
 
-        parent::__construct();
+        parent::__construct($securityContext);
         
         $this->session=$session;
         $this->em=$em;
