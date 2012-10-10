@@ -1,5 +1,9 @@
-app/cache/
-app/logs/
-/nbproject/private/
 *~
+nbproject/private/
+web/bundles/
+app/bootstrap
+app/cache/*
+app/logs/*
 vendor/
+app/config/parameters.ini
+app/config/parameters.yml
