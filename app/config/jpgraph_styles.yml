@@ -92,7 +92,7 @@ graph_pie:
 pieplot_general:
     style: [ 'background', 'graph_pie' ]
     lineplot: pieplot3d
-     
+    lineplot_value_color: 'gray'
 
 graph_gantt:
     style: [ title_general ]

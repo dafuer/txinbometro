@@ -36,6 +36,7 @@ comparativauso:
         graph_title: Comparativa de uso
         lineplot_legend: ['Urabano','Mixto','Carretera']
         lineplot_slicecolors: [ '#d86464','#e8ea60','#7dda7a' ]
+        graph_legend_hide: "true"
     classify: Comparativa  
     
 usomensual:
