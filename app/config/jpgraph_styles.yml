@@ -78,9 +78,9 @@ background:
    
 title_general: 
     graph_title: ''
-    graph_title_font_family: FF_ARIAL
-    graph_title_font_style: FS_BOLD #require font_family to set
-    graph_title_font_size: 12 #require font_style to set 
+    #graph_title_font_family: FF_ARIAL
+    #graph_title_font_style: FS_BOLD #require font_family to set
+    #graph_title_font_size: 12 #require font_style to set 
     
 graph_pie:
     style: [ title_general ]
