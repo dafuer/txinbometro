@@ -26,6 +26,7 @@ class AppKernel extends Kernel
 
             //new Craue\FormFlowBundle\CraueFormFlowBundle(),            
             new FOS\UserBundle\FOSUserBundle(),
+            new AntiMattr\GoogleBundle\GoogleBundle(),
             new Dafuer\TxinbometroBundle\TxinbometroBundle(),
         );
 

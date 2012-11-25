@@ -78,6 +78,9 @@ fos_user:
     db_driver: orm 
     firewall_name: main
     user_class: Dafuer\TxinbometroBundle\Entity\Usuario
+    from_email:
+        address:        team@txinbometro.dafuer.es
+        sender_name:    "Txinbometro Team"        
     
 
 stfalcon_tinymce:
@@ -137,3 +140,11 @@ dafuer_jpgraph:
         jpg-config.inc.php:
             TTF_DIR:   '/usr/share/fonts/truetype/msttcorefonts/'
             MBTTF_DIR: '/usr/share/fonts/truetype/msttcorefonts/'
+            
+google:
+    analytics:
+        trackers:
+            default:
+                accountId: %google_analytics_id%
+                domain:     txinbometro.dafuer.es
+                trackPageLoadTime: true
