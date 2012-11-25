@@ -11,7 +11,7 @@ class GasolinaType extends AbstractType {
     public function buildForm(FormBuilderInterface $builder, array $options) {
         $builder
                 ->add('km')
-                ->add('fecha', 'text',array('required'=>true,)) //, array('widget' => 'single_text', 'format' => 'yyyy-MM-dd hh:mm:ss'))
+                ->add('fecha', 'datetime', array('widget' => 'single_text', 'format' => 'yyyy-MM-dd HH:mm:00'))
                 ->add('litros')
                 ->add('coste')
                 ->add('tipo', 'choice', array('choices' => array('carretera' => 'Carretera', 'mixto' => 'Mixto', 'urbano' => 'Urbano')))

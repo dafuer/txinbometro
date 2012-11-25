@@ -11,7 +11,7 @@ class GastoType extends AbstractType {
     public function buildForm(FormBuilderInterface $builder, array $options) {
         $builder
                 ->add('km')
-                ->add('fecha',  'text',array('required'=>true,)) // 'date', array('widget' => 'single_text', 'format' => 'yyyy-MM-dd hh:mm:ss'))
+                ->add('fecha', 'datetime', array('widget' => 'single_text', 'format' => 'yyyy-MM-dd HH:mm:00'))
                 ->add('tipo', 'choice', array('choices' => array('revision' => 'Revision', 'reparacion' => 'Reparacion', 'repuesto' => 'Repuesto', 'complemento' => 'Complemento', 'seguro' => 'Seguro')))
                 ->add('coste')
                 ->add('comentario', 'textarea', array('attr' => array(
