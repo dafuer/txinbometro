@@ -90,8 +90,10 @@ class GastoController extends Controller {
             $em->persist($entity);
             $em->flush();
             // Anyado este codigo para actualizar la variable de sesion
-            $consumoObject = $em->getRepository('TxinbometroBundle:Gasolina')->getConsumos($this->get('session')->get('vehiculo'));
-            $this->get('session')->set('resumenConsumo', $consumoObject);
+            // Comento esta linea porque creo que no es necesario rehacer los gastos de la gasolina
+            // al cambiar otros gastos
+            //$consumoObject = $em->getRepository('TxinbometroBundle:Gasolina')->getConsumos($this->get('session')->get('vehiculo'));
+            //$this->get('session')->set('resumenConsumo', $consumoObject);
             return $this->redirect($this->generateUrl('txinbometro_gasto_show', array('id' => $entity->getId())));
         }
 
@@ -158,8 +160,10 @@ class GastoController extends Controller {
             $em->persist($entity);
             $em->flush();
             // Anyado este codigo para actualizar la variable de sesion
-            $consumoObject = $em->getRepository('TxinbometroBundle:Gasolina')->getConsumos($this->get('session')->get('vehiculo'));
-            $this->get('session')->set('resumenConsumo', $consumoObject);
+            // Comento esta linea porque creo que no es necesario rehacer los gastos de la gasolina
+            // al cambiar otros gastos
+            // $consumoObject = $em->getRepository('TxinbometroBundle:Gasolina')->getConsumos($this->get('session')->get('vehiculo'));
+            // $this->get('session')->set('resumenConsumo', $consumoObject);
             return $this->redirect($this->generateUrl('txinbometro_gasto_edit', array('id' => $id)));
         }
 
@@ -197,8 +201,10 @@ class GastoController extends Controller {
             $em->flush();
         }
             // Anyado este codigo para actualizar la variable de sesion
-            $consumoObject = $em->getRepository('TxinbometroBundle:Gasolina')->getConsumos($this->get('session')->get('vehiculo'));
-            $this->get('session')->set('resumenConsumo', $consumoObject);
+            // Comento esta linea porque creo que no es necesario rehacer los gastos de la gasolina
+            // al cambiar otros gastos
+            // $consumoObject = $em->getRepository('TxinbometroBundle:Gasolina')->getConsumos($this->get('session')->get('vehiculo'));
+            // $this->get('session')->set('resumenConsumo', $consumoObject);
         return $this->redirect($this->generateUrl('txinbometro_gasto'));
     }
 
