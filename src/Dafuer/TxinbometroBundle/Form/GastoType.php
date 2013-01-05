@@ -12,7 +12,13 @@ class GastoType extends AbstractType {
         $builder
                 ->add('km')
                 ->add('fecha', 'datetime', array('widget' => 'single_text', 'format' => 'yyyy-MM-dd HH:mm:00'))
-                ->add('tipo', 'choice', array('choices' => array('revision' => 'Revision', 'reparacion' => 'Reparacion', 'repuesto' => 'Repuesto', 'complemento' => 'Complemento', 'seguro' => 'Seguro')))
+                ->add('tipo', 'choice', array('choices' => 
+                    array('revision' => 'Revision', 
+                        'reparacion' => 'Reparacion', 
+                        'repuesto' => 'Repuesto', 
+                        'complemento' => 'Complemento', 
+                        'seguro' => 'Seguro',
+                        'documentacion' => 'Documentacion')))
                 ->add('coste')
                 ->add('comentario', 'textarea', array('attr' => array(
                                                         'class' => 'tinymce',
