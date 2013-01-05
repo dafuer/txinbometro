@@ -12,5 +12,7 @@
 
 <img src={{ path('txinbometro_graficos_graphs',{'dataserie':'consumogeneralkm'}) }} ></img>
 <img src="{{ path('txinbometro_graficos_graphs',{'dataserie':'comparativauso'}) }}" /></img>
+<BR/>
+Consumo medio (litros/100Km): {{ resumen_consumo.consumo.total.medio|number_format(2) }} ({{resumen_consumo.consumo.carretera.medio|number_format(2)}} / {{resumen_consumo.consumo.mixto.medio|number_format(2)}} / {{resumen_consumo.consumo.urbano.medio|number_format(2)}})
 </center>
 {% endblock %}

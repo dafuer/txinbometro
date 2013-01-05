@@ -21,9 +21,9 @@ class EstadisticasController extends Controller {
 
         $sesion=$this->get('session');
         $consumoObject=$sesion->get('resumenConsumo');             
-        if ($consumoObject==null || $consumoObject->getListado()==null ) return $this->render("TxinbometroBundle:Default:primeroinsertadatos.html.twig");
+        if ($consumoObject==null || $consumoObject->getListado()==null ) return $this->render("TxinbometroBundle:Default:primeroinsertadatos.html.twig", array());
         
-        return array();
+        return array('resumen_consumo'=>$consumoObject);
     }
 
     /**
